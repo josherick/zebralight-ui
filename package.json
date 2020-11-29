@@ -5,23 +5,36 @@
   "main": "createStateMachine.js",
   "scripts": {
     "test": "yarn build && node lib/runTests",
-    "build": "babel src/ -d lib/",
-    "prepublish": "yarn run build"
+    "build": "webpack --mode production --config webpack.config.cjs",
+    "server": "webpack-dev-server --mode development --config webpack.config.cjs"
   },
-  "type":"module",
+  "type": "module",
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "^7.12.8",
-    "@babel/core": "^7.12.9",
+    "@babel/cli": "7.1.0",
+    "@babel/core": "7.1.0",
+    "@babel/preset-env": "7.1.0",
     "@babel/preset-flow": "^7.12.1",
+    "@babel/preset-react": "7.0.0",
+    "babel-loader": "8.0.2",
+    "css-loader": "1.0.0",
     "eslint": "^7.14.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "file-loader": "^6.2.0",
     "flow-bin": "^0.138.0",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "style-loader": "0.23.0",
+    "webpack": "4.19.1",
+    "webpack-cli": "3.1.1",
+    "webpack-dev-server": "3.1.8"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   }
 }
