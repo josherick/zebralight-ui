@@ -2,7 +2,7 @@
 import type {
   StateType,
   TransitionType,
-} from './implementations/basic_ui/enums.js';
+} from './implementations/basic_ui/enums';
 
 export type StateMachineDefinition = {
   [StateType]: {
@@ -22,7 +22,7 @@ export type StateMachine = {
 
 export default function createStateMachine(
   initialState: StateType,
-  states: StateMachineDefinition
+  states: StateMachineDefinition,
 ): StateMachine {
   let currentState = initialState;
   return {
@@ -32,14 +32,15 @@ export default function createStateMachine(
       if (stateFn == null) {
         // Keep the same state if there is no transition specified.
         console.log(
-          `[transition] ${currentState} --(${event})--> ${currentState}`
+          `[transition] ${currentState} --(${event})--> ${currentState}`,
         );
         return;
       }
       const newState = stateFn(currentState);
       console.log(`[transition] ${currentState} --(${event})--> ${newState}`);
       currentState = newState;
-      states[newState].actions?.onEnter &&
+      states[newState].actions &&
+        states[newState].actions.onEnter &&
         states[newState].actions.onEnter(newState);
     },
   };

@@ -4,6 +4,8 @@ module.exports = {
     es2021: true,
   },
   extends: ['plugin:react/recommended', 'airbnb'],
+  parser: 'babel-eslint',
+  plugins: ['react', 'flowtype'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -11,10 +13,11 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react'],
   rules: {
+    'react/jsx-filename-extension': 'off',
     'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     'implicit-arrow-linebreak': 'off',
     'no-else-return': ['error', { allowElseIf: true }],
+    'import/extensions': ['error', 'never'],
   },
 };

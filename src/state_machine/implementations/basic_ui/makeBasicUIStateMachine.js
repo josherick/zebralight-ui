@@ -1,13 +1,10 @@
 // @flow
-import type { StateMachine } from '../../createStateMachine.js';
+import type { StateMachine } from '../../createStateMachine';
 
-import type { StateType, StatePrefixType, TransitionType } from './enums.js';
-
-import createStateMachine from '../../createStateMachine.js';
+import createStateMachine from '../../createStateMachine';
 
 import {
   parseLevel,
-  parsePrefix,
   composeState,
   parseOption,
   parseSublevel,
@@ -18,21 +15,15 @@ import {
   swapSuffix,
   incrementSuffixForToggleState,
   nextSuffixForIntermediateToggleState,
-} from './stateUtils.js';
+} from './stateUtils';
 
-import {
-  Level,
-  MemoryVariable,
-  State,
-  StateSuffix,
-  Transition,
-} from './enums.js';
+import { Level, State, StateSuffix, Transition } from './enums';
 
-import { expandStateDef, makeStates } from './stateExpander.js';
+import { expandStateDef, makeStates } from './stateExpander';
 
-import makeBasicUIMemory from './memory.js';
+import makeBasicUIMemory from './memory';
 
-export default function makeZebralightUIStateMachine(): StateMachine {
+export default function makeBasicUIStateMachine(): StateMachine {
   const m = makeBasicUIMemory();
   // Because there are over 100 states, use an "expansion" style to define
   // them, since most perform similar actions.
@@ -55,7 +46,7 @@ export default function makeZebralightUIStateMachine(): StateMachine {
     {
       forStates: makeStates(
         [Level.L],
-        [StateSuffix.CYCLE_PRE_H, StateSuffix.CYCLE_PRE_M]
+        [StateSuffix.CYCLE_PRE_H, StateSuffix.CYCLE_PRE_M],
       ),
       transitions: {
         [Transition.LONG_PRESS_BEAT]: (_state) =>
@@ -63,7 +54,7 @@ export default function makeZebralightUIStateMachine(): StateMachine {
         [Transition.SHORT_PRESS_RELEASE]: (state) =>
           m.getLastUsedSublevelState(
             levelForShortPressCycle(state),
-            StateSuffix.CYCLE
+            StateSuffix.CYCLE,
           ),
       },
     },
@@ -82,24 +73,24 @@ export default function makeZebralightUIStateMachine(): StateMachine {
     {
       forStates: makeStates([Level.L], [StateSuffix.CYCLE_STROBE_BEAT]),
       transitions: {
-        [Transition.MULTI_SINGLE_PRESS_TIMEOUT]: (state) =>
+        [Transition.MULTI_SINGLE_PRESS_TIMEOUT]: (_state) =>
           m.getLastUsedSublevelState(Level.STROBE, StateSuffix.SUBCYCLE),
-        [Transition.PRESS_START]: (state) =>
+        [Transition.PRESS_START]: (_state) =>
           m.getLastUsedSublevelState(
             Level.L,
-            StateSuffix.CYCLE_PRE_BATTERY_INDICATOR
+            StateSuffix.CYCLE_PRE_BATTERY_INDICATOR,
           ),
       },
     },
     {
       forStates: makeStates(
         [Level.L],
-        [StateSuffix.CYCLE_PRE_BATTERY_INDICATOR]
+        [StateSuffix.CYCLE_PRE_BATTERY_INDICATOR],
       ),
       transitions: {
         [Transition.LONG_PRESS_BEAT]: (_state) =>
           m.getLastUsedSublevelState(Level.L, StateSuffix.CYCLE),
-        [Transition.SHORT_PRESS_RELEASE]: (state) => State.BATTERY_INDICATOR,
+        [Transition.SHORT_PRESS_RELEASE]: (_state) => State.BATTERY_INDICATOR,
       },
     },
 
@@ -107,14 +98,14 @@ export default function makeZebralightUIStateMachine(): StateMachine {
       forStates: makeStates(
         // Only the button down states are relevant for the L variants.
         [Level.L, Level.M, Level.H],
-        [StateSuffix.CYCLE]
+        [StateSuffix.CYCLE],
       ),
       transitions: {
         // Button is down.
         [Transition.LONG_PRESS_BEAT]: (state) =>
           m.getLastUsedSublevelState(
             incrementLevelForLongPressCycle(parseLevel(state)),
-            StateSuffix.CYCLE
+            StateSuffix.CYCLE,
           ),
         [Transition.LONG_PRESS_RELEASE]: (state) =>
           swapSuffix(state, StateSuffix.STABLE),
@@ -128,7 +119,7 @@ export default function makeZebralightUIStateMachine(): StateMachine {
           } else if (level === Level.M) {
             return m.getLastUsedSublevelState(
               Level.L,
-              StateSuffix.CYCLE_PRE_STROBE
+              StateSuffix.CYCLE_PRE_STROBE,
             );
           }
           throw new Error(`Invalid state "${state}".`);
@@ -156,7 +147,7 @@ export default function makeZebralightUIStateMachine(): StateMachine {
           StateSuffix.TOGGLE_INTERMEDIATE_4,
           StateSuffix.TOGGLE_INTERMEDIATE_5,
           StateSuffix.TOGGLE_INTERMEDIATE_6,
-        ]
+        ],
       ),
       transitions: {
         [Transition.MULTI_SINGLE_PRESS_TIMEOUT]: (_state) => State.OFF,
@@ -168,7 +159,7 @@ export default function makeZebralightUIStateMachine(): StateMachine {
           }
           const newPrefix = m.getPrefix(
             parseLevel(state),
-            sublevel === 1 ? 2 : 1
+            sublevel === 1 ? 2 : 1,
           );
           const newSuffix = nextSuffixForIntermediateToggleState(state);
           return composeState(newPrefix, newSuffix);
@@ -188,7 +179,7 @@ export default function makeZebralightUIStateMachine(): StateMachine {
           StateSuffix.TOGGLE_4,
           StateSuffix.TOGGLE_5,
           StateSuffix.TOGGLE_6,
-        ]
+        ],
       ),
       actions: {
         onEnter: (state) => {
@@ -208,7 +199,7 @@ export default function makeZebralightUIStateMachine(): StateMachine {
     {
       forStates: makeStates(
         [Level.L, Level.M, Level.H],
-        [StateSuffix.TOGGLE_INTERMEDIATE_7]
+        [StateSuffix.TOGGLE_INTERMEDIATE_7],
       ),
       transitions: {
         [Transition.MULTI_SINGLE_PRESS_TIMEOUT]: (_state) => State.OFF,
@@ -222,7 +213,7 @@ export default function makeZebralightUIStateMachine(): StateMachine {
     {
       forStates: makeStates(
         [Level.L, Level.M, Level.H, Level.STROBE],
-        [StateSuffix.SUBCYCLE_INTERMEDIATE]
+        [StateSuffix.SUBCYCLE_INTERMEDIATE],
       ),
       transitions: {
         [Transition.MULTI_SINGLE_PRESS_TIMEOUT]: (_state) => State.OFF,
@@ -236,7 +227,7 @@ export default function makeZebralightUIStateMachine(): StateMachine {
     {
       forStates: makeStates(
         [Level.L, Level.M, Level.H],
-        [StateSuffix.SUBCYCLE]
+        [StateSuffix.SUBCYCLE],
       ),
       actions: {
         onEnter: (state) => {

@@ -2,13 +2,12 @@
 
 import type {
   LevelType,
-  MemoryVariableType,
   StatePrefixType,
   StateSuffixType,
   StateType,
-} from './enums.js';
+} from './enums';
 
-import { Level, MemoryVariable, StatePrefix, StateSuffix } from './enums.js';
+import { Level, StatePrefix, StateSuffix } from './enums';
 
 export function parseLevel(state: StateType): LevelType {
   const level = state[0];
@@ -20,22 +19,22 @@ export function parseLevel(state: StateType): LevelType {
 
 export function parseSublevel(state: StateType): number {
   if (state[0] === 's') {
-    return parseInt(state.slice(6, 7)[0]);
+    return parseInt(state.slice(6, 7)[0], 10);
   }
-  return parseInt(state.slice(1, 2)[0]);
+  return parseInt(state.slice(1, 2)[0], 10);
 }
 
 export function parseOption(state: StateType): number {
   if (state[0] === 's') {
-    return parseInt(state.slice(8, 9)[0]);
+    return parseInt(state.slice(8, 9)[0], 10);
   }
-  return parseInt(state.split('.').slice(1, 2)[0]);
+  return parseInt(state.split('.').slice(1, 2)[0], 10);
 }
 
 export function composePrefix(
   level: LevelType,
   sublevel: number,
-  option: number
+  option: number,
 ): StatePrefixType {
   const firstComponent = `${level}${sublevel}`;
   return (((sublevel === 2 || level === Level.STROBE
@@ -45,7 +44,7 @@ export function composePrefix(
 
 export function composeState(
   prefix: StatePrefixType,
-  suffix: StateSuffixType
+  suffix: StateSuffixType,
 ): StateType {
   return ((`${prefix}.${suffix}`: any): StateType);
 }
@@ -56,7 +55,7 @@ export function parsePrefix(state: StateType): StatePrefixType {
 
 export function swapSuffix(
   state: StateType,
-  suffix: StateSuffixType
+  suffix: StateSuffixType,
 ): StateType {
   const prefix = parsePrefix(state);
   return ((`${prefix}.${suffix}`: any): StateType);
@@ -93,7 +92,7 @@ export function levelForShortPressCycle(preCycleState: StateType): LevelType {
  * E.g. State.M2_1_TOGGLE_INTERMEDIATE_1 => State.M2_1_TOGGLE_1
  */
 export function nextSuffixForIntermediateToggleState(
-  intermediateToggleState: StateType
+  intermediateToggleState: StateType,
 ): StateSuffixType {
   const suffix = intermediateToggleState.split('.').slice(-1)[0];
   return ((suffix.replace('_intermediate', ''): any): StateSuffixType);
@@ -105,7 +104,7 @@ export function nextSuffixForIntermediateToggleState(
  * E.g. State.M2_1_TOGGLE_1 => State.M2_1_TOGGLE_INTERMEDIATE_1
  */
 export function incrementSuffixForToggleState(
-  toggleState: StateType
+  toggleState: StateType,
 ): StateSuffixType {
   const nextToggleNumber = parseInt(toggleState.slice(-1)[0], 10) + 1;
   return ((`toggle_intermediate_${nextToggleNumber}`: any): StateSuffixType);
@@ -117,7 +116,7 @@ export function incrementSuffixForToggleState(
  * E.g. State.H2_3_SUBCYCLE => State.H2_2_SUBCYCLE
  */
 export function nextOptionSubcycleState(
-  intermediateSubcycleState: StateType
+  intermediateSubcycleState: StateType,
 ): StateType {
   let newOption = parseOption(intermediateSubcycleState) - 1;
   const level = parseLevel(intermediateSubcycleState);
@@ -136,7 +135,7 @@ export function nextOptionSubcycleState(
  * E.g. Level.H => State.H2_3_SUBCYCLE
  */
 export function highestOptionSubcycleStateForLevel(
-  level: LevelType
+  level: LevelType,
 ): StateType {
   let prefix = '';
   switch (level) {
