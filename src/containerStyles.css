@@ -16,8 +16,9 @@
 }
 
 .light-background .bulb-container {
-  flex: 1;
+  flex: 2;
   position: relative;
+  z-index: 500;
 }
 
 .light-background .text-container {
@@ -53,6 +54,13 @@
   background-color: rgb(17, 17, 17);
   box-shadow: inset 0px 0px 20px rgb(5, 5, 5);
   border: none;
+}
+
+.light-background .bulb {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: hsl(27, 100%, 90.4%);
 }
 
 .centered-in-container {
