@@ -1,13 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
   mode: 'development',
   plugins: [
-    new MiniCssExtractPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: 'Zebralight UI',
@@ -29,14 +27,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          //MiniCssExtractPlugin.loader,
-          'style-loader',
-          'css-loader',
-          //{
-          //loader: 'sass-loader',
-          //},
-        ],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/i,
@@ -49,13 +40,13 @@ module.exports = {
   },
   resolve: { extensions: ['*', '.js', '.jsx'] },
   output: {
-    path: path.resolve(__dirname, 'dist/'),
+    path: path.resolve(__dirname, 'docs/'),
     filename: 'bundle.js',
   },
   devServer: {
     port: 3000,
     publicPath: 'http://localhost:3000/',
     hotOnly: true,
-    contentBase: './dist',
+    contentBase: './docs',
   },
 };
