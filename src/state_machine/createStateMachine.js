@@ -2,7 +2,7 @@
 import type {
   StateType,
   TransitionType,
-} from './implementations/basic_ui/enums';
+} from './implementations/basic_ui/enums.js';
 
 export type StateMachineDefinition = {
   [StateType]: {

@@ -5,9 +5,9 @@ import type {
   StatePrefixType,
   StateSuffixType,
   StateType,
-} from './enums';
+} from './enums.js';
 
-import { Level, StatePrefix, StateSuffix } from './enums';
+import { Level, StatePrefix, StateSuffix } from './enums.js';
 
 export function parseLevel(state: StateType): LevelType {
   const level = state[0];

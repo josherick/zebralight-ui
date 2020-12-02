@@ -18,6 +18,7 @@ module.exports = {
     'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     'implicit-arrow-linebreak': 'off',
     'no-else-return': ['error', { allowElseIf: true }],
-    'import/extensions': ['error', 'never'],
+    'import/extensions': ['error', 'always'],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
   },
 };

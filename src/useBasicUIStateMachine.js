@@ -4,8 +4,8 @@ import { useCallback, useRef, useState } from 'react';
 import type {
   StateType,
   TransitionType,
-} from './state_machine/implementations/basic_ui/enums';
-import makeBasicUIStateMachine from './state_machine/implementations/basic_ui/makeBasicUIStateMachine';
+} from './state_machine/implementations/basic_ui/enums.js';
+import makeBasicUIStateMachine from './state_machine/implementations/basic_ui/makeBasicUIStateMachine.js';
 
 export default function useBasicUIStateMachine(): [
   StateType,

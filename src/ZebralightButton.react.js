@@ -1,12 +1,12 @@
 // @flow
 import * as React from 'react';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useState } from 'react';
 
-import type { TransitionType } from './state_machine/implementations/basic_ui/enums';
-import { Transition } from './state_machine/implementations/basic_ui/enums';
-import useTimer from './useTimer';
+import type { TransitionType } from './state_machine/implementations/basic_ui/enums.js';
+import { Transition } from './state_machine/implementations/basic_ui/enums.js';
+import useTimer from './useTimer.js';
 
-import Button from './Button.react';
+import Button from './Button.react.js';
 
 type Props = {
   onEvent: (TransitionType) => void,
@@ -21,32 +21,20 @@ export default function ZebralightButton({
 }: Props): React.Element<typeof Button> {
   const [longPressActive, setLongPressActive] = useState<boolean>(false);
 
-  const onLongPressBeat = useCallback(
-    (restart) => {
-      console.log('Long press beat fired');
-      setLongPressActive(true);
-      onEvent(Transition.LONG_PRESS_BEAT);
-      return true;
-    },
-    [onEvent, setLongPressActive],
-  );
+  const onLongPressBeat = useCallback(() => {
+    setLongPressActive(true);
+    onEvent(Transition.LONG_PRESS_BEAT);
+    return true;
+  }, [onEvent, setLongPressActive]);
 
-  const onMultiSinglePressTimeout = useCallback(
-    (_) => {
-      console.log('Multi single press timeout fired');
-      onEvent(Transition.MULTI_SINGLE_PRESS_TIMEOUT);
-      return false;
-    },
-    [onEvent],
-  );
-  const onMultiDoublePressTimeout = useCallback(
-    (_) => {
-      console.log('Multi double press time');
-      onEvent(Transition.MULTI_DOUBLE_PRESS_TIMEOUT);
-      return false;
-    },
-    [onEvent],
-  );
+  const onMultiSinglePressTimeout = useCallback(() => {
+    onEvent(Transition.MULTI_SINGLE_PRESS_TIMEOUT);
+    return false;
+  }, [onEvent]);
+  const onMultiDoublePressTimeout = useCallback(() => {
+    onEvent(Transition.MULTI_DOUBLE_PRESS_TIMEOUT);
+    return false;
+  }, [onEvent]);
 
   const [restartLongPressTimer, cancelLongPressTimer] = useTimer(
     LONG_PRESS_BEAT_TIMEOUT_MS,

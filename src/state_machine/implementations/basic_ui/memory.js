@@ -26,6 +26,40 @@ type MemoryInterface = {
   getPrefix: (LevelType, sublevel: number) => StatePrefixType,
 };
 
+/**
+ * Returns the memory name for the last used subcycle option for a given level.
+ */
+function optionVariableName(level: LevelType): MemoryVariableType {
+  switch (level) {
+    case Level.L:
+      return MemoryVariable.L2_OPTION;
+    case Level.M:
+      return MemoryVariable.M2_OPTION;
+    case Level.H:
+      return MemoryVariable.H2_OPTION;
+    case Level.STROBE:
+      return MemoryVariable.STROBE_OPTION;
+    default:
+      throw new Error(`Unexpected level "${level}"`);
+  }
+}
+
+/*
+ * Returns the memory name for the last used sublevel for a given level.
+ */
+function lastUsedVariableName(level: LevelType): MemoryVariableType {
+  switch (level) {
+    case Level.L:
+      return MemoryVariable.L_LAST_USED;
+    case Level.M:
+      return MemoryVariable.M_LAST_USED;
+    case Level.H:
+      return MemoryVariable.H_LAST_USED;
+    default:
+      throw new Error(`Unexpected level "${level}"`);
+  }
+}
+
 export default function makeBasicUIMemory(): MemoryInterface {
   const memory = {
     [MemoryVariable.H_LAST_USED]: 1,
@@ -62,38 +96,4 @@ export default function makeBasicUIMemory(): MemoryInterface {
       return composePrefix(level, sublevel, option);
     },
   };
-}
-
-/**
- * Returns the memory name for the last used subcycle option for a given level.
- */
-function optionVariableName(level: LevelType): MemoryVariableType {
-  switch (level) {
-    case Level.L:
-      return MemoryVariable.L2_OPTION;
-    case Level.M:
-      return MemoryVariable.M2_OPTION;
-    case Level.H:
-      return MemoryVariable.H2_OPTION;
-    case Level.STROBE:
-      return MemoryVariable.STROBE_OPTION;
-    default:
-      throw new Error(`Unexpected level "${level}"`);
-  }
-}
-
-/*
- * Returns the memory name for the last used sublevel for a given level.
- */
-function lastUsedVariableName(level: LevelType): MemoryVariableType {
-  switch (level) {
-    case Level.L:
-      return MemoryVariable.L_LAST_USED;
-    case Level.M:
-      return MemoryVariable.M_LAST_USED;
-    case Level.H:
-      return MemoryVariable.H_LAST_USED;
-    default:
-      throw new Error(`Unexpected level "${level}"`);
-  }
 }

@@ -1,7 +1,7 @@
 // @flow
 
-import type { StatePrefixType } from '../state_machine/implementations/basic_ui/enums';
-import { StatePrefix } from '../state_machine/implementations/basic_ui/enums';
+import type { StatePrefixType } from '../state_machine/implementations/basic_ui/enums.js';
+import { StatePrefix } from '../state_machine/implementations/basic_ui/enums.js';
 
 export function getLumens(): { [StatePrefixType]: number } {
   return {

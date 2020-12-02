@@ -1,19 +1,18 @@
 // @flow
 
 import type {
-  LevelType,
   StateType,
   StatePrefixType,
-} from './state_machine/implementations/basic_ui/enums';
-import { State } from './state_machine/implementations/basic_ui/enums';
+} from './state_machine/implementations/basic_ui/enums.js';
+import { State } from './state_machine/implementations/basic_ui/enums.js';
 import {
   parseLevel,
   parseSublevel,
-} from './state_machine/implementations/basic_ui/stateUtils';
+} from './state_machine/implementations/basic_ui/stateUtils.js';
 import {
   getLumens as get604cLumens,
   getRuntime as get604cRuntime,
-} from './configurations/604c';
+} from './configurations/604c.js';
 
 export function getLumens(statePrefix: StatePrefixType): number {
   return get604cLumens()[statePrefix];

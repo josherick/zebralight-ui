@@ -1,7 +1,7 @@
 // @flow
-import type { StateMachine } from '../../createStateMachine';
+import type { StateMachine } from '../../createStateMachine.js';
 
-import createStateMachine from '../../createStateMachine';
+import createStateMachine from '../../createStateMachine.js';
 
 import {
   parseLevel,
@@ -15,13 +15,13 @@ import {
   swapSuffix,
   incrementSuffixForToggleState,
   nextSuffixForIntermediateToggleState,
-} from './stateUtils';
+} from './stateUtils.js';
 
-import { Level, State, StateSuffix, Transition } from './enums';
+import { Level, State, StateSuffix, Transition } from './enums.js';
 
-import { expandStateDef, makeStates } from './stateExpander';
+import { expandStateDef, makeStates } from './stateExpander.js';
 
-import makeBasicUIMemory from './memory';
+import makeBasicUIMemory from './memory.js';
 
 export default function makeBasicUIStateMachine(): StateMachine {
   const m = makeBasicUIMemory();

@@ -23,7 +23,7 @@ export type CollapsedConfigurationType = {
 }[];
 
 export function expandStateDef(
-  collapsedStates: CollapsedConfigurationType
+  collapsedStates: CollapsedConfigurationType,
 ): StateMachineDefinition {
   // Since there is lots of sketchy type conversions involved, ensure that all
   // states are valid.
@@ -36,7 +36,9 @@ export function expandStateDef(
       if (!validStates.has(state)) {
         throw new Error(`Invalid state "${state}"`);
       }
-      if (expandedStateDefinition.hasOwnProperty(state)) {
+      if (
+        Object.prototype.hasOwnProperty.call(expandedStateDefinition, state)
+      ) {
         throw new Error(`Duplicate state "${state}"`);
       }
       expandedStateDefinition[state] = definition;
@@ -46,7 +48,7 @@ export function expandStateDef(
 }
 
 function makeCombinations(
-  componentSets: Array<Array<StateSuffixType> | Array<StatePrefixType>>
+  componentSets: Array<Array<StateSuffixType> | Array<StatePrefixType>>,
 ): string[][] {
   // $FlowIgnore[incompatible-return] TyPe sYsTeMs ArE fUn
   return componentSets.reduce((solutionAcc, componentSet) =>
@@ -57,19 +59,19 @@ function makeCombinations(
         incrementalSolutionAcc.concat(
           componentSet.map((component) =>
             // $FlowIgnore[incompatible-call] tYpE SyStEmS aRe FuN
-            [].concat(incrementalSolution, component)
-          )
+            [].concat(incrementalSolution, component),
+          ),
         ),
-      []
-    )
+      [],
+    ),
   );
 }
 
 export function makeStates(
   levels: Array<LevelType>,
-  suffixes: Array<StateSuffixType>
+  suffixes: Array<StateSuffixType>,
 ): StateType[] {
-  let prefixes = ([]: Array<StatePrefixType>);
+  const prefixes = ([]: Array<StatePrefixType>);
   levels.forEach((level) => {
     switch (level) {
       case Level.L:
@@ -77,7 +79,7 @@ export function makeStates(
           StatePrefix.L1,
           StatePrefix.L2_1,
           StatePrefix.L2_2,
-          StatePrefix.L2_3
+          StatePrefix.L2_3,
         );
         break;
       case Level.M:
@@ -85,7 +87,7 @@ export function makeStates(
           StatePrefix.M1,
           StatePrefix.M2_1,
           StatePrefix.M2_2,
-          StatePrefix.M2_3
+          StatePrefix.M2_3,
         );
         break;
       case Level.H:
@@ -93,7 +95,7 @@ export function makeStates(
           StatePrefix.H1,
           StatePrefix.H2_1,
           StatePrefix.H2_2,
-          StatePrefix.H2_3
+          StatePrefix.H2_3,
         );
         break;
       case Level.STROBE:
@@ -101,7 +103,7 @@ export function makeStates(
           StatePrefix.STROBE1_1,
           StatePrefix.STROBE1_2,
           StatePrefix.STROBE1_3,
-          StatePrefix.STROBE1_4
+          StatePrefix.STROBE1_4,
         );
         break;
       default:

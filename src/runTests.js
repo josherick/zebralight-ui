@@ -1,6 +1,6 @@
 // @flow
 
-import runMakeZebralightUIStateMachineTest from './state_machine/implementations/basic_ui/basicUIStateMachineTest';
+import runMakeZebralightUIStateMachineTest from './state_machine/implementations/basic_ui/basicUIStateMachineTest.js';
 
 function main(): void {
   runMakeZebralightUIStateMachineTest();

@@ -15,12 +15,18 @@
   flex-direction: column;
 }
 
+.light-background .bulb-container {
+  flex: 1;
+  position: relative;
+}
+
 .light-background .text-container {
   flex: 1;
   color: white;
   font-family: 'Helvetica', sans-serif;
   font-weight: bold;
   font-size: 18pt;
+  position: relative;
 }
 
 .light-background .button-container {
@@ -31,11 +37,16 @@
 }
 
 .button-container .zebralight-button {
+  cursor: pointer;
   width: 100px;
   height: 100px;
   border-radius: 50%;
   background-color: rgb(17, 17, 17);
   border: 1px solid rgb(24, 24, 24);
+  background-image: url(../assets/power.svg);
+  background-size: 75px 75px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .button-container .zebralight-button:active {
@@ -50,6 +61,15 @@
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 button:focus {
