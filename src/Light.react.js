@@ -33,11 +33,11 @@ export default function Light(_props: Props): React.Element<'div'> {
   const onEvent = useCallback(
     (event) => {
       const newState = transition(event);
-      if (newState === State.BATTERY_INDICATOR) {
+      if (state !== newState && newState === State.BATTERY_INDICATOR) {
         resetBatteryIndicatorTimer();
       }
     },
-    [resetBatteryIndicatorTimer, transition],
+    [resetBatteryIndicatorTimer, state, transition],
   );
 
   return (

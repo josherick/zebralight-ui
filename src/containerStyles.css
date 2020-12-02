@@ -87,11 +87,13 @@ button:focus {
 @keyframes blinker {
   98% {
     opacity: 0;
+    -webkit-opacity: 0;
   }
 }
 
 @keyframes blinker-fast {
   50% {
     opacity: 0;
+    -webkit-opacity: 0;
   }
 }
