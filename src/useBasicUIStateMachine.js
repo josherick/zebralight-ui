@@ -9,7 +9,7 @@ import makeBasicUIStateMachine from './state_machine/implementations/basic_ui/ma
 
 export default function useBasicUIStateMachine(): [
   StateType,
-  (TransitionType) => void,
+  (TransitionType) => StateType,
 ] {
   const machine = useRef(makeBasicUIStateMachine());
   const [state, setState] = useState(machine.current.getCurrentState());
@@ -18,6 +18,7 @@ export default function useBasicUIStateMachine(): [
       machine.current.transition(event);
       const newState = machine.current.getCurrentState();
       setState(newState);
+      return newState;
     },
     [machine, setState],
   );

@@ -83,3 +83,15 @@
 button:focus {
   outline: 0;
 }
+
+@keyframes blinker {
+  98% {
+    opacity: 0;
+  }
+}
+
+@keyframes blinker-fast {
+  50% {
+    opacity: 0;
+  }
+}

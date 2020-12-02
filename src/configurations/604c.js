@@ -19,6 +19,11 @@ export function getLumens(): { [StatePrefixType]: number } {
     [StatePrefix.L2_1]: 1.06,
     [StatePrefix.L2_2]: 0.3,
     [StatePrefix.L2_3]: 0.08,
+
+    [StatePrefix.STROBE1_1]: 1616,
+    [StatePrefix.STROBE1_2]: 1616,
+    [StatePrefix.STROBE1_3]: 1616,
+    [StatePrefix.STROBE1_4]: 3.4,
   };
 }
 
