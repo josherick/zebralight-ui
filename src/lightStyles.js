@@ -10,7 +10,7 @@ import {
   Level,
 } from './state_machine/implementations/basic_ui/enums.js';
 
-import { getLumens } from './configurations/604c.js';
+import { getLumens } from './lampInformation.js';
 import {
   parseLevel,
   parsePrefix,
@@ -76,7 +76,7 @@ export function getBulbStyles(state: StateType): { [string]: any } {
   const level = parseLevel(state);
   const statePrefix = parsePrefix(state);
 
-  const proportion = getLumens()[statePrefix] / getLumens()[StatePrefix.H1];
+  const proportion = getLumens(statePrefix) / getLumens(StatePrefix.H1);
   const boxShadow = getProportionalLevel(proportion, 50, 250);
   const opacity = getProportionalLevel(proportion, 0.05, 1);
   const styles = ({
