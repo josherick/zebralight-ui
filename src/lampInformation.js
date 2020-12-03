@@ -9,6 +9,7 @@ import type {
 import {
   Level,
   State,
+  StatePrefix,
   StateSuffix,
 } from './state_machine/implementations/basic_ui/enums.js';
 import {
@@ -28,6 +29,31 @@ export function getLumens(statePrefix: StatePrefixType): number {
 
 export function getRuntime(statePrefix: StatePrefixType): string {
   return get604cRuntime()[statePrefix];
+}
+
+export function getBrightnessLinearOrder(statePrefix: StatePrefixType): string {
+  const order = {
+    [StatePrefix.H1]: 12,
+    [StatePrefix.H2_1]: 11,
+    [StatePrefix.H2_2]: 10,
+    [StatePrefix.H2_3]: 9,
+
+    [StatePrefix.M1]: 8,
+    [StatePrefix.M2_1]: 7,
+    [StatePrefix.M2_2]: 6,
+    [StatePrefix.M2_3]: 5,
+
+    [StatePrefix.L1]: 4,
+    [StatePrefix.L2_1]: 3,
+    [StatePrefix.L2_2]: 2,
+    [StatePrefix.L2_3]: 1,
+
+    [StatePrefix.STROBE1_1]: 12,
+    [StatePrefix.STROBE1_2]: 12,
+    [StatePrefix.STROBE1_3]: 12,
+    [StatePrefix.STROBE1_4]: 4,
+  };
+  return order[statePrefix];
 }
 
 export function getLevel(state: StateType): string {
