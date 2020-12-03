@@ -22,7 +22,10 @@
 }
 
 .light-background .information-container {
-  flex: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   z-index: 1000;
 }
 
@@ -84,6 +87,8 @@
   display: flex;
   font-size: 12pt;
   text-align: left;
+  max-width: 1000px;
+  margin: auto;
 }
 
 .centered-in-container {
