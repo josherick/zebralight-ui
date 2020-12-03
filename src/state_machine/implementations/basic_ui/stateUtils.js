@@ -7,7 +7,7 @@ import type {
   StateType,
 } from './enums.js';
 
-import { Level, StatePrefix, StateSuffix } from './enums.js';
+import { Level, State, StatePrefix, StateSuffix } from './enums.js';
 
 export function parseLevel(state: StateType): LevelType {
   const level = state[0];
@@ -33,6 +33,13 @@ export function parseOption(state: StateType): number {
 
 export function parsePrefix(state: StateType): StatePrefixType {
   return ((state.split('.').slice(0, -1).join('.'): any): StatePrefixType);
+}
+
+export function parsePrefixMaybe(state: StateType): ?StatePrefixType {
+  if (state === State.OFF || state === State.BATTERY_INDICATOR) {
+    return null;
+  }
+  return parsePrefix(state);
 }
 
 export function parseSuffix(state: StateType): StateSuffixType {

@@ -14,6 +14,8 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
     'react/jsx-filename-extension': 'off',
     'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     'implicit-arrow-linebreak': 'off',
