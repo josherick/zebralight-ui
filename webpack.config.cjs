@@ -41,7 +41,7 @@ module.exports = {
   resolve: { extensions: ['*', '.js', '.jsx'] },
   output: {
     path: path.resolve(__dirname, 'docs/'),
-    filename: 'bundle.js',
+    filename: '[name].[contenthash].js',
   },
   devServer: {
     port: 3000,
