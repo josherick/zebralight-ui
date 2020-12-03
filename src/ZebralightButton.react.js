@@ -12,8 +12,8 @@ type Props = {
   onEvent: (TransitionType) => void,
 };
 
-const LONG_PRESS_BEAT_TIMEOUT_MS = 500;
-const MULTI_SINGLE_PRESS_TIMEOUT_MS = 500;
+const LONG_PRESS_BEAT_TIMEOUT_MS = 600;
+const MULTI_SINGLE_PRESS_TIMEOUT_MS = 600;
 const MULTI_DOUBLE_PRESS_TIMEOUT_MS = 12000;
 
 export default function ZebralightButton({
