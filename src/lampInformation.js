@@ -62,9 +62,13 @@ export function getLevel(state: StateType): string {
   } else if (state === State.BATTERY_INDICATOR) {
     return 'Battery Indicator';
   }
-  const level = parseLevel(state).toUpperCase();
+
+  const level = parseLevel(state);
+  if (level === Level.STROBE) {
+    return 'Strobe';
+  }
   const sublevel = parseSublevel(state);
-  return `${level}${sublevel}`;
+  return `${level.toUpperCase()}${sublevel}`;
 }
 
 function getDescription(state: StateType): React.Element<'div'> {

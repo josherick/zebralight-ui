@@ -65,7 +65,6 @@
 .information-container .information-box {
   color: white;
   font-family: 'Helvetica', sans-serif;
-  font-size: 18pt;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -80,6 +79,13 @@
 }
 
 .information-box .top-section-unit {
+  font-size: 14pt;
+  flex: 1;
+}
+
+.top-section-unit.emphasized {
+  font-size: 18pt;
+  font-weight: bold;
   flex: 1;
 }
 

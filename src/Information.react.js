@@ -17,9 +17,7 @@ export default function Information({
     <div className="information-box">
       <div className="top-section">
         <div className="top-section-unit">{info.lumens}</div>
-        <div className="top-section-unit" style={{ fontWeight: 'bold' }}>
-          {info.level}
-        </div>
+        <div className="top-section-unit emphasized">{info.level}</div>
         <div className="top-section-unit">{info.runtime}</div>
       </div>
       <div className="bottom-section">{info.description}</div>
