@@ -105,9 +105,8 @@ function getDescription(state: StateType): React.Element<'div'> {
   console.log('stateSuffix', stateSuffix);
   switch (stateSuffix) {
     case StateSuffix.CYCLE:
-      return (
-        <div>Continue holding to cycle L, M, H. Release to stop cycling.</div>
-      );
+      // This state is used for cycle up and down.
+      return <div>Continue pressing to cycle. Release to stop cycling.</div>;
     case StateSuffix.CYCLE_PRE_H:
       return (
         <div>Release to go to H, or continue holding to cycle L, M, H.</div>
@@ -129,7 +128,7 @@ function getDescription(state: StateType): React.Element<'div'> {
           turn the light off or press and hold to cycle L, M, H.
         </div>
       );
-    case StateSuffix.PRE_BATTERY_INDICATOR:
+    case StateSuffix.CYCLE_PRE_BATTERY_INDICATOR:
       return (
         <div>
           Release to go to Battery Indicator, or continue holding to cycle L, M,
