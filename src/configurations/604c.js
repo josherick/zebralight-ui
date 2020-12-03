@@ -43,5 +43,10 @@ export function getRuntime(): { [StatePrefixType]: string } {
     [StatePrefix.L2_1]: '2 months',
     [StatePrefix.L2_2]: '3.8 months',
     [StatePrefix.L2_3]: '5.4 months',
+
+    [StatePrefix.STROBE1_1]: '19 Hz',
+    [StatePrefix.STROBE1_2]: '4 Hz',
+    [StatePrefix.STROBE1_3]: '0.2 Hz',
+    [StatePrefix.STROBE1_4]: '0.2 Hz',
   };
 }

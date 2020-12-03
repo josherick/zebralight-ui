@@ -75,14 +75,20 @@ function getDescription(state: StateType): React.Element<'div'> {
   if (state === State.OFF) {
     return (
       <div>
-        <div>
-          Single click to turn the light to H, double click to go to M, triple
-          click to go to Strobe, or quadruple click to show a battery indicator.
-        </div>
-        <div>
-          At any time, press and hold to cycle L, M, H. When the lamp is on, you
-          can always press a single time to turn off.
-        </div>
+        <div>When the light is off:</div>
+        <ul>
+          <li>1 short click to High</li>
+          <li>2 short clicks to Medium</li>
+          <li>3 short clicks to Strobe</li>
+          <li>4 short clicks to indicate battery level</li>
+          <li>
+            Press and hold to cycle L, M, H.
+            <ul>
+              <li>Press/hold also works when the light is on.</li>
+            </ul>
+          </li>
+        </ul>
+        <div>When the light is on, one short click turns off the light.</div>
       </div>
     );
   } else if (state === State.BATTERY_INDICATOR) {
@@ -96,7 +102,14 @@ function getDescription(state: StateType): React.Element<'div'> {
 
   const level = parseLevel(state);
   if (level === Level.STROBE) {
-    return <div>Double click to cycle through the four strobe levels.</div>;
+    return (
+      <div>
+        <div>Double click to cycle through the four strobe levels.</div>
+        <div>
+          Press and hold to cycle L, M, H. Press a single time to turn off.
+        </div>
+      </div>
+    );
   }
 
   const sublevel = parseSublevel(state);
@@ -126,12 +139,7 @@ function getDescription(state: StateType): React.Element<'div'> {
         </div>
       );
     case StateSuffix.CYCLE_STROBE_BEAT:
-      return (
-        <div>
-          Strobe is about to start. You can wait, or as always: press once to
-          turn the light off or press and hold to cycle L, M, H.
-        </div>
-      );
+      return <div>Strobe is about to start.</div>;
     case StateSuffix.CYCLE_PRE_BATTERY_INDICATOR:
       return (
         <div>
@@ -144,8 +152,7 @@ function getDescription(state: StateType): React.Element<'div'> {
         <div>
           <div>{`Double click to toggle to ${humanOppositeLevel}.`}</div>
           <div>
-            At any time, press and hold to cycle L, M, H. Any time the lamp is
-            on, press a single time to turn off.
+            Press and hold to cycle L, M, H. Press a single time to turn off.
           </div>
         </div>
       );
@@ -156,7 +163,9 @@ function getDescription(state: StateType): React.Element<'div'> {
     case StateSuffix.TOGGLE_INTERMEDIATE_4:
     case StateSuffix.TOGGLE_INTERMEDIATE_5:
     case StateSuffix.TOGGLE_INTERMEDIATE_6:
-      return <div>{`Click once more to toggle to ${humanOppositeLevel}.`}</div>;
+      return (
+        <div>{`Click once more to toggle to ${humanOppositeLevel}, or wait for the lamp to turn off.`}</div>
+      );
 
     case StateSuffix.TOGGLE_1:
     case StateSuffix.TOGGLE_2:
@@ -171,28 +180,39 @@ function getDescription(state: StateType): React.Element<'div'> {
               7 - parseInt(stateSuffix.slice(-1), 10)
             } more times, you'll go into ${humanLevel2} programming mode where you can set the lumen level for ${humanLevel2}.`}
           </div>
+          <div>
+            Press and hold to cycle L, M, H. Press a single time to turn off.
+          </div>
         </div>
       );
 
     case StateSuffix.TOGGLE_6:
       return (
-        <div>{`Double click to go into ${humanLevel2} programming mode.`}</div>
+        <div>
+          <div>{`Double click once more to go into ${humanLevel2} programming mode.`}</div>
+          <div>
+            Press and hold to cycle L, M, H. Press a single time to turn off.
+          </div>
+        </div>
       );
     case StateSuffix.TOGGLE_INTERMEDIATE_7:
       return (
-        <div>{`Click once more to go into ${humanLevel2} programming mode.`}</div>
+        <div>{`Click once more to go into ${humanLevel2} programming mode, or wait for the lamp to turn off.`}</div>
       );
 
     case StateSuffix.SUBCYCLE_INTERMEDIATE:
       return (
-        <div>{`Click once more to cycle to the next lumen level for ${humanLevel}`}</div>
+        <div>{`Click once more to cycle to the next lumen level for ${humanLevel}, or wait for the lamp to turn off.`}</div>
       );
     case StateSuffix.SUBCYCLE:
       return (
         <div>
-          <div>{`Double click to cycle through three lumen levels for ${humanLevel} from low to high.`}</div>
+          <div>{`Double click to cycle through brightness levels for ${humanLevel}.`}</div>
           <div>
-            {`Wait 12 seconds to exit programming mode, press and hold to cycle L, M, H, or click once to turn the lamp off. The most recently used lumen level will be remembered for ${humanLevel}.`}
+            {`Wait 12 seconds to exit programming mode. The most recently used lumen level will be remembered for ${humanLevel}.`}
+          </div>
+          <div>
+            Press and hold to cycle L, M, H. Press a single time to turn off.
           </div>
         </div>
       );
