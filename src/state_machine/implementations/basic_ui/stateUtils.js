@@ -31,6 +31,14 @@ export function parseOption(state: StateType): number {
   return parseInt(state.split('.').slice(1, 2)[0], 10);
 }
 
+export function parsePrefix(state: StateType): StatePrefixType {
+  return ((state.split('.').slice(0, -1).join('.'): any): StatePrefixType);
+}
+
+export function parseSuffix(state: StateType): StateSuffixType {
+  return ((state.split('.').slice(-1)[0]: any): StateSuffixType);
+}
+
 export function composePrefix(
   level: LevelType,
   sublevel: number,
@@ -47,10 +55,6 @@ export function composeState(
   suffix: StateSuffixType,
 ): StateType {
   return ((`${prefix}.${suffix}`: any): StateType);
-}
-
-export function parsePrefix(state: StateType): StatePrefixType {
-  return ((state.split('.').slice(0, -1).join('.'): any): StatePrefixType);
 }
 
 export function swapSuffix(

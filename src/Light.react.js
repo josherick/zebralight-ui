@@ -4,6 +4,7 @@ import { useCallback } from 'react';
 
 import ZebralightButton from './ZebralightButton.react.js';
 import Bulb from './Bulb.react.js';
+import Information from './Information.react.js';
 
 import useTimer from './useTimer.js';
 import useBasicUIStateMachine from './useBasicUIStateMachine.js';
@@ -42,19 +43,17 @@ export default function Light(_props: Props): React.Element<'div'> {
 
   return (
     <div className="light-background">
+      <div className="information-container">
+        <Information lampState={state} />
+      </div>
       <div className="bulb-container">
-        <div className="centered-in-container unselectable">
+        <div className="centered-in-container">
           <Bulb lampState={state} />
         </div>
       </div>
       <div className="button-container">
         <div className="centered-in-container">
           <ZebralightButton onEvent={onEvent} />
-        </div>
-      </div>
-      <div className="text-container">
-        <div className="centered-in-container unselectable">
-          {getLevel(state)}
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ type Props = {
   lampState: StateType,
 };
 
-export default function ZebralightButton({
+export default function Bulb({
   lampState,
 }: Props): React.Element<'div'> | null {
   return <div className="bulb" style={getBulbStyles(lampState)} />;
