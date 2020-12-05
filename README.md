@@ -36,7 +36,13 @@ There are several
 related to button presses and timing. These are captured by React and fed into
 the state machine to determine the next state, which is then rendered.
 
-The state resulting from a transition is [defined](https://github.com/josherick/zebralight-ui/blob/main/src/state_machine/implementations/basic_ui/makeBasicUIStateMachine.js#L28) in a condensed way by breaking the state string into parts and swapping pieces out based on the transition, or drawing values from memory where necessary. Then at runtime, these are expanded into a full map of state => state pairs based on a transition.
+The state resulting from a transition is
+[defined](https://github.com/josherick/zebralight-ui/blob/main/src/state_machine/implementations/basic_ui/makeBasicUIStateMachine.js#L28)
+in a condensed way by breaking the state string into parts and swapping pieces
+out based on the transition, or drawing values from memory where necessary.
+Then at runtime, these are
+[expanded](https://github.com/josherick/zebralight-ui/blob/main/src/state_machine/implementations/basic_ui/stateExpander.js)
+into a full map of state to new state pairs given a transition.
 
 State transitions are logged to the console for informational purposes.
 
