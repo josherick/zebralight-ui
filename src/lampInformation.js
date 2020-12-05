@@ -119,7 +119,6 @@ function getDescription(state: StateType): React.Element<'div'> {
   const humanLevel2 = `${level.toUpperCase()}${2}`;
 
   const stateSuffix = parseSuffix(state);
-  console.log('stateSuffix', stateSuffix);
   switch (stateSuffix) {
     case StateSuffix.CYCLE:
       // This state is used for cycle up and down.
