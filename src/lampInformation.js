@@ -250,10 +250,10 @@ export function getInformation(
 export function getLongestDescription(): React.Element<'div'> {
   return (
     <div>
-      <div>Double click to cycle through brightness levels for H2.</div>
+      <div>Double click to cycle through brightness levels for M2.</div>
       <div>
         Wait 12 seconds to exit programming mode. The most recently used lumen
-        level will be remembered for H2.
+        level will be remembered for M2.
       </div>
       <div>
         Press and hold to cycle L, M, H. Press a single time to turn off.
