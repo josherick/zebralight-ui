@@ -1,6 +1,8 @@
 // @flow
 import type { StateMachine } from '../../createStateMachine.js';
 
+import type { MemoryInterface } from './memory.js';
+
 import createStateMachine from '../../createStateMachine.js';
 
 import {
@@ -23,7 +25,10 @@ import { expandStateDef, makeStates } from './stateExpander.js';
 
 import makeBasicUIMemory from './memory.js';
 
-export default function makeBasicUIStateMachine(): StateMachine {
+export default function makeBasicUIStateMachine(): [
+  StateMachine,
+  MemoryInterface,
+] {
   const m = makeBasicUIMemory();
   // Because there are over 100 states, use an "expansion" style to define
   // them, since most perform similar actions.
@@ -231,6 +236,7 @@ export default function makeBasicUIStateMachine(): StateMachine {
       ),
       actions: {
         onEnter: (state) => {
+          m.setLastUsedSublevel(parseLevel(state), parseSublevel(state));
           m.setLastUsedOption(parseLevel(state), parseOption(state));
         },
       },
@@ -260,5 +266,5 @@ export default function makeBasicUIStateMachine(): StateMachine {
     },
   ];
 
-  return createStateMachine(State.OFF, expandStateDef(collapsedStateDef));
+  return [createStateMachine(State.OFF, expandStateDef(collapsedStateDef)), m];
 }

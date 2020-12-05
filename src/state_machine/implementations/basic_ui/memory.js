@@ -11,10 +11,12 @@ import { Level, MemoryVariable } from './enums.js';
 
 import { composeState, composePrefix } from './stateUtils.js';
 
-type MemoryInterface = {
+export type MemoryInterface = {
   setLastUsedSublevel: (LevelType, number) => void,
 
   setLastUsedOption: (LevelType, number) => void,
+
+  getLastUsedOption: (LevelType) => number,
 
   // Returns the last used sublevel for a given state with the provided suffix.
   // E.g. if the user last used L2.2:
@@ -80,6 +82,8 @@ export default function makeBasicUIMemory(): MemoryInterface {
     setLastUsedOption: (level, value) => {
       memory[optionVariableName(level)] = value;
     },
+
+    getLastUsedOption: (level) => memory[optionVariableName(level)],
 
     getLastUsedSublevelState: (level, suffix) => {
       const sublevel =

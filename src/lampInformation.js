@@ -31,7 +31,7 @@ export function getRuntime(statePrefix: StatePrefixType): string {
   return get604cRuntime()[statePrefix];
 }
 
-export function getBrightnessLinearOrder(statePrefix: StatePrefixType): string {
+export function getBrightnessLinearOrder(statePrefix: StatePrefixType): number {
   const order = {
     [StatePrefix.H1]: 12,
     [StatePrefix.H2_1]: 11,

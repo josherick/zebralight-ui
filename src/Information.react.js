@@ -3,6 +3,7 @@ import * as React from 'react';
 import { useState } from 'react';
 
 import type { StateType } from './state_machine/implementations/basic_ui/enums.js';
+import type { MemoryInterface } from './state_machine/implementations/basic_ui/memory.js';
 
 import { getInformation } from './lampInformation.js';
 
@@ -10,11 +11,11 @@ import ModeGrid from './ModeGrid.react.js';
 
 type Props = {
   lampState: StateType,
+  memory: MemoryInterface,
 };
 
-export default function Information({
-  lampState,
-}: Props): React.Element<'div'> | null {
+export default function Information(props: Props): React.Element<'div'> | null {
+  const { lampState } = props;
   const info = getInformation(lampState);
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -41,7 +42,7 @@ export default function Information({
       </div>
       <div className="bottom-section">{info.description}</div>
       {collapseExpand}
-      {isExpanded && <ModeGrid lampState={lampState} />}
+      {isExpanded && <ModeGrid {...props} />}
     </div>
   );
 }

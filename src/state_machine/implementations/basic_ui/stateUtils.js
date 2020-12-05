@@ -9,7 +9,7 @@ import type {
 
 import { Level, State, StatePrefix, StateSuffix } from './enums.js';
 
-export function parseLevel(state: StateType): LevelType {
+export function parseLevel(state: StateType | StatePrefixType): LevelType {
   const level = state[0];
   if (level !== 's') {
     return ((level: any): LevelType);
@@ -17,14 +17,14 @@ export function parseLevel(state: StateType): LevelType {
   return 'strobe';
 }
 
-export function parseSublevel(state: StateType): number {
+export function parseSublevel(state: StateType | StatePrefixType): number {
   if (state[0] === 's') {
     return parseInt(state.slice(6, 7)[0], 10);
   }
   return parseInt(state.slice(1, 2)[0], 10);
 }
 
-export function parseOption(state: StateType): number {
+export function parseOption(state: StateType | StatePrefixType): number {
   if (state[0] === 's') {
     return parseInt(state.slice(8, 9)[0], 10);
   }
