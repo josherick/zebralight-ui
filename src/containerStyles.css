@@ -74,10 +74,6 @@
   border-radius: 4px;
 }
 
-.information-container .information-box.expanded {
-  min-height: 350px;
-}
-
 .information-box .top-section {
   display: flex;
 }
@@ -99,6 +95,20 @@
   text-align: left;
   max-width: 1000px;
   margin: auto;
+  position: relative;
+}
+
+.bottom-section .description.expanded {
+  position: absolute;
+}
+
+.bottom-section .longest-description-placeholder {
+  display: none;
+}
+
+.bottom-section .longest-description-placeholder.expanded {
+  display: block;
+  visibility: hidden;
 }
 
 .information-box .expand-collapse-button {
@@ -118,6 +128,10 @@
   background-color: rgba(50, 50, 50);
   font-size: 8pt;
   padding: 2px;
+}
+
+.mode-grid .cell .human-level {
+  font-weight: bold;
 }
 
 .mode-grid .cell.active {

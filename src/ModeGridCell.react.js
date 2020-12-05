@@ -26,7 +26,7 @@ export default function ModeGridCell({
   return (
     <div className={cellClassName}>
       <div className={humanLevelClassName}>{humanLevel}</div>
-      {lumens && <div className="lumens">{lumens} Lm</div>}
+      {lumens != null && <div>{`${lumens} Lm`}</div>}
     </div>
   );
 }
