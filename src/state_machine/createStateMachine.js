@@ -31,13 +31,19 @@ export default function createStateMachine(
       const stateFn = states[currentState].transitions[event];
       if (stateFn == null) {
         // Keep the same state if there is no transition specified.
-        console.log(
-          `[transition] ${currentState} --(${event})--> ${currentState}`,
-        );
+        if (process.env.NODE_ENV !== 'production') {
+          console.log(
+            `[transition] ${currentState} --(${event})--> ${currentState}`,
+          );
+        }
         return;
       }
       const newState = stateFn(currentState);
-      console.log(`[transition] ${currentState} --(${event})--> ${newState}`);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log(
+          `[transition] ${currentState} --(${event})--> ${newState}`,
+        );
+      }
       currentState = newState;
       states[newState].actions &&
         states[newState].actions.onEnter &&
