@@ -45,8 +45,7 @@ module.exports = {
   },
   devServer: {
     port: 3000,
-    publicPath: 'http://localhost:3000/',
-    hotOnly: true,
-    contentBase: './docs',
+    hot: true,
+    static: './docs',
   },
 };

@@ -62,7 +62,7 @@ export function getLightBackgroundStyles(
 
 export function getBulbStyles(state: StateType): { [string]: any } {
   if (state === State.OFF) {
-    return { opacity: 0 };
+    return { visibility: 'hidden' };
   } else if (state === State.BATTERY_INDICATOR) {
     const boxShadow = getProportionalLevel(1, 50, 250);
     const opacity = getProportionalLevel(1, 0.05, 1);
