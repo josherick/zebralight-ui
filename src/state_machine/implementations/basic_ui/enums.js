@@ -89,7 +89,7 @@ export const Transition = Object.freeze({
 export type TransitionType = $Values<typeof Transition>;
 
 export const MemoryVariable = Object.freeze({
-  // 1 if sublevel 2 was last used, or 2 if sublevel 2 was last used.
+  // 1 if sublevel 1 was last used, or 2 if sublevel 2 was last used.
   H_LAST_USED: 'h.last_used',
   M_LAST_USED: 'm.last_used',
   L_LAST_USED: 'l.last_used',
