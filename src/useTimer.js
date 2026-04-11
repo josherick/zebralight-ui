@@ -21,7 +21,7 @@ export default function useResettableTimer(
     clearTimeout(timer.current);
     timer.current = null;
     setHasTriggered(true);
-  }, [setStartMs, setHasTriggered]);
+  }, [setHasTriggered]);
 
   useEffect(() => {
     if (hasTriggered) {
