@@ -14,9 +14,10 @@ export default function useBasicUIStateMachine(): [
   (TransitionType) => StateType,
   MemoryInterface,
 ] {
-  const ref = useRef<[StateMachine, MemoryInterface]>(
-    makeBasicUIStateMachine(),
-  );
+  const ref = useRef<[StateMachine, MemoryInterface] | null>(null);
+  if (ref.current === null) {
+    ref.current = makeBasicUIStateMachine();
+  }
   const [machine, memory] = ref.current;
   const [state, setState] = useState(machine.getCurrentState());
   const transition = useCallback(
