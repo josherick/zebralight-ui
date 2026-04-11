@@ -29,7 +29,7 @@ export default function Button({
         onRelease();
       }}
       type="button"
-      label="Zebralight Button"
+      aria-label="Zebralight Button"
       className="zebralight-button unselectable"
     />
   );
