@@ -1,12 +1,10 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
   mode: 'development',
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: 'Zebralight UI',
       meta: {
@@ -31,14 +29,11 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/i,
-        loader: 'url-loader',
-        options: {
-          limit: 8192,
-        },
+        type: 'asset',
       },
     ],
   },
-  resolve: { extensions: ['*', '.js', '.jsx'] },
+  resolve: { extensions: ['.js', '.jsx'] },
   output: {
     path: path.resolve(__dirname, 'docs/'),
     filename: '[name].[contenthash].js',

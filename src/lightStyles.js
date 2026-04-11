@@ -52,14 +52,6 @@ function makeStrobeAnimation(statePrefix: StatePrefixType) {
   return `${animation} ${frequency}s step-start infinite`;
 }
 
-export function getLightBackgroundStyles(
-  _statePrefix: StatePrefixType,
-): { [string]: any } {
-  return {
-    backgroundColor: 'black',
-  };
-}
-
 export function getBulbStyles(state: StateType): { [string]: any } {
   if (state === State.OFF) {
     return { visibility: 'hidden' };
