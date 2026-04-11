@@ -13,7 +13,6 @@ import {
   State,
   Transition,
 } from './state_machine/implementations/basic_ui/enums.js';
-import { getLevel } from './lampInformation.js';
 
 type Props = {};
 
