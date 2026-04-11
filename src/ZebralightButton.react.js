@@ -74,7 +74,6 @@ export default function ZebralightButton({
     cancelLongPressTimer,
     longPressActive,
     onEvent,
-    onEvent,
     restartMultiDoublePressTimer,
     restartMultiSinglePressTimer,
     setLongPressActive,
