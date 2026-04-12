@@ -113,16 +113,35 @@ export default function makeBasicUIStateMachine(): [
           m.setUIGroup('g7');
           return State.OFF;
         },
-        [Transition.PRESS_START]: (_state) =>
-          State.GROUP_SELECT_EXTRA_INTERMEDIATE,
+        [Transition.PRESS_START]: (_state) => {
+          m.resetExtraClickCount();
+          return State.GROUP_SELECT_EXTRA_INTERMEDIATE;
+        },
         [Transition.LONG_PRESS_BEAT]: (_state) =>
           m.getLastUsedSublevelState(Level.L, StateSuffix.CYCLE),
       },
     },
     {
       forStates: [State.GROUP_SELECT_EXTRA],
+      actions: {
+        onEnter: () => {
+          m.incrementExtraClickCount();
+        },
+      },
       transitions: {
-        [Transition.MULTI_SINGLE_PRESS_TIMEOUT]: (_state) => State.OFF,
+        [Transition.MULTI_SINGLE_PRESS_TIMEOUT]: (_state) => {
+          // Clicks from OFF: 8+ are "extra". Count tracks clicks since 7.
+          // Click 15 = count 8, click 18 = count 11, click 21 = count 14.
+          const count = m.getExtraClickCount();
+          if (count === 8) {
+            m.factoryResetGroup('g5');
+          } else if (count === 11) {
+            m.factoryResetGroup('g6');
+          } else if (count === 14) {
+            m.factoryResetGroup('g7');
+          }
+          return State.OFF;
+        },
         [Transition.PRESS_START]: (_state) =>
           State.GROUP_SELECT_EXTRA_INTERMEDIATE,
         [Transition.LONG_PRESS_BEAT]: (_state) =>
