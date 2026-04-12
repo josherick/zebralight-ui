@@ -325,9 +325,9 @@ function getDescription(
             <div>
               Double-click to increase brightness. Triple-click to decrease.
             </div>
-            <div>Single-click to exit programming mode.</div>
             <div>
-              Press and hold to cycle L, M, H.
+              Single-click or press and hold to exit programming mode.
+              Will also exit after 12 seconds of inactivity.
             </div>
           </div>
         );
