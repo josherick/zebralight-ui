@@ -52,7 +52,7 @@ export default function Light(_props: Props): React.Element<'div'> {
       </div>
       <div className="bulb-container">
         <div className="centered-in-container">
-          <Bulb lampState={state} />
+          <Bulb lampState={state} memory={memory} />
         </div>
       </div>
       <div className="button-container">

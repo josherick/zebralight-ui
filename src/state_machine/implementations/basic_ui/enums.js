@@ -61,6 +61,7 @@ export const StateSuffix = Object.freeze({
 
   SUBCYCLE_INTERMEDIATE: 'subcycle_intermediate',
   SUBCYCLE: 'subcycle',
+  SUBCYCLE_PENDING: 'subcycle_pending',
 });
 export type StateSuffixType = $Values<typeof StateSuffix>;
 
@@ -90,16 +91,45 @@ export const Transition = Object.freeze({
 export type TransitionType = $Values<typeof Transition>;
 
 export const MemoryVariable = Object.freeze({
-  // 1 if sublevel 1 was last used, or 2 if sublevel 2 was last used.
-  H_LAST_USED: 'h.last_used',
-  M_LAST_USED: 'm.last_used',
-  L_LAST_USED: 'l.last_used',
+  // Per-group: 1 if sublevel 1 was last used, or 2 if sublevel 2 was last used.
+  G5_H_LAST_USED: 'g5.h.last_used',
+  G5_M_LAST_USED: 'g5.m.last_used',
+  G5_L_LAST_USED: 'g5.l.last_used',
+  G6_H_LAST_USED: 'g6.h.last_used',
+  G6_M_LAST_USED: 'g6.m.last_used',
+  G6_L_LAST_USED: 'g6.l.last_used',
+  G7_H_LAST_USED: 'g7.h.last_used',
+  G7_M_LAST_USED: 'g7.m.last_used',
+  G7_L_LAST_USED: 'g7.l.last_used',
 
   // The programmed setting for (1, 2, or 3) for sublevel 2.
   H2_OPTION: 'h2.option',
   M2_OPTION: 'm2.option',
   L2_OPTION: 'l2.option',
   STROBE_OPTION: 'strobe1.option',
+
+  // UI group selection (g5, g6, g7).
+  UI_GROUP: 'ui_group',
+
+  // G6 programmed brightness for each slot (stored as StatePrefix values).
+  G6_H1_BRIGHTNESS: 'g6.h1.brightness',
+  G6_H2_BRIGHTNESS: 'g6.h2.brightness',
+  G6_M1_BRIGHTNESS: 'g6.m1.brightness',
+  G6_M2_BRIGHTNESS: 'g6.m2.brightness',
+  G6_L1_BRIGHTNESS: 'g6.l1.brightness',
+  G6_L2_BRIGHTNESS: 'g6.l2.brightness',
+
+  // G7 programmed brightness for each slot.
+  G7_H1_BRIGHTNESS: 'g7.h1.brightness',
+  G7_H2_BRIGHTNESS: 'g7.h2.brightness',
+  G7_M1_BRIGHTNESS: 'g7.m1.brightness',
+  G7_M2_BRIGHTNESS: 'g7.m2.brightness',
+  G7_L1_BRIGHTNESS: 'g7.l1.brightness',
+  G7_L2_BRIGHTNESS: 'g7.l2.brightness',
+
+  // Transient: which slot is being programmed during subcycle.
+  PROGRAMMING_SLOT_LEVEL: 'programming_slot.level',
+  PROGRAMMING_SLOT_SUBLEVEL: 'programming_slot.sublevel',
 });
 export type MemoryVariableType = $Values<typeof MemoryVariable>;
 
@@ -347,6 +377,19 @@ export const State = Object.freeze({
   L2_3_SUBCYCLE_INTERMEDIATE: 'l2.3.subcycle_intermediate',
   L2_3_SUBCYCLE: 'l2.3.subcycle',
 
+  H1_SUBCYCLE_PENDING: 'h1.subcycle_pending',
+  H2_1_SUBCYCLE_PENDING: 'h2.1.subcycle_pending',
+  H2_2_SUBCYCLE_PENDING: 'h2.2.subcycle_pending',
+  H2_3_SUBCYCLE_PENDING: 'h2.3.subcycle_pending',
+  M1_SUBCYCLE_PENDING: 'm1.subcycle_pending',
+  M2_1_SUBCYCLE_PENDING: 'm2.1.subcycle_pending',
+  M2_2_SUBCYCLE_PENDING: 'm2.2.subcycle_pending',
+  M2_3_SUBCYCLE_PENDING: 'm2.3.subcycle_pending',
+  L1_SUBCYCLE_PENDING: 'l1.subcycle_pending',
+  L2_1_SUBCYCLE_PENDING: 'l2.1.subcycle_pending',
+  L2_2_SUBCYCLE_PENDING: 'l2.2.subcycle_pending',
+  L2_3_SUBCYCLE_PENDING: 'l2.3.subcycle_pending',
+
   STROBE1_1_SUBCYCLE_INTERMEDIATE: 'strobe1.1.subcycle_intermediate',
   STROBE1_1_SUBCYCLE: 'strobe1.1.subcycle',
   STROBE1_2_SUBCYCLE_INTERMEDIATE: 'strobe1.2.subcycle_intermediate',
@@ -355,5 +398,14 @@ export const State = Object.freeze({
   STROBE1_3_SUBCYCLE: 'strobe1.3.subcycle',
   STROBE1_4_SUBCYCLE_INTERMEDIATE: 'strobe1.4.subcycle_intermediate',
   STROBE1_4_SUBCYCLE: 'strobe1.4.subcycle',
+
+  GROUP_SELECT_5_INTERMEDIATE: 'group_select_5_intermediate',
+  GROUP_SELECT_5: 'group_select_5',
+  GROUP_SELECT_6_INTERMEDIATE: 'group_select_6_intermediate',
+  GROUP_SELECT_6: 'group_select_6',
+  GROUP_SELECT_7_INTERMEDIATE: 'group_select_7_intermediate',
+  GROUP_SELECT_7: 'group_select_7',
+  GROUP_SELECT_EXTRA_INTERMEDIATE: 'group_select_extra_intermediate',
+  GROUP_SELECT_EXTRA: 'group_select_extra',
 });
 export type StateType = $Values<typeof State>;

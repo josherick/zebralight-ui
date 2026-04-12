@@ -9,6 +9,36 @@ import type {
 
 import { Level, State, StatePrefix, StateSuffix } from './enums.js';
 
+// Ordered brightest to dimmest.
+export const BRIGHTNESS_ORDER: StatePrefixType[] = [
+  StatePrefix.H1,
+  StatePrefix.H2_1,
+  StatePrefix.H2_2,
+  StatePrefix.H2_3,
+  StatePrefix.M1,
+  StatePrefix.M2_1,
+  StatePrefix.M2_2,
+  StatePrefix.M2_3,
+  StatePrefix.L1,
+  StatePrefix.L2_1,
+  StatePrefix.L2_2,
+  StatePrefix.L2_3,
+];
+
+export function nextBrighterPrefix(prefix: StatePrefixType): StatePrefixType {
+  const idx = BRIGHTNESS_ORDER.indexOf(prefix);
+  if (idx <= 0) return BRIGHTNESS_ORDER[0];
+  return BRIGHTNESS_ORDER[idx - 1];
+}
+
+export function nextDimmerPrefix(prefix: StatePrefixType): StatePrefixType {
+  const idx = BRIGHTNESS_ORDER.indexOf(prefix);
+  if (idx === -1 || idx >= BRIGHTNESS_ORDER.length - 1) {
+    return BRIGHTNESS_ORDER[BRIGHTNESS_ORDER.length - 1];
+  }
+  return BRIGHTNESS_ORDER[idx + 1];
+}
+
 export function parseLevel(state: StateType | StatePrefixType): LevelType {
   const level = state[0];
   if (level !== 's') {

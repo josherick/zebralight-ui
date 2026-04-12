@@ -7,6 +7,8 @@ import createStateMachine from '../../createStateMachine.js';
 
 import {
   parseLevel,
+  parsePrefix,
+  parseSuffix,
   composeState,
   parseOption,
   parseSublevel,
@@ -17,6 +19,8 @@ import {
   swapSuffix,
   incrementSuffixForToggleState,
   nextSuffixForIntermediateToggleState,
+  nextBrighterPrefix,
+  nextDimmerPrefix,
 } from './stateUtils.js';
 
 import { Level, State, StateSuffix, Transition } from './enums.js';
@@ -45,6 +49,84 @@ export default function makeBasicUIStateMachine(): [
       forStates: [State.BATTERY_INDICATOR],
       transitions: {
         [Transition.BATTERY_INDICATOR_FINISHED]: (_state) => State.OFF,
+      },
+    },
+
+    // Group selection states (5/6/7+ clicks from OFF).
+    // Light stays at L1 brightness during selection.
+    {
+      forStates: [
+        State.GROUP_SELECT_5_INTERMEDIATE,
+        State.GROUP_SELECT_6_INTERMEDIATE,
+        State.GROUP_SELECT_7_INTERMEDIATE,
+        State.GROUP_SELECT_EXTRA_INTERMEDIATE,
+      ],
+      transitions: {
+        [Transition.SHORT_PRESS_RELEASE]: (state) => {
+          switch (state) {
+            case State.GROUP_SELECT_5_INTERMEDIATE:
+              return State.GROUP_SELECT_5;
+            case State.GROUP_SELECT_6_INTERMEDIATE:
+              return State.GROUP_SELECT_6;
+            case State.GROUP_SELECT_7_INTERMEDIATE:
+              return State.GROUP_SELECT_7;
+            case State.GROUP_SELECT_EXTRA_INTERMEDIATE:
+              return State.GROUP_SELECT_EXTRA;
+            default:
+              throw new Error(`Unexpected state "${state}"`);
+          }
+        },
+        [Transition.LONG_PRESS_BEAT]: (_state) =>
+          m.getLastUsedSublevelState(Level.L, StateSuffix.CYCLE),
+      },
+    },
+    {
+      forStates: [State.GROUP_SELECT_5],
+      transitions: {
+        [Transition.MULTI_SINGLE_PRESS_TIMEOUT]: (_state) => {
+          m.setUIGroup('g5');
+          return State.OFF;
+        },
+        [Transition.PRESS_START]: (_state) =>
+          State.GROUP_SELECT_6_INTERMEDIATE,
+        [Transition.LONG_PRESS_BEAT]: (_state) =>
+          m.getLastUsedSublevelState(Level.L, StateSuffix.CYCLE),
+      },
+    },
+    {
+      forStates: [State.GROUP_SELECT_6],
+      transitions: {
+        [Transition.MULTI_SINGLE_PRESS_TIMEOUT]: (_state) => {
+          m.setUIGroup('g6');
+          return State.OFF;
+        },
+        [Transition.PRESS_START]: (_state) =>
+          State.GROUP_SELECT_7_INTERMEDIATE,
+        [Transition.LONG_PRESS_BEAT]: (_state) =>
+          m.getLastUsedSublevelState(Level.L, StateSuffix.CYCLE),
+      },
+    },
+    {
+      forStates: [State.GROUP_SELECT_7],
+      transitions: {
+        [Transition.MULTI_SINGLE_PRESS_TIMEOUT]: (_state) => {
+          m.setUIGroup('g7');
+          return State.OFF;
+        },
+        [Transition.PRESS_START]: (_state) =>
+          State.GROUP_SELECT_EXTRA_INTERMEDIATE,
+        [Transition.LONG_PRESS_BEAT]: (_state) =>
+          m.getLastUsedSublevelState(Level.L, StateSuffix.CYCLE),
+      },
+    },
+    {
+      forStates: [State.GROUP_SELECT_EXTRA],
+      transitions: {
+        [Transition.MULTI_SINGLE_PRESS_TIMEOUT]: (_state) => State.OFF,
+        [Transition.PRESS_START]: (_state) =>
+          State.GROUP_SELECT_EXTRA_INTERMEDIATE,
+        [Transition.LONG_PRESS_BEAT]: (_state) =>
+          m.getLastUsedSublevelState(Level.L, StateSuffix.CYCLE),
       },
     },
 
@@ -107,6 +189,8 @@ export default function makeBasicUIStateMachine(): [
       transitions: {
         [Transition.MULTI_SINGLE_PRESS_TIMEOUT]: (_state) =>
           State.BATTERY_INDICATOR,
+        [Transition.PRESS_START]: (_state) =>
+          State.GROUP_SELECT_5_INTERMEDIATE,
       },
     },
 
@@ -168,15 +252,29 @@ export default function makeBasicUIStateMachine(): [
       transitions: {
         [Transition.MULTI_SINGLE_PRESS_TIMEOUT]: (_state) => State.OFF,
         [Transition.SHORT_PRESS_RELEASE]: (state) => {
-          // Swap the sublevel and move to the toggle state with the same number.
           const sublevel = parseSublevel(state);
           if (sublevel !== 1 && sublevel !== 2) {
             throw new Error(`Invalid sublevel ${sublevel}`);
           }
-          const newPrefix = m.getPrefix(
-            parseLevel(state),
-            sublevel === 1 ? 2 : 1,
-          );
+          const level = parseLevel(state);
+          const newSublevel = sublevel === 1 ? 2 : 1;
+          const suffix = parseSuffix(state);
+
+          // In G6/G7, toggle_intermediate_6 enters programming mode.
+          if (
+            suffix === StateSuffix.TOGGLE_INTERMEDIATE_6 &&
+            m.getUIGroup() !== 'g5'
+          ) {
+            m.setProgrammingSlot(level, newSublevel);
+            const brightnessPrefix = m.getEffectivePrefixForSlot(
+              level,
+              newSublevel,
+            );
+            return composeState(brightnessPrefix, StateSuffix.SUBCYCLE);
+          }
+
+          // Swap the sublevel and move to the toggle state with the same number.
+          const newPrefix = m.getPrefix(level, newSublevel);
           const newSuffix = nextSuffixForIntermediateToggleState(state);
           return composeState(newPrefix, newSuffix);
         },
@@ -232,11 +330,34 @@ export default function makeBasicUIStateMachine(): [
         [StateSuffix.SUBCYCLE_INTERMEDIATE],
       ),
       transitions: {
-        [Transition.MULTI_SINGLE_PRESS_TIMEOUT]: (_state) => State.OFF,
-        [Transition.SHORT_PRESS_RELEASE]: (state) =>
-          nextOptionSubcycleState(state),
-        [Transition.LONG_PRESS_BEAT]: (_state) =>
-          m.getLastUsedSublevelState(Level.L, StateSuffix.CYCLE),
+        [Transition.MULTI_SINGLE_PRESS_TIMEOUT]: (state) => {
+          if (m.getUIGroup() !== 'g5' && parseLevel(state) !== Level.STROBE) {
+            // G6/G7: single-click exits programming, stays on at slot.
+            const slot = m.getProgrammingSlot();
+            return composeState(
+              m.getPrefix(slot.level, slot.sublevel),
+              StateSuffix.STABLE,
+            );
+          }
+          return State.OFF;
+        },
+        [Transition.SHORT_PRESS_RELEASE]: (state) => {
+          if (m.getUIGroup() !== 'g5' && parseLevel(state) !== Level.STROBE) {
+            // G6/G7: go to pending state to distinguish double vs triple click.
+            return swapSuffix(state, StateSuffix.SUBCYCLE_PENDING);
+          }
+          return nextOptionSubcycleState(state);
+        },
+        [Transition.LONG_PRESS_BEAT]: (state) => {
+          if (m.getUIGroup() !== 'g5' && parseLevel(state) !== Level.STROBE) {
+            const slot = m.getProgrammingSlot();
+            return composeState(
+              m.getPrefix(slot.level, slot.sublevel),
+              StateSuffix.STABLE,
+            );
+          }
+          return m.getLastUsedSublevelState(Level.L, StateSuffix.CYCLE);
+        },
       },
     },
 
@@ -247,17 +368,41 @@ export default function makeBasicUIStateMachine(): [
       ),
       actions: {
         onEnter: (state) => {
-          m.setLastUsedSublevel(parseLevel(state), parseSublevel(state));
-          m.setLastUsedOption(parseLevel(state), parseOption(state));
+          if (m.getUIGroup() === 'g5') {
+            m.setLastUsedSublevel(parseLevel(state), parseSublevel(state));
+            m.setLastUsedOption(parseLevel(state), parseOption(state));
+          } else {
+            // G6/G7: save the current preview brightness for the programming slot.
+            const slot = m.getProgrammingSlot();
+            const prefix = parsePrefix(state);
+            m.setProgrammedBrightness(slot.level, slot.sublevel, prefix);
+          }
         },
       },
       transitions: {
-        [Transition.MULTI_DOUBLE_PRESS_TIMEOUT]: (state) =>
-          swapSuffix(state, StateSuffix.STABLE),
+        [Transition.MULTI_DOUBLE_PRESS_TIMEOUT]: (state) => {
+          if (m.getUIGroup() !== 'g5') {
+            // G6/G7: exit programming, return to slot.
+            const slot = m.getProgrammingSlot();
+            return composeState(
+              m.getPrefix(slot.level, slot.sublevel),
+              StateSuffix.STABLE,
+            );
+          }
+          return swapSuffix(state, StateSuffix.STABLE);
+        },
         [Transition.SHORT_PRESS_RELEASE]: (state) =>
           swapSuffix(state, StateSuffix.SUBCYCLE_INTERMEDIATE),
-        [Transition.LONG_PRESS_BEAT]: (_state) =>
-          m.getLastUsedSublevelState(Level.L, StateSuffix.CYCLE),
+        [Transition.LONG_PRESS_BEAT]: (_state) => {
+          if (m.getUIGroup() !== 'g5') {
+            const slot = m.getProgrammingSlot();
+            return composeState(
+              m.getPrefix(slot.level, slot.sublevel),
+              StateSuffix.STABLE,
+            );
+          }
+          return m.getLastUsedSublevelState(Level.L, StateSuffix.CYCLE);
+        },
       },
     },
 
@@ -273,6 +418,37 @@ export default function makeBasicUIStateMachine(): [
           swapSuffix(state, StateSuffix.SUBCYCLE_INTERMEDIATE),
         [Transition.LONG_PRESS_BEAT]: (_state) =>
           m.getLastUsedSublevelState(Level.L, StateSuffix.CYCLE),
+      },
+    },
+
+    // G6/G7 SUBCYCLE_PENDING: waiting to distinguish double-click (UP) from
+    // triple-click (DOWN).
+    {
+      forStates: makeStates(
+        [Level.L, Level.M, Level.H],
+        [StateSuffix.SUBCYCLE_PENDING],
+      ),
+      transitions: {
+        [Transition.MULTI_SINGLE_PRESS_TIMEOUT]: (state) => {
+          // Confirmed double-click: go UP (brighter).
+          const prefix = parsePrefix(state);
+          return composeState(
+            nextBrighterPrefix(prefix),
+            StateSuffix.SUBCYCLE,
+          );
+        },
+        [Transition.SHORT_PRESS_RELEASE]: (state) => {
+          // Triple-click: go DOWN (dimmer).
+          const prefix = parsePrefix(state);
+          return composeState(nextDimmerPrefix(prefix), StateSuffix.SUBCYCLE);
+        },
+        [Transition.LONG_PRESS_BEAT]: (_state) => {
+          const slot = m.getProgrammingSlot();
+          return composeState(
+            m.getPrefix(slot.level, slot.sublevel),
+            StateSuffix.STABLE,
+          );
+        },
       },
     },
   ];

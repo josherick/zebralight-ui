@@ -6,6 +6,7 @@ import type {
   StateType,
   StatePrefixType,
 } from './state_machine/implementations/basic_ui/enums.js';
+import type { MemoryInterface } from './state_machine/implementations/basic_ui/memory.js';
 import {
   Level,
   State,
@@ -22,6 +23,46 @@ import {
   getLumens as get604cLumens,
   getRuntime as get604cRuntime,
 } from './configurations/604c.js';
+
+function isGroupSelectState(state: StateType): boolean {
+  return state.startsWith('group_select');
+}
+
+export function getEffectivePrefix(
+  state: StateType,
+  memory: MemoryInterface,
+): StatePrefixType | null {
+  if (state === State.OFF || state === State.BATTERY_INDICATOR) {
+    return null;
+  }
+
+  // Group select states display at L1 brightness.
+  if (isGroupSelectState(state)) {
+    return StatePrefix.L1;
+  }
+
+  const prefix = parsePrefix(state);
+
+  // G5: prefix always equals brightness.
+  if (memory.getUIGroup() === 'g5') {
+    return prefix;
+  }
+
+  // G6/G7 in programming mode: prefix is the preview brightness.
+  const suffix = parseSuffix(state);
+  if (
+    suffix === StateSuffix.SUBCYCLE ||
+    suffix === StateSuffix.SUBCYCLE_INTERMEDIATE ||
+    suffix === StateSuffix.SUBCYCLE_PENDING
+  ) {
+    return prefix;
+  }
+
+  // G6/G7 normal operation: look up programmed brightness.
+  const level = parseLevel(state);
+  const sublevel = parseSublevel(state);
+  return memory.getEffectivePrefixForSlot(level, sublevel);
+}
 
 export function getLumens(statePrefix: StatePrefixType): number {
   return get604cLumens()[statePrefix];
@@ -63,6 +104,11 @@ export function getLevel(state: StateType): string {
     return 'Battery Indicator';
   }
 
+  if (isGroupSelectState(state)) {
+    const label = getGroupSelectLabel(state);
+    return label || 'Group Select';
+  }
+
   const level = parseLevel(state);
   if (level === Level.STROBE) {
     return 'Strobe';
@@ -71,7 +117,32 @@ export function getLevel(state: StateType): string {
   return `${level.toUpperCase()}${sublevel}`;
 }
 
-function getDescription(state: StateType): React.Element<'div'> {
+function getGroupSelectLabel(state: StateType): string {
+  if (
+    state === State.GROUP_SELECT_5_INTERMEDIATE ||
+    state === State.GROUP_SELECT_5
+  ) {
+    return 'G5';
+  }
+  if (
+    state === State.GROUP_SELECT_6_INTERMEDIATE ||
+    state === State.GROUP_SELECT_6
+  ) {
+    return 'G6';
+  }
+  if (
+    state === State.GROUP_SELECT_7_INTERMEDIATE ||
+    state === State.GROUP_SELECT_7
+  ) {
+    return 'G7';
+  }
+  return '';
+}
+
+function getDescription(
+  state: StateType,
+  memory: MemoryInterface,
+): React.Element<'div'> {
   if (state === State.OFF) {
     return (
       <div>
@@ -81,6 +152,7 @@ function getDescription(state: StateType): React.Element<'div'> {
           <li>2 short clicks to Medium</li>
           <li>3 short clicks to Strobe</li>
           <li>4 short clicks to indicate battery level</li>
+          <li>5/6/7 short clicks to select UI group G5/G6/G7</li>
           <li>
             Press and hold to cycle L, M, H.
             <ul>
@@ -100,6 +172,21 @@ function getDescription(state: StateType): React.Element<'div'> {
     );
   }
 
+  // Group selection states.
+  if (isGroupSelectState(state)) {
+    const groupLabel = getGroupSelectLabel(state);
+    if (groupLabel) {
+      return (
+        <div>{`Selecting ${groupLabel}. Release and wait to confirm, or keep clicking.`}</div>
+      );
+    }
+    return (
+      <div>
+        Keep clicking or release and wait. The group will not change.
+      </div>
+    );
+  }
+
   const level = parseLevel(state);
   if (level === Level.STROBE) {
     return (
@@ -112,6 +199,7 @@ function getDescription(state: StateType): React.Element<'div'> {
     );
   }
 
+  const isG5 = memory.getUIGroup() === 'g5';
   const sublevel = parseSublevel(state);
   const humanLevel = `${level.toUpperCase()}${sublevel}`;
   const oppositeSublevel = sublevel === 1 ? 2 : 1;
@@ -121,7 +209,6 @@ function getDescription(state: StateType): React.Element<'div'> {
   const stateSuffix = parseSuffix(state);
   switch (stateSuffix) {
     case StateSuffix.CYCLE:
-      // This state is used for cycle up and down.
       return <div>Continue pressing to cycle. Release to stop cycling.</div>;
     case StateSuffix.CYCLE_PRE_H:
       return (
@@ -153,6 +240,11 @@ function getDescription(state: StateType): React.Element<'div'> {
         <div>
           <div>{`Double click to toggle to ${humanOppositeLevel}.`}</div>
           <div>
+            {isG5
+              ? `If you toggle 6 times, you'll go into ${humanLevel2} programming mode.`
+              : `If you toggle 6 times, you'll go into ${humanLevel} programming mode.`}
+          </div>
+          <div>
             Press and hold to cycle L, M, H. Press a single time to turn off.
           </div>
         </div>
@@ -171,21 +263,33 @@ function getDescription(state: StateType): React.Element<'div'> {
     case StateSuffix.TOGGLE_1:
     case StateSuffix.TOGGLE_2:
     case StateSuffix.TOGGLE_3:
-    case StateSuffix.TOGGLE_4:
-    case StateSuffix.TOGGLE_5:
+    case StateSuffix.TOGGLE_4: {
+      const remaining = 6 - parseInt(stateSuffix.slice(-1), 10);
+      const programmingTarget = isG5 ? humanLevel2 : humanLevel;
       return (
         <div>
           <div>{`Double click to toggle to ${humanOppositeLevel}.`}</div>
           <div>
-            {`If you toggle ${
-              7 - parseInt(stateSuffix.slice(-1), 10)
-            } more times, you'll go into ${humanLevel2} programming mode where you can set the lumen level for ${humanLevel2}.`}
+            {`If you toggle ${remaining} more times, you'll go into ${programmingTarget} programming mode.`}
           </div>
           <div>
             Press and hold to cycle L, M, H. Press a single time to turn off.
           </div>
         </div>
       );
+    }
+
+    case StateSuffix.TOGGLE_5: {
+      const programmingTarget = isG5 ? humanLevel2 : humanLevel;
+      return (
+        <div>
+          <div>{`Double click once more to go into ${programmingTarget} programming mode.`}</div>
+          <div>
+            Press and hold to cycle L, M, H. Press a single time to turn off.
+          </div>
+        </div>
+      );
+    }
 
     case StateSuffix.TOGGLE_6:
       return (
@@ -202,10 +306,32 @@ function getDescription(state: StateType): React.Element<'div'> {
       );
 
     case StateSuffix.SUBCYCLE_INTERMEDIATE:
+      if (!isG5) {
+        return (
+          <div>
+            Click once more to increase brightness, or wait to exit
+            programming.
+          </div>
+        );
+      }
       return (
         <div>{`Click once more to cycle to the next lumen level for ${humanLevel}, or wait for the lamp to turn off.`}</div>
       );
+
     case StateSuffix.SUBCYCLE:
+      if (!isG5) {
+        return (
+          <div>
+            <div>
+              Double-click to increase brightness. Triple-click to decrease.
+            </div>
+            <div>
+              Single-click or press and hold to exit programming mode.
+              Will also exit after 12 seconds of inactivity.
+            </div>
+          </div>
+        );
+      }
       return (
         <div>
           <div>{`Double click to cycle through brightness levels for ${humanLevel}.`}</div>
@@ -218,6 +344,13 @@ function getDescription(state: StateType): React.Element<'div'> {
         </div>
       );
 
+    case StateSuffix.SUBCYCLE_PENDING:
+      return (
+        <div>
+          Click once more to decrease brightness, or wait to increase.
+        </div>
+      );
+
     default:
       return <div />;
   }
@@ -225,27 +358,40 @@ function getDescription(state: StateType): React.Element<'div'> {
 
 export function getInformation(
   state: StateType,
+  memory: MemoryInterface,
 ): {
   level: string,
   lumens: string,
   runtime: string,
   description: React.Element<'div'>,
 } {
-  if (state === State.OFF || state === State.BATTERY_INDICATOR) {
+  if (
+    state === State.OFF ||
+    state === State.BATTERY_INDICATOR ||
+    isGroupSelectState(state)
+  ) {
     return {
       level: getLevel(state),
       lumens: '',
       runtime: '',
-      description: getDescription(state),
+      description: getDescription(state, memory),
     };
   }
 
-  const statePrefix = parsePrefix(state);
+  const effectivePrefix = getEffectivePrefix(state, memory);
+  if (effectivePrefix == null) {
+    return {
+      level: getLevel(state),
+      lumens: '',
+      runtime: '',
+      description: getDescription(state, memory),
+    };
+  }
   return {
     level: getLevel(state),
-    lumens: `${getLumens(statePrefix)} Lm`,
-    runtime: getRuntime(statePrefix),
-    description: getDescription(state),
+    lumens: `${getLumens(effectivePrefix)} Lm`,
+    runtime: getRuntime(effectivePrefix),
+    description: getDescription(state, memory),
   };
 }
 
