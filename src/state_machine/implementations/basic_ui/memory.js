@@ -11,6 +11,40 @@ import { Level, MemoryVariable, StatePrefix } from './enums.js';
 
 import { composeState, composePrefix } from './stateUtils.js';
 
+const STORAGE_KEY = 'zebralight-ui-memory';
+
+// Keys that should not be persisted (transient state).
+const TRANSIENT_KEYS = new Set([
+  MemoryVariable.PROGRAMMING_SLOT_LEVEL,
+  MemoryVariable.PROGRAMMING_SLOT_SUBLEVEL,
+]);
+
+function loadFromStorage(): { [string]: any } | null {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      return JSON.parse(stored);
+    }
+  } catch (e) {
+    // localStorage unavailable or corrupted; start fresh.
+  }
+  return null;
+}
+
+function saveToStorage(memory: { [string]: any }): void {
+  try {
+    const toSave = {};
+    for (const key in memory) {
+      if (!TRANSIENT_KEYS.has(key)) {
+        toSave[key] = memory[key];
+      }
+    }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
+  } catch (e) {
+    // localStorage unavailable; silently fail.
+  }
+}
+
 export type MemoryInterface = {
   setLastUsedSublevel: (LevelType, number) => void,
 
@@ -160,14 +194,30 @@ export default function makeBasicUIMemory(): MemoryInterface {
     [MemoryVariable.PROGRAMMING_SLOT_SUBLEVEL]: 1,
   };
 
+  // Load persisted memory, overwriting defaults.
+  const stored = loadFromStorage();
+  if (stored) {
+    for (const key in stored) {
+      if (Object.prototype.hasOwnProperty.call(stored, key)) {
+        memory[key] = stored[key];
+      }
+    }
+  }
+
+  function persist() {
+    saveToStorage(memory);
+  }
+
   const self = {
     setLastUsedSublevel: (level, value) => {
       const group = memory[MemoryVariable.UI_GROUP];
       memory[lastUsedVariableName(group, level)] = value;
+      persist();
     },
 
     setLastUsedOption: (level, value) => {
       memory[optionVariableName(level)] = value;
+      persist();
     },
 
     getLastUsedOption: (level) => memory[optionVariableName(level)],
@@ -192,6 +242,7 @@ export default function makeBasicUIMemory(): MemoryInterface {
 
     setUIGroup: (group) => {
       memory[MemoryVariable.UI_GROUP] = group;
+      persist();
     },
 
     getEffectivePrefixForSlot: (level, sublevel) => {
@@ -213,6 +264,7 @@ export default function makeBasicUIMemory(): MemoryInterface {
         return; // G5 uses the option system, not direct brightness mapping.
       }
       memory[brightnessVariableName(group, level, sublevel)] = prefix;
+      persist();
     },
 
     getProgrammingSlot: () => ({
