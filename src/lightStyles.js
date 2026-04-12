@@ -59,7 +59,7 @@ export function getBulbStyles(state: StateType): { [string]: any } {
     const boxShadow = getProportionalLevel(1, 50, 250);
     const opacity = getProportionalLevel(1, 0.05, 1);
     return {
-      animation: 'blinker 1s step-start infinite',
+      animation: 'blinker-battery 0.48s step-start infinite',
       boxShadow: makeBoxShadow(boxShadow),
       opacity,
     };

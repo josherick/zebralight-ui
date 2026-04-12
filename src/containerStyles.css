@@ -194,6 +194,12 @@ button:focus {
   }
 }
 
+@keyframes blinker-battery {
+  80% {
+    opacity: 0;
+  }
+}
+
 @keyframes blinker-fast {
   50% {
     opacity: 0;
