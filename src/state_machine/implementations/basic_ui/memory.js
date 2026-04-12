@@ -307,7 +307,6 @@ export default function makeBasicUIMemory(): MemoryInterface {
         memory[MemoryVariable.H2_OPTION] = 1;
         memory[MemoryVariable.M2_OPTION] = 1;
         memory[MemoryVariable.L2_OPTION] = 1;
-        memory[MemoryVariable.STROBE_OPTION] = 4;
       } else if (group === 'g6') {
         memory[MemoryVariable.G6_H_LAST_USED] = 1;
         memory[MemoryVariable.G6_M_LAST_USED] = 1;
