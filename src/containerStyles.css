@@ -89,6 +89,12 @@
   flex: 1;
 }
 
+.top-section-unit .active-group-label {
+  font-size: 10pt;
+  font-weight: normal;
+  color: rgba(200, 200, 200);
+}
+
 .information-box .bottom-section {
   display: flex;
   font-size: 12pt;
@@ -116,6 +122,77 @@
   cursor: pointer;
 }
 
+.mode-grid-container {
+  margin: 4px auto;
+  max-width: 1000px;
+}
+
+.group-selector {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.group-selector-button {
+  background-color: rgba(50, 50, 50);
+  color: white;
+  border: 1px solid rgba(80, 80, 80);
+  padding: 4px 16px;
+  font-size: 10pt;
+  cursor: pointer;
+}
+
+.group-selector-button:first-child {
+  border-radius: 4px 0 0 4px;
+}
+
+.group-selector-button:last-child {
+  border-radius: 0 4px 4px 0;
+}
+
+.group-selector-button.selected {
+  background-color: rgba(100, 100, 100);
+}
+
+.group-selector-button.active-group {
+  border-color: white;
+}
+
+.mode-grid-single {
+  flex: 1;
+  min-width: 0;
+}
+
+.mode-grid-label {
+  text-align: center;
+  font-size: 9pt;
+  color: rgba(200, 200, 200);
+  margin-bottom: 2px;
+}
+
+.mode-grids-narrow {
+  display: block;
+}
+
+.mode-grids-wide {
+  display: none;
+}
+
+@media (min-width: 620px) {
+  .mode-grids-narrow {
+    display: none;
+  }
+
+  .mode-grids-wide {
+    display: flex;
+    gap: 8px;
+  }
+
+  .group-selector {
+    display: none;
+  }
+}
+
 .information-box .mode-grid {
   display: grid;
   grid-template-rows: repeat(5, 1fr);
@@ -128,6 +205,8 @@
   background-color: rgba(50, 50, 50);
   font-size: 8pt;
   padding: 2px;
+  position: relative;
+  cursor: default;
 }
 
 .mode-grid .cell .human-level {
@@ -145,6 +224,25 @@
 
 .mode-grid .cell:nth-child(2) {
   grid-column: 3 / 5;
+}
+
+.mode-grid .cell .cell-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(30, 30, 30, 0.95);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-size: 9pt;
+  white-space: nowrap;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.mode-grid .cell:hover .cell-tooltip {
+  display: block;
 }
 
 .centered-in-container {

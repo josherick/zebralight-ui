@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 
 import type { StateType } from './state_machine/implementations/basic_ui/enums.js';
 import type { MemoryInterface } from './state_machine/implementations/basic_ui/memory.js';
@@ -9,12 +10,11 @@ import {
   StatePrefix,
 } from './state_machine/implementations/basic_ui/enums.js';
 
-import { getLumens } from './lampInformation.js';
+import { getLumens, getEffectivePrefix } from './lampInformation.js';
 import {
   parseLevel,
   parseSublevel,
   parseOption,
-  parsePrefixMaybe,
 } from './state_machine/implementations/basic_ui/stateUtils.js';
 
 import ModeGridCell from './ModeGridCell.react.js';
@@ -24,61 +24,168 @@ type Props = {
   memory: MemoryInterface,
 };
 
-export default function ModeGrid({
+const ALL_PREFIXES = [
+  StatePrefix.H1,
+  StatePrefix.H2_1,
+  StatePrefix.H2_2,
+  StatePrefix.H2_3,
+  StatePrefix.M1,
+  StatePrefix.M2_1,
+  StatePrefix.M2_2,
+  StatePrefix.M2_3,
+  StatePrefix.L1,
+  StatePrefix.L2_1,
+  StatePrefix.L2_2,
+  StatePrefix.L2_3,
+  StatePrefix.STROBE1_1,
+  StatePrefix.STROBE1_2,
+  StatePrefix.STROBE1_3,
+  StatePrefix.STROBE1_4,
+];
+
+// The 6 programmable slots.
+const SLOTS = [
+  { level: Level.H, sublevel: 1, label: 'H1' },
+  { level: Level.H, sublevel: 2, label: 'H2' },
+  { level: Level.M, sublevel: 1, label: 'M1' },
+  { level: Level.M, sublevel: 2, label: 'M2' },
+  { level: Level.L, sublevel: 1, label: 'L1' },
+  { level: Level.L, sublevel: 2, label: 'L2' },
+];
+
+function getSlotLabelsForPrefix(
+  prefix: string,
+  group: string,
+  memory: MemoryInterface,
+): string[] {
+  const labels = [];
+  for (const slot of SLOTS) {
+    const effectivePrefix = memory.getEffectivePrefixForSlotInGroup(
+      group,
+      slot.level,
+      slot.sublevel,
+    );
+    if (effectivePrefix === prefix) {
+      labels.push(slot.label);
+    }
+  }
+  return labels;
+}
+
+function SingleGrid({
+  group,
   lampState,
   memory,
-}: Props): React.Element<'div'> | null {
-  const activePrefix = parsePrefixMaybe(lampState);
+  isActiveGroup,
+}: {
+  group: string,
+  lampState: StateType,
+  memory: MemoryInterface,
+  isActiveGroup: boolean,
+}): React.Element<'div'> {
+  const activeEffectivePrefix = isActiveGroup
+    ? getEffectivePrefix(lampState, memory)
+    : null;
+
   const cells = [
     <ModeGridCell
       key={State.OFF}
       isHumanLevelVisible={true}
-      isActive={lampState === State.OFF}
+      isActive={isActiveGroup && lampState === State.OFF}
       humanLevel="Off"
     />,
     <ModeGridCell
       key={State.BATTERY_INDICATOR}
       isHumanLevelVisible={true}
-      isActive={lampState === State.BATTERY_INDICATOR}
+      isActive={isActiveGroup && lampState === State.BATTERY_INDICATOR}
       humanLevel="Battery Indicator"
     />,
-    [
-      StatePrefix.H1,
-      StatePrefix.H2_1,
-      StatePrefix.H2_2,
-      StatePrefix.H2_3,
+    ...ALL_PREFIXES.map((prefix) => {
+      const slotLabels = getSlotLabelsForPrefix(prefix, group, memory);
+      let humanLevel;
+      let tooltip;
+      if (parseLevel(prefix) === Level.STROBE) {
+        humanLevel = `S${prefix.split('.').slice(-1)[0]}`;
+      } else if (slotLabels.length === 0) {
+        humanLevel = '';
+      } else if (slotLabels.length === 1) {
+        humanLevel = slotLabels[0];
+      } else {
+        humanLevel = `${slotLabels.length} levels`;
+        tooltip = slotLabels.join(', ');
+      }
 
-      StatePrefix.M1,
-      StatePrefix.M2_1,
-      StatePrefix.M2_2,
-      StatePrefix.M2_3,
+      return (
+        <ModeGridCell
+          key={`${group}-${prefix}`}
+          isActive={isActiveGroup && prefix === activeEffectivePrefix}
+          isHumanLevelVisible={humanLevel !== ''}
+          humanLevel={humanLevel || '\u00A0'}
+          lumens={getLumens(prefix)}
+          tooltip={tooltip}
+        />
+      );
+    }),
+  ];
+  return (
+    <div className="mode-grid-single">
+      <div className="mode-grid-label">{group.toUpperCase()}</div>
+      <div className="mode-grid">{cells}</div>
+    </div>
+  );
+}
 
-      StatePrefix.L1,
-      StatePrefix.L2_1,
-      StatePrefix.L2_2,
-      StatePrefix.L2_3,
+export default function ModeGrid({
+  lampState,
+  memory,
+}: Props): React.Element<'div'> {
+  const activeGroup = memory.getUIGroup();
+  const [selectedGroup, setSelectedGroup] = useState(activeGroup);
 
-      StatePrefix.STROBE1_1,
-      StatePrefix.STROBE1_2,
-      StatePrefix.STROBE1_3,
-      StatePrefix.STROBE1_4,
-    ].map((prefix) => (
-      <ModeGridCell
-        key={prefix}
-        isActive={prefix === activePrefix}
-        isHumanLevelVisible={
-          parseLevel(prefix) === Level.STROBE ||
-          parseSublevel(prefix) === 1 ||
-          memory.getLastUsedOption(parseLevel(prefix)) === parseOption(prefix)
-        }
-        humanLevel={
-          parseLevel(prefix) === Level.STROBE
-            ? `S${prefix.split('.').slice(-1)[0]}`
-            : prefix.split('.').slice(0, 1)[0].toUpperCase()
-        }
-        lumens={getLumens(prefix)}
-      />
-    )),
-  ].flat();
-  return <div className="mode-grid">{cells}</div>;
+  // Sync selected group when active group changes.
+  useEffect(() => {
+    setSelectedGroup(activeGroup);
+  }, [activeGroup]);
+
+  const groups = ['g5', 'g6', 'g7'];
+
+  return (
+    <div className="mode-grid-container">
+      <div className="group-selector">
+        {groups.map((g) => (
+          <button
+            key={g}
+            type="button"
+            className={`group-selector-button${
+              g === selectedGroup ? ' selected' : ''
+            }${g === activeGroup ? ' active-group' : ''}`}
+            onClick={() => setSelectedGroup(g)}
+          >
+            {g.toUpperCase()}
+          </button>
+        ))}
+      </div>
+      <div className="mode-grids">
+        <div className="mode-grids-narrow">
+          <SingleGrid
+            group={selectedGroup}
+            lampState={lampState}
+            memory={memory}
+            isActiveGroup={selectedGroup === activeGroup}
+          />
+        </div>
+        <div className="mode-grids-wide">
+          {groups.map((g) => (
+            <SingleGrid
+              key={g}
+              group={g}
+              lampState={lampState}
+              memory={memory}
+              isActiveGroup={g === activeGroup}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }
