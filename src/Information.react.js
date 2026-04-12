@@ -18,7 +18,8 @@ type Props = {
 
 export default function Information(props: Props): React.Element<'div'> | null {
   const { lampState } = props;
-  const info = getInformation(lampState);
+  const { memory } = props;
+  const info = getInformation(lampState, memory);
   const longestDescription = getLongestDescription();
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -50,7 +51,12 @@ export default function Information(props: Props): React.Element<'div'> | null {
         {lampState !== State.BATTERY_INDICATOR && (
           <div className="top-section-unit">{info.lumens}</div>
         )}
-        <div className="top-section-unit emphasized">{info.level}</div>
+        <div className="top-section-unit emphasized">
+          <div>{info.level}</div>
+          <div className="active-group-label">
+            {memory.getUIGroup().toUpperCase()}
+          </div>
+        </div>
         {lampState !== State.BATTERY_INDICATOR && (
           <div className="top-section-unit">{info.runtime}</div>
         )}

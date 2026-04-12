@@ -13,7 +13,6 @@ import {
 import { getBrightnessLinearOrder } from './lampInformation.js';
 import {
   parseLevel,
-  parsePrefix,
 } from './state_machine/implementations/basic_ui/stateUtils.js';
 
 function getProportionalLevel(
@@ -52,7 +51,10 @@ function makeStrobeAnimation(statePrefix: StatePrefixType) {
   return `${animation} ${frequency}s step-start infinite`;
 }
 
-export function getBulbStyles(state: StateType): { [string]: any } {
+export function getBulbStyles(
+  state: StateType,
+  effectivePrefix: StatePrefixType | null,
+): { [string]: any } {
   if (state === State.OFF) {
     return { visibility: 'hidden' };
   } else if (state === State.BATTERY_INDICATOR) {
@@ -65,11 +67,14 @@ export function getBulbStyles(state: StateType): { [string]: any } {
     };
   }
 
-  const level = parseLevel(state);
-  const statePrefix = parsePrefix(state);
+  if (effectivePrefix == null) {
+    return { visibility: 'hidden' };
+  }
+
+  const level = parseLevel(effectivePrefix);
 
   const proportion =
-    getBrightnessLinearOrder(statePrefix) /
+    getBrightnessLinearOrder(effectivePrefix) /
     getBrightnessLinearOrder(StatePrefix.H1);
   const boxShadow = getProportionalLevel(proportion, 50, 250);
   const opacity = getProportionalLevel(proportion, 0.05, 1);
@@ -78,7 +83,7 @@ export function getBulbStyles(state: StateType): { [string]: any } {
     opacity,
   }: { [string]: any });
   if (level === Level.STROBE) {
-    styles.animation = makeStrobeAnimation(statePrefix);
+    styles.animation = makeStrobeAnimation(effectivePrefix);
   }
 
   return styles;
