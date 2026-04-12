@@ -106,7 +106,7 @@ export function getLevel(state: StateType): string {
 
   if (isGroupSelectState(state)) {
     const label = getGroupSelectLabel(state);
-    return label || 'Group Select';
+    return label || 'Click Sequence';
   }
 
   const level = parseLevel(state);
@@ -153,6 +153,7 @@ function getDescription(
           <li>3 short clicks to Strobe</li>
           <li>4 short clicks to indicate battery level</li>
           <li>5/6/7 short clicks to select UI group G5/G6/G7</li>
+          <li>15/18/21 short clicks to factory reset G5/G6/G7</li>
           <li>
             Press and hold to cycle L, M, H.
             <ul>
@@ -180,9 +181,28 @@ function getDescription(
         <div>{`Selecting ${groupLabel}. Release and wait to confirm, or keep clicking.`}</div>
       );
     }
+    // GROUP_SELECT_EXTRA: show factory reset info based on click count.
+    const clickCount = memory.getExtraClickCount();
+    if (clickCount === 8) {
+      return <div>Release and wait to factory reset G5.</div>;
+    } else if (clickCount === 11) {
+      return <div>Release and wait to factory reset G6.</div>;
+    } else if (clickCount === 14) {
+      return <div>Release and wait to factory reset G7.</div>;
+    }
+    const nextReset =
+      clickCount < 8
+        ? `${15 - 7 - clickCount} more for G5 reset`
+        : clickCount < 11
+          ? `${18 - 7 - clickCount} more for G6 reset`
+          : clickCount < 14
+            ? `${21 - 7 - clickCount} more for G7 reset`
+            : '';
     return (
       <div>
-        Keep clicking or release and wait. The group will not change.
+        {nextReset
+          ? `Keep clicking. ${nextReset}.`
+          : 'Keep clicking or release and wait.'}
       </div>
     );
   }

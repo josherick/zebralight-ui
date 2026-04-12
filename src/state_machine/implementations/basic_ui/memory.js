@@ -17,6 +17,7 @@ const STORAGE_KEY = 'zebralight-ui-memory';
 const TRANSIENT_KEYS = new Set([
   MemoryVariable.PROGRAMMING_SLOT_LEVEL,
   MemoryVariable.PROGRAMMING_SLOT_SUBLEVEL,
+  'extra_click_count',
 ]);
 
 function loadFromStorage(): { [string]: any } | null {
@@ -87,6 +88,14 @@ export type MemoryInterface = {
   // Programming slot tracking (transient, used during subcycle).
   getProgrammingSlot: () => { level: LevelType, sublevel: number },
   setProgrammingSlot: (LevelType, sublevel: number) => void,
+
+  // Factory reset click counter (transient, tracks clicks 8+ from OFF).
+  getExtraClickCount: () => number,
+  incrementExtraClickCount: () => void,
+  resetExtraClickCount: () => void,
+
+  // Factory reset: restores a group's memory to defaults.
+  factoryResetGroup: (group: string) => void,
 };
 
 /**
@@ -192,6 +201,9 @@ export default function makeBasicUIMemory(): MemoryInterface {
     // Transient programming slot.
     [MemoryVariable.PROGRAMMING_SLOT_LEVEL]: Level.H,
     [MemoryVariable.PROGRAMMING_SLOT_SUBLEVEL]: 1,
+
+    // Transient factory reset click counter.
+    'extra_click_count': 0,
   };
 
   // Load persisted memory, overwriting defaults.
@@ -275,6 +287,49 @@ export default function makeBasicUIMemory(): MemoryInterface {
     setProgrammingSlot: (level, sublevel) => {
       memory[MemoryVariable.PROGRAMMING_SLOT_LEVEL] = level;
       memory[MemoryVariable.PROGRAMMING_SLOT_SUBLEVEL] = sublevel;
+    },
+
+    getExtraClickCount: () => memory['extra_click_count'],
+
+    incrementExtraClickCount: () => {
+      memory['extra_click_count'] += 1;
+    },
+
+    resetExtraClickCount: () => {
+      memory['extra_click_count'] = 0;
+    },
+
+    factoryResetGroup: (group) => {
+      if (group === 'g5') {
+        memory[MemoryVariable.G5_H_LAST_USED] = 1;
+        memory[MemoryVariable.G5_M_LAST_USED] = 1;
+        memory[MemoryVariable.G5_L_LAST_USED] = 1;
+        memory[MemoryVariable.H2_OPTION] = 1;
+        memory[MemoryVariable.M2_OPTION] = 1;
+        memory[MemoryVariable.L2_OPTION] = 1;
+        memory[MemoryVariable.STROBE_OPTION] = 4;
+      } else if (group === 'g6') {
+        memory[MemoryVariable.G6_H_LAST_USED] = 1;
+        memory[MemoryVariable.G6_M_LAST_USED] = 1;
+        memory[MemoryVariable.G6_L_LAST_USED] = 1;
+        memory[MemoryVariable.G6_H1_BRIGHTNESS] = StatePrefix.H1;
+        memory[MemoryVariable.G6_H2_BRIGHTNESS] = StatePrefix.H2_1;
+        memory[MemoryVariable.G6_M1_BRIGHTNESS] = StatePrefix.M1;
+        memory[MemoryVariable.G6_M2_BRIGHTNESS] = StatePrefix.M2_1;
+        memory[MemoryVariable.G6_L1_BRIGHTNESS] = StatePrefix.L1;
+        memory[MemoryVariable.G6_L2_BRIGHTNESS] = StatePrefix.L2_1;
+      } else if (group === 'g7') {
+        memory[MemoryVariable.G7_H_LAST_USED] = 1;
+        memory[MemoryVariable.G7_M_LAST_USED] = 1;
+        memory[MemoryVariable.G7_L_LAST_USED] = 1;
+        memory[MemoryVariable.G7_H1_BRIGHTNESS] = StatePrefix.H1;
+        memory[MemoryVariable.G7_H2_BRIGHTNESS] = StatePrefix.H2_1;
+        memory[MemoryVariable.G7_M1_BRIGHTNESS] = StatePrefix.M1;
+        memory[MemoryVariable.G7_M2_BRIGHTNESS] = StatePrefix.M2_1;
+        memory[MemoryVariable.G7_L1_BRIGHTNESS] = StatePrefix.L1;
+        memory[MemoryVariable.G7_L2_BRIGHTNESS] = StatePrefix.L2_1;
+      }
+      persist();
     },
   };
 
