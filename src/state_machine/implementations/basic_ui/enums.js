@@ -41,6 +41,7 @@ export const StateSuffix = Object.freeze({
   CYCLE_PRE_STROBE: 'cycle_pre_strobe',
   CYCLE_STROBE_BEAT: 'cycle_strobe_beat',
   CYCLE_PRE_BATTERY_INDICATOR: 'cycle_pre_battery_indicator',
+  CYCLE_BATTERY_INDICATOR_BEAT: 'cycle_battery_indicator_beat',
 
   STABLE: 'stable',
 
@@ -158,6 +159,12 @@ export const State = Object.freeze({
   L2_1_CYCLE_PRE_BATTERY_INDICATOR: 'l2.1.cycle_pre_battery_indicator',
   L2_2_CYCLE_PRE_BATTERY_INDICATOR: 'l2.2.cycle_pre_battery_indicator',
   L2_3_CYCLE_PRE_BATTERY_INDICATOR: 'l2.3.cycle_pre_battery_indicator',
+
+  // Extra beat at low before battery indicator starts.
+  L1_CYCLE_BATTERY_INDICATOR_BEAT: 'l1.cycle_battery_indicator_beat',
+  L2_1_CYCLE_BATTERY_INDICATOR_BEAT: 'l2.1.cycle_battery_indicator_beat',
+  L2_2_CYCLE_BATTERY_INDICATOR_BEAT: 'l2.2.cycle_battery_indicator_beat',
+  L2_3_CYCLE_BATTERY_INDICATOR_BEAT: 'l2.3.cycle_battery_indicator_beat',
 
   H1_TOGGLE_INTERMEDIATE_1: 'h1.toggle_intermediate_1',
   H1_TOGGLE_1: 'h1.toggle_1',

@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { useCallback } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 import ZebralightButton from './ZebralightButton.react.js';
 import Bulb from './Bulb.react.js';
@@ -16,7 +16,7 @@ import {
 
 type Props = {};
 
-const BATTERY_INDICATOR_TIMEOUT_MS = 4000;
+const BATTERY_INDICATOR_TIMEOUT_MS = 1920;
 
 export default function Light(_props: Props): React.Element<'div'> {
   const [state, transition, memory] = useBasicUIStateMachine();
@@ -30,14 +30,19 @@ export default function Light(_props: Props): React.Element<'div'> {
     onBatteryIndicatorFinished,
   );
 
+  const prevStateRef = useRef(state);
+  useEffect(() => {
+    if (prevStateRef.current !== state && state === State.BATTERY_INDICATOR) {
+      resetBatteryIndicatorTimer();
+    }
+    prevStateRef.current = state;
+  }, [state, resetBatteryIndicatorTimer]);
+
   const onEvent = useCallback(
     (event) => {
-      const newState = transition(event);
-      if (state !== newState && newState === State.BATTERY_INDICATOR) {
-        resetBatteryIndicatorTimer();
-      }
+      transition(event);
     },
-    [resetBatteryIndicatorTimer, state, transition],
+    [transition],
   );
 
   return (

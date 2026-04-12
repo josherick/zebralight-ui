@@ -95,7 +95,18 @@ export default function makeBasicUIStateMachine(): [
       transitions: {
         [Transition.LONG_PRESS_BEAT]: (_state) =>
           m.getLastUsedSublevelState(Level.L, StateSuffix.CYCLE),
-        [Transition.SHORT_PRESS_RELEASE]: (_state) => State.BATTERY_INDICATOR,
+        [Transition.SHORT_PRESS_RELEASE]: (state) =>
+          swapSuffix(state, StateSuffix.CYCLE_BATTERY_INDICATOR_BEAT),
+      },
+    },
+    {
+      forStates: makeStates(
+        [Level.L],
+        [StateSuffix.CYCLE_BATTERY_INDICATOR_BEAT],
+      ),
+      transitions: {
+        [Transition.MULTI_SINGLE_PRESS_TIMEOUT]: (_state) =>
+          State.BATTERY_INDICATOR,
       },
     },
 

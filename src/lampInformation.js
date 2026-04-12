@@ -146,6 +146,8 @@ function getDescription(state: StateType): React.Element<'div'> {
           H.
         </div>
       );
+    case StateSuffix.CYCLE_BATTERY_INDICATOR_BEAT:
+      return <div>Battery indicator is about to start.</div>;
     case StateSuffix.STABLE:
       return (
         <div>
