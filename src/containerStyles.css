@@ -84,6 +84,7 @@
 }
 
 .information-container .information-box {
+  position: relative;
   color: white;
   font-family: 'Helvetica', sans-serif;
   display: flex;
@@ -108,6 +109,149 @@
   font-size: 18pt;
   font-weight: bold;
   flex: 1;
+}
+
+/* Settings cog */
+.settings-cog {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  font-size: 18pt;
+  cursor: pointer;
+  padding: 0 4px;
+  color: rgba(200, 200, 200);
+}
+
+.settings-cog:hover {
+  color: white;
+}
+
+/* Settings overlay and dialog */
+.settings-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-dialog {
+  background-color: rgb(30, 30, 30);
+  border: 1px solid rgb(60, 60, 60);
+  border-radius: 8px;
+  padding: 16px;
+  max-width: 400px;
+  width: 90%;
+  color: white;
+  font-family: 'Helvetica', sans-serif;
+}
+
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgb(60, 60, 60);
+}
+
+.settings-title {
+  font-size: 16pt;
+  font-weight: bold;
+}
+
+.settings-close {
+  font-size: 16pt;
+  cursor: pointer;
+  color: rgba(200, 200, 200);
+  padding: 0 4px;
+}
+
+.settings-close:hover {
+  color: white;
+}
+
+.settings-item {
+  margin-bottom: 16px;
+}
+
+.settings-item:last-child {
+  margin-bottom: 0;
+}
+
+.settings-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.settings-item-title {
+  font-size: 11pt;
+  font-weight: bold;
+}
+
+.settings-item-description {
+  font-size: 9pt;
+  color: rgba(180, 180, 180);
+  line-height: 1.4;
+  text-align: left;
+}
+
+.settings-item-control {
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+.toggle-switch {
+  display: flex;
+}
+
+.toggle-option {
+  background-color: rgba(50, 50, 50);
+  color: white;
+  border: 1px solid rgba(80, 80, 80);
+  padding: 4px 12px;
+  font-size: 10pt;
+  cursor: pointer;
+}
+
+.toggle-option:first-child {
+  border-radius: 4px 0 0 4px;
+}
+
+.toggle-option:last-child {
+  border-radius: 0 4px 4px 0;
+}
+
+.toggle-option.selected {
+  background-color: rgba(100, 100, 100);
+  border-color: white;
+}
+
+.settings-button {
+  background-color: rgb(120, 40, 40);
+  color: white;
+  border: 1px solid rgb(160, 60, 60);
+  border-radius: 4px;
+  padding: 4px 16px;
+  font-size: 10pt;
+  cursor: pointer;
+}
+
+.settings-button:hover {
+  background-color: rgb(150, 50, 50);
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
 }
 
 .top-section-unit .active-group-label {

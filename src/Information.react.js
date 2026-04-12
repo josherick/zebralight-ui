@@ -10,6 +10,7 @@ import { State } from './state_machine/implementations/basic_ui/enums.js';
 import { getInformation, getLongestDescription } from './lampInformation.js';
 
 import ModeGrid from './ModeGrid.react.js';
+import Settings from './Settings.react.js';
 
 type Props = {
   lampState: StateType,
@@ -61,6 +62,7 @@ export default function Information(props: Props): React.Element<'div'> | null {
           <div className="top-section-unit">{info.runtime}</div>
         )}
       </div>
+      <Settings />
       <div className="bottom-section">
         <div className={descriptionClassName}>{info.description}</div>
         <div className={longestDescriptionPlaceholderClassName}>
