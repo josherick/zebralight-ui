@@ -197,12 +197,12 @@ function getDescription(
           ? `${18 - 7 - clickCount} more for G6 reset`
           : clickCount < 14
             ? `${21 - 7 - clickCount} more for G7 reset`
-            : '';
+            : null;
     return (
       <div>
         {nextReset
           ? `Keep clicking. ${nextReset}.`
-          : 'Keep clicking or release and wait.'}
+          : 'No more actions available. Release and wait to turn off.'}
       </div>
     );
   }
