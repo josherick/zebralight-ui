@@ -1,0 +1,2437 @@
+{
+  "SC700Fd 21700 XHP70.3 Floody Neutral White High CRI Flashlight": {
+    "H1": {
+      "lm": 2522.0,
+      "runtime": "2 hrs"
+    },
+    "H2.1": {
+      "lm": 1319.0,
+      "runtime": "2.1 hrs"
+    },
+    "H2.2": {
+      "lm": 873.0,
+      "runtime": "2.4 hrs"
+    },
+    "H2.3": {
+      "lm": 534.0,
+      "runtime": "4.1 hrs"
+    },
+    "M1": {
+      "lm": 175.0,
+      "runtime": "13.5 hrs"
+    },
+    "M2.1": {
+      "lm": 47.0,
+      "runtime": "2.1 days"
+    },
+    "M2.2": {
+      "lm": 23.0,
+      "runtime": "4.4 days"
+    },
+    "M2.3": {
+      "lm": 10.7,
+      "runtime": "9.4 days"
+    },
+    "L1": {
+      "lm": 1.9,
+      "runtime": "1.2 month"
+    },
+    "L2.1": {
+      "lm": 0.23,
+      "runtime": "5 months"
+    },
+    "L2.2": {
+      "lm": 0.08,
+      "runtime": "7 months"
+    },
+    "L2.3": {
+      "lm": 0.03,
+      "runtime": "9 months"
+    }
+  },
+  "SC600w Mk IV Plus HI 18650 Flashlight with XHP50.3 HI Neutral White LED": {
+    "H1": {
+      "lm": 1700.0,
+      "runtime": "2.6 hours"
+    },
+    "H2.1": {
+      "lm": 965.0,
+      "runtime": "3 hours"
+    },
+    "H2.2": {
+      "lm": 521.0,
+      "runtime": "3.2 hours"
+    },
+    "H2.3": {
+      "lm": 280.0,
+      "runtime": "5.7 hours"
+    },
+    "M1": {
+      "lm": 128.0,
+      "runtime": "13 hours"
+    },
+    "M2.1": {
+      "lm": 56.0,
+      "runtime": "28 hours"
+    },
+    "M2.2": {
+      "lm": 25.0,
+      "runtime": "2.5 days"
+    },
+    "M2.3": {
+      "lm": 11.0,
+      "runtime": "5.6 days"
+    },
+    "L1": {
+      "lm": 3.4,
+      "runtime": "15 days"
+    },
+    "L2.1": {
+      "lm": 0.8,
+      "runtime": "1.6 month"
+    },
+    "L2.2": {
+      "lm": 0.3,
+      "runtime": "3 months"
+    },
+    "L2.3": {
+      "lm": 0.1,
+      "runtime": "4.4 months"
+    }
+  },
+  "SC65c HI 18650 4000K High CRI Flashlight": {
+    "H1": {
+      "lm": 660.0,
+      "runtime": "2.8 hrs"
+    },
+    "H2.1": {
+      "lm": 437.0,
+      "runtime": "2.9 hrs"
+    },
+    "H2.2": {
+      "lm": 244.0,
+      "runtime": "3.5 hrs"
+    },
+    "H2.3": {
+      "lm": 157.0,
+      "runtime": "5.0 hrs"
+    },
+    "M1": {
+      "lm": 66.0,
+      "runtime": "13.3 hrs"
+    },
+    "M2.1": {
+      "lm": 27.5,
+      "runtime": "1.4 days"
+    },
+    "M2.2": {
+      "lm": 13.6,
+      "runtime": "2.7 days"
+    },
+    "M2.3": {
+      "lm": 4.7,
+      "runtime": "7.1 days"
+    },
+    "L1": {
+      "lm": 1.3,
+      "runtime": "18 days"
+    },
+    "L2.1": {
+      "lm": 0.33,
+      "runtime": "2 months"
+    },
+    "L2.2": {
+      "lm": 0.11,
+      "runtime": "3.7 months"
+    },
+    "L2.3": {
+      "lm": 0.03,
+      "runtime": "5.4 months"
+    }
+  },
+  "SC700d HI 21700 XHP70.3 Neutral White High CRI Flashlight": {
+    "H1": {
+      "lm": 2600.0,
+      "runtime": "2.0 hrs"
+    },
+    "H2.1": {
+      "lm": 1360.0,
+      "runtime": "2.1 hrs"
+    },
+    "H2.2": {
+      "lm": 900.0,
+      "runtime": "2.4 hrs"
+    },
+    "H2.3": {
+      "lm": 550.0,
+      "runtime": "4.1 hrs"
+    },
+    "M1": {
+      "lm": 180.0,
+      "runtime": "13.5 hrs"
+    },
+    "M2.1": {
+      "lm": 48.0,
+      "runtime": "2.1 days"
+    },
+    "M2.2": {
+      "lm": 24.0,
+      "runtime": "4.4 days"
+    },
+    "M2.3": {
+      "lm": 11.0,
+      "runtime": "9.4 days"
+    },
+    "L1": {
+      "lm": 2.0,
+      "runtime": "1.2 month"
+    },
+    "L2.1": {
+      "lm": 0.24,
+      "runtime": "5 months"
+    },
+    "L2.2": {
+      "lm": 0.08,
+      "runtime": "7 months"
+    },
+    "L2.3": {
+      "lm": 0.03,
+      "runtime": "9 months"
+    }
+  },
+  "SC54c N Neutral White High CRI AA Flashlight": {
+    "H1": {
+      "lm": 210.0,
+      "runtime": "1.1 hr"
+    },
+    "H2.1": {
+      "lm": 181.0,
+      "runtime": "1.6 hr"
+    },
+    "H2.2": {
+      "lm": 140.0,
+      "runtime": "2.1 hrs"
+    },
+    "H2.3": {
+      "lm": 92.0,
+      "runtime": "3.6 hrs"
+    },
+    "M1": {
+      "lm": 48.0,
+      "runtime": "7.8 hrs"
+    },
+    "M2.1": {
+      "lm": 14.1,
+      "runtime": "26 hrs"
+    },
+    "M2.2": {
+      "lm": 7.1,
+      "runtime": "55 hrs"
+    },
+    "M2.3": {
+      "lm": 2.6,
+      "runtime": "5.5 days"
+    },
+    "L1": {
+      "lm": 0.8,
+      "runtime": "15 days"
+    },
+    "L2.1": {
+      "lm": 0.34,
+      "runtime": "1.2 month"
+    },
+    "L2.2": {
+      "lm": 0.05,
+      "runtime": "3 months"
+    },
+    "L2.3": {
+      "lm": 0.01,
+      "runtime": "4.5 months"
+    }
+  },
+  "H600Fc Mk IV 18650 XHP50.2 Floody 4000K High CRI Headlamp": {
+    "H1": {
+      "lm": 1568.0,
+      "runtime": "2.5 hrs"
+    },
+    "H2.1": {
+      "lm": 980.0,
+      "runtime": "2.9 hrs"
+    },
+    "H2.2": {
+      "lm": 562.0,
+      "runtime": "3.1 hrs"
+    },
+    "H2.3": {
+      "lm": 296.0,
+      "runtime": "5.3 hrs"
+    },
+    "M1": {
+      "lm": 143.0,
+      "runtime": "12.5 hrs"
+    },
+    "M2.1": {
+      "lm": 63.0,
+      "runtime": "27.5 hrs"
+    },
+    "M2.2": {
+      "lm": 25.7,
+      "runtime": "2.7 days"
+    },
+    "M2.3": {
+      "lm": 9.6,
+      "runtime": "7.1 days"
+    },
+    "L1": {
+      "lm": 3.3,
+      "runtime": "17.5 days"
+    },
+    "L2.1": {
+      "lm": 1.0,
+      "runtime": "2 months"
+    },
+    "L2.2": {
+      "lm": 0.3,
+      "runtime": "3.8 months"
+    },
+    "L2.3": {
+      "lm": 0.08,
+      "runtime": "5.4 months"
+    }
+  },
+  "H600Fd Mk IV 18650 XHP50.2 Floody 5000K High CRI Headlamp": {
+    "H1": {
+      "lm": 1568.0,
+      "runtime": "2.5 hrs"
+    },
+    "H2.1": {
+      "lm": 980.0,
+      "runtime": "2.9 hrs"
+    },
+    "H2.2": {
+      "lm": 562.0,
+      "runtime": "3.1 hrs"
+    },
+    "H2.3": {
+      "lm": 296.0,
+      "runtime": "5.3 hrs"
+    },
+    "M1": {
+      "lm": 143.0,
+      "runtime": "12.5 hrs"
+    },
+    "M2.1": {
+      "lm": 63.0,
+      "runtime": "27.5 hrs"
+    },
+    "M2.2": {
+      "lm": 25.7,
+      "runtime": "2.7 days"
+    },
+    "M2.3": {
+      "lm": 9.6,
+      "runtime": "7.1 days"
+    },
+    "L1": {
+      "lm": 3.3,
+      "runtime": "17.5 days"
+    },
+    "L2.1": {
+      "lm": 1.0,
+      "runtime": "2 months"
+    },
+    "L2.2": {
+      "lm": 0.3,
+      "runtime": "3.8 months"
+    },
+    "L2.3": {
+      "lm": 0.08,
+      "runtime": "5.4 months"
+    }
+  },
+  "H604d 18650 XHP50.2 Flood 5000K High CRI Headlamp": {
+    "H1": {
+      "lm": 1616.0,
+      "runtime": "2.5 hrs"
+    },
+    "H2.1": {
+      "lm": 1010.0,
+      "runtime": "2.9 hrs"
+    },
+    "H2.2": {
+      "lm": 579.0,
+      "runtime": "3.1 hrs"
+    },
+    "H2.3": {
+      "lm": 305.0,
+      "runtime": "5.3 hrs"
+    },
+    "M1": {
+      "lm": 147.0,
+      "runtime": "12.5 hrs"
+    },
+    "M2.1": {
+      "lm": 65.0,
+      "runtime": "27.5 hrs"
+    },
+    "M2.2": {
+      "lm": 26.4,
+      "runtime": "2.7 days"
+    },
+    "M2.3": {
+      "lm": 9.9,
+      "runtime": "7.1 days"
+    },
+    "L1": {
+      "lm": 3.4,
+      "runtime": "17.5 days"
+    },
+    "L2.1": {
+      "lm": 1.06,
+      "runtime": "2 months"
+    },
+    "L2.2": {
+      "lm": 0.3,
+      "runtime": "3.8 months"
+    },
+    "L2.3": {
+      "lm": 0.08,
+      "runtime": "5.4 months"
+    }
+  },
+  "H600c Mk IV 18650 XHP50.2 4000K High CRI Headlamp": {
+    "H1": {
+      "lm": 1616.0,
+      "runtime": "2.5 hrs"
+    },
+    "H2.1": {
+      "lm": 1010.0,
+      "runtime": "2.9 hrs"
+    },
+    "H2.2": {
+      "lm": 579.0,
+      "runtime": "3.1 hrs"
+    },
+    "H2.3": {
+      "lm": 305.0,
+      "runtime": "5.3 hrs"
+    },
+    "M1": {
+      "lm": 147.0,
+      "runtime": "12.5 hrs"
+    },
+    "M2.1": {
+      "lm": 65.0,
+      "runtime": "27.5 hrs"
+    },
+    "M2.2": {
+      "lm": 26.4,
+      "runtime": "2.7 days"
+    },
+    "M2.3": {
+      "lm": 9.9,
+      "runtime": "7.1 days"
+    },
+    "L1": {
+      "lm": 3.4,
+      "runtime": "17.5 days"
+    },
+    "L2.1": {
+      "lm": 1.06,
+      "runtime": "2 months"
+    },
+    "L2.2": {
+      "lm": 0.3,
+      "runtime": "3.8 months"
+    },
+    "L2.3": {
+      "lm": 0.08,
+      "runtime": "5.4 months"
+    }
+  },
+  "H600d Mk IV 18650 XHP50.2 5000K High CRI Headlamp": {
+    "H1": {
+      "lm": 1616.0,
+      "runtime": "2.5 hrs"
+    },
+    "H2.1": {
+      "lm": 1010.0,
+      "runtime": "2.9 hrs"
+    },
+    "H2.2": {
+      "lm": 579.0,
+      "runtime": "3.1 hrs"
+    },
+    "H2.3": {
+      "lm": 305.0,
+      "runtime": "5.3 hrs"
+    },
+    "M1": {
+      "lm": 147.0,
+      "runtime": "12.5 hrs"
+    },
+    "M2.1": {
+      "lm": 65.0,
+      "runtime": "27.5 hrs"
+    },
+    "M2.2": {
+      "lm": 26.4,
+      "runtime": "2.7 days"
+    },
+    "M2.3": {
+      "lm": 9.9,
+      "runtime": "7.1 days"
+    },
+    "L1": {
+      "lm": 3.4,
+      "runtime": "17.5 days"
+    },
+    "L2.1": {
+      "lm": 1.06,
+      "runtime": "2 months"
+    },
+    "L2.2": {
+      "lm": 0.3,
+      "runtime": "3.8 months"
+    },
+    "L2.3": {
+      "lm": 0.08,
+      "runtime": "5.4 months"
+    }
+  },
+  "H504r Deep Red AA Flood Headlamp": {
+    "H1": {
+      "lm": 122.0,
+      "runtime": "1 hour"
+    },
+    "H2.1": {
+      "lm": 84.0,
+      "runtime": "1.7 hours"
+    },
+    "H2.2": {
+      "lm": 56.0,
+      "runtime": "2.7 hours"
+    },
+    "H2.3": {
+      "lm": 30.0,
+      "runtime": "5.2 hours"
+    },
+    "M1": {
+      "lm": 14.0,
+      "runtime": "11.3 hours"
+    },
+    "M2.1": {
+      "lm": 8.4,
+      "runtime": "19 hours"
+    },
+    "M2.2": {
+      "lm": 4.0,
+      "runtime": "1.7 days"
+    },
+    "M2.3": {
+      "lm": 2.0,
+      "runtime": "3.2 days"
+    },
+    "L1": {
+      "lm": 1.0,
+      "runtime": "5.5 days"
+    },
+    "L2.1": {
+      "lm": 0.04,
+      "runtime": "3 months"
+    },
+    "L2.2": {
+      "lm": 0.01,
+      "runtime": "5 months"
+    },
+    "L2.3": {
+      "lm": 0.002,
+      "runtime": "6.5 months"
+    }
+  },
+  "H54c N Neutral White High CRI AA Headlamp": {
+    "H1": {
+      "lm": 245.0,
+      "runtime": "1.3 hr"
+    },
+    "H2.1": {
+      "lm": 203.0,
+      "runtime": "1.7 hr"
+    },
+    "H2.2": {
+      "lm": 160.0,
+      "runtime": "2.1 hr"
+    },
+    "H2.3": {
+      "lm": 105.0,
+      "runtime": "3.5 hrs"
+    },
+    "M1": {
+      "lm": 57.0,
+      "runtime": "6.5 hrs"
+    },
+    "M2.1": {
+      "lm": 16.0,
+      "runtime": "30.6 hrs"
+    },
+    "M2.2": {
+      "lm": 8.3,
+      "runtime": "2.8 days"
+    },
+    "M2.3": {
+      "lm": 3.0,
+      "runtime": "6.8 days"
+    },
+    "L1": {
+      "lm": 0.9,
+      "runtime": "18 days"
+    },
+    "L2.1": {
+      "lm": 0.22,
+      "runtime": "1.9 month"
+    },
+    "L2.2": {
+      "lm": 0.06,
+      "runtime": "3.3 months"
+    },
+    "L2.3": {
+      "lm": 0.02,
+      "runtime": "5.2 months"
+    }
+  },
+  "H504c AA Neutral White High CRI Flood Headlamp": {
+    "H1": {
+      "lm": 265.0,
+      "runtime": "1.0 hr"
+    },
+    "H2.1": {
+      "lm": 220.0,
+      "runtime": "1.6 hr"
+    },
+    "H2.2": {
+      "lm": 160.0,
+      "runtime": "2.3 hrs"
+    },
+    "H2.3": {
+      "lm": 100.0,
+      "runtime": "4.1 hrs"
+    },
+    "M1": {
+      "lm": 50.0,
+      "runtime": "7.8 hrs"
+    },
+    "M2.1": {
+      "lm": 15.0
+    },
+    "M2.2": {
+      "lm": 7.5
+    },
+    "M2.3": {
+      "lm": 2.4
+    },
+    "L1": {
+      "lm": 0.8
+    },
+    "L2.1": {
+      "lm": 0.2
+    },
+    "L2.2": {
+      "lm": 0.06
+    },
+    "L2.3": {
+      "lm": 0.01
+    }
+  },
+  "H54Fc N Neutral White High CRI AA Floody Headlamp": {
+    "H1": {
+      "lm": 238.0,
+      "runtime": "1.3 hr"
+    },
+    "H2.1": {
+      "lm": 197.0,
+      "runtime": "1.7 hr"
+    },
+    "H2.2": {
+      "lm": 155.0,
+      "runtime": "2.1hrs"
+    },
+    "H2.3": {
+      "lm": 102.0,
+      "runtime": "3.5hrs"
+    },
+    "M1": {
+      "lm": 55.0,
+      "runtime": "6.5hrs"
+    },
+    "M2.1": {
+      "lm": 15.0,
+      "runtime": "30.6 hrs"
+    },
+    "M2.2": {
+      "lm": 8.1,
+      "runtime": "2.8 days"
+    },
+    "M2.3": {
+      "lm": 2.9,
+      "runtime": "6.8 days"
+    },
+    "L1": {
+      "lm": 0.9,
+      "runtime": "18 days"
+    },
+    "L2.1": {
+      "lm": 0.21,
+      "runtime": "1.9 month"
+    },
+    "L2.2": {
+      "lm": 0.06,
+      "runtime": "3.3 months"
+    },
+    "L2.3": {
+      "lm": 0.02,
+      "runtime": "5.2 months"
+    }
+  },
+  "H502pr Photo Red AA Flood Headlamp": {
+    "H1": {
+      "lm": 100.0,
+      "runtime": "0.9 hrs"
+    },
+    "H2.1": {
+      "lm": 61.0,
+      "runtime": "1.9 hrs"
+    },
+    "H2.2": {
+      "lm": 38.0,
+      "runtime": "3.3 hrs"
+    },
+    "M1": {
+      "lm": 19.0,
+      "runtime": "7.5 hrs"
+    },
+    "M2.1": {
+      "lm": 10.0,
+      "runtime": "12 hrs"
+    },
+    "M2.2": {
+      "lm": 4.6,
+      "runtime": "27 hrs"
+    },
+    "L1": {
+      "lm": 1.0,
+      "runtime": "4 days"
+    },
+    "L2.1": {
+      "lm": 0.13,
+      "runtime": "2.8 weeks"
+    },
+    "L2.2": {
+      "lm": 0.02,
+      "runtime": "1.8 months"
+    },
+    "L2.3": {
+      "lm": 0.003,
+      "runtime": "2.8 months"
+    }
+  },
+  "SC600F Mk III Plus XHP50 Floody Cool White 18650 Flashlight": {
+    "H1": {
+      "lm": 1800.0,
+      "runtime": "2.3 hr"
+    },
+    "H2.1": {
+      "lm": 800.0,
+      "runtime": "2.7 hrs"
+    },
+    "H2.2": {
+      "lm": 515.0,
+      "runtime": "2.9 hrs"
+    },
+    "H2.3": {
+      "lm": 324.0,
+      "runtime": "4.1 hrs"
+    },
+    "M1": {
+      "lm": 120.0,
+      "runtime": "12.5 hrs"
+    },
+    "M2.1": {
+      "lm": 41.0,
+      "runtime": "36 hrs"
+    },
+    "M2.2": {
+      "lm": 23.0,
+      "runtime": "2.6 days"
+    },
+    "M2.3": {
+      "lm": 12.5,
+      "runtime": "4.6 days"
+    },
+    "L1": {
+      "lm": 3.5,
+      "runtime": "15.5 days"
+    },
+    "L2.1": {
+      "lm": 0.91,
+      "runtime": "1.9 months"
+    },
+    "L2.2": {
+      "lm": 0.44,
+      "runtime": "2.7 months"
+    },
+    "L2.3": {
+      "lm": 0.22,
+      "runtime": "4 months"
+    }
+  },
+  "SC5w Mk II AA Flashlight Neutral White": {
+    "H1": {
+      "lm": 550.0,
+      "runtime": "3min, then 407lm, total 0.5 hr"
+    },
+    "H2.1": {
+      "lm": 407.0,
+      "runtime": "0.9 hr"
+    },
+    "H2.2": {
+      "lm": 274.0,
+      "runtime": "1.5 hrs"
+    },
+    "H2.3": {
+      "lm": 166.0,
+      "runtime": "2.8 hrs"
+    },
+    "M1": {
+      "lm": 92.0,
+      "runtime": "4.9 hrs"
+    },
+    "M2.1": {
+      "lm": 46.0,
+      "runtime": "9.6 hrs"
+    },
+    "M2.2": {
+      "lm": 21.0,
+      "runtime": "21 hrs"
+    },
+    "M2.3": {
+      "lm": 8.6,
+      "runtime": "48 hrs"
+    },
+    "L1": {
+      "lm": 3.2,
+      "runtime": "4.2 days"
+    },
+    "L2.1": {
+      "lm": 1.1,
+      "runtime": "14 days"
+    },
+    "L2.2": {
+      "lm": 0.33,
+      "runtime": "50 days"
+    },
+    "L2.3": {
+      "lm": 0.09,
+      "runtime": "4.3 months"
+    }
+  },
+  "H53Fc AA Headlamp Floody Neutral White High CRI": {
+    "H1": {
+      "lm": 276.0,
+      "runtime": "0.9 hr"
+    },
+    "H2.1": {
+      "lm": 230.0,
+      "runtime": "1.6 hr"
+    },
+    "H2.2": {
+      "lm": 165.0,
+      "runtime": "2.3 hrs"
+    },
+    "H2.3": {
+      "lm": 102.0,
+      "runtime": "4.2 hrs"
+    },
+    "M1": {
+      "lm": 55.0,
+      "runtime": "8.5 hrs"
+    },
+    "M2.1": {
+      "lm": 25.0,
+      "runtime": "21 hrs"
+    },
+    "M2.2": {
+      "lm": 10.0,
+      "runtime": "41 hrs"
+    },
+    "M2.3": {
+      "lm": 3.4,
+      "runtime": "4.5 days"
+    },
+    "L1": {
+      "lm": 1.0,
+      "runtime": "13 days"
+    },
+    "L2.1": {
+      "lm": 0.26,
+      "runtime": "1.1 month"
+    },
+    "L2.2": {
+      "lm": 0.06,
+      "runtime": "2.2 months"
+    },
+    "L2.3": {
+      "lm": 0.01,
+      "runtime": "3.3 months"
+    }
+  },
+  "H53w AA Headlamp Neutral White": {
+    "H1": {
+      "lm": 330.0,
+      "runtime": "0.9 hr"
+    },
+    "H2.1": {
+      "lm": 275.0,
+      "runtime": "1.6 hr"
+    },
+    "H2.2": {
+      "lm": 198.0,
+      "runtime": "2.3 hrs"
+    },
+    "H2.3": {
+      "lm": 122.0,
+      "runtime": "4.2 hrs"
+    },
+    "M1": {
+      "lm": 65.0,
+      "runtime": "8.5 hrs"
+    },
+    "M2.1": {
+      "lm": 30.0,
+      "runtime": "21 hrs"
+    },
+    "M2.2": {
+      "lm": 12.0,
+      "runtime": "41 hrs"
+    },
+    "M2.3": {
+      "lm": 4.1,
+      "runtime": "4.5 days"
+    },
+    "L1": {
+      "lm": 1.2,
+      "runtime": "13 days"
+    },
+    "L2.1": {
+      "lm": 0.31,
+      "runtime": "1.1 month"
+    },
+    "L2.2": {
+      "lm": 0.07,
+      "runtime": "2.2 months"
+    },
+    "L2.3": {
+      "lm": 0.013,
+      "runtime": "3.3 months"
+    }
+  },
+  "H53Fw AA Headlamp Floody Neutral White": {
+    "H1": {
+      "lm": 320.0,
+      "runtime": "0.9 hr"
+    },
+    "H2.1": {
+      "lm": 267.0,
+      "runtime": "1.6 hr"
+    },
+    "H2.2": {
+      "lm": 192.0,
+      "runtime": "2.3 hrs"
+    },
+    "H2.3": {
+      "lm": 119.0,
+      "runtime": "4.2 hrs"
+    },
+    "M1": {
+      "lm": 63.0,
+      "runtime": "8.5 hrs"
+    },
+    "M2.1": {
+      "lm": 29.0,
+      "runtime": "21 hrs"
+    },
+    "M2.2": {
+      "lm": 12.0,
+      "runtime": "41 hrs"
+    },
+    "M2.3": {
+      "lm": 4.0,
+      "runtime": "4.5 days"
+    },
+    "L1": {
+      "lm": 1.2,
+      "runtime": "13 days"
+    },
+    "L2.1": {
+      "lm": 0.3,
+      "runtime": "1.1 month"
+    },
+    "L2.2": {
+      "lm": 0.06,
+      "runtime": "2.2 months"
+    },
+    "L2.3": {
+      "lm": 0.01,
+      "runtime": "3.3 months"
+    }
+  },
+  "SC600 Mk IV 18650 XHP35 Cool White Flashlight": {
+    "H1": {
+      "lm": 1616.0,
+      "runtime": "1.9 hours"
+    },
+    "H2.1": {
+      "lm": 1010.0,
+      "runtime": "2.2 hours"
+    },
+    "H2.2": {
+      "lm": 579.0,
+      "runtime": "3.1 hours"
+    },
+    "H2.3": {
+      "lm": 305.0,
+      "runtime": "5.6 hours"
+    },
+    "M1": {
+      "lm": 147.0,
+      "runtime": "13.6 hours"
+    },
+    "M2.1": {
+      "lm": 65.0,
+      "runtime": "36 hours"
+    },
+    "M2.2": {
+      "lm": 26.4,
+      "runtime": "3.7 days"
+    },
+    "M2.3": {
+      "lm": 9.9,
+      "runtime": "9.1 days"
+    },
+    "L1": {
+      "lm": 3.4,
+      "runtime": "19.6 days"
+    },
+    "L2.1": {
+      "lm": 1.06,
+      "runtime": "1.5 months"
+    },
+    "L2.2": {
+      "lm": 0.3,
+      "runtime": "2.8 months"
+    },
+    "L2.3": {
+      "lm": 0.08,
+      "runtime": "4.6 months"
+    }
+  },
+  "SC600w Mk IV 18650 XHP35 Neutral White Flashlight": {
+    "H1": {
+      "lm": 1400.0,
+      "runtime": "1.9 hours"
+    },
+    "H2.1": {
+      "lm": 875.0,
+      "runtime": "2.2 hours"
+    },
+    "H2.2": {
+      "lm": 502.0,
+      "runtime": "3.1 hours"
+    },
+    "H2.3": {
+      "lm": 264.0,
+      "runtime": "5.6 hours"
+    },
+    "M1": {
+      "lm": 127.0,
+      "runtime": "13.6 hours"
+    },
+    "M2.1": {
+      "lm": 56.4,
+      "runtime": "36 hours"
+    },
+    "M2.2": {
+      "lm": 22.9,
+      "runtime": "3.7 days"
+    },
+    "M2.3": {
+      "lm": 8.5,
+      "runtime": "9.1 days"
+    },
+    "L1": {
+      "lm": 2.9,
+      "runtime": "19.6 days"
+    },
+    "L2.1": {
+      "lm": 0.92,
+      "runtime": "1.5 months"
+    },
+    "L2.2": {
+      "lm": 0.26,
+      "runtime": "2.8 months"
+    },
+    "L2.3": {
+      "lm": 0.07,
+      "runtime": "4.6 months"
+    }
+  },
+  "SC600w Mk IV HI 18650 XHP35 Neutral White High Intensity Flashlight": {
+    "H1": {
+      "lm": 1400.0,
+      "runtime": "1.9 hours"
+    },
+    "H2.1": {
+      "lm": 875.0,
+      "runtime": "2.2 hours"
+    },
+    "H2.2": {
+      "lm": 502.0,
+      "runtime": "3.1 hours"
+    },
+    "H2.3": {
+      "lm": 264.0,
+      "runtime": "5.6 hours"
+    },
+    "M1": {
+      "lm": 127.0,
+      "runtime": "13.6 hours"
+    },
+    "M2.1": {
+      "lm": 56.4,
+      "runtime": "36 hours"
+    },
+    "M2.2": {
+      "lm": 22.9,
+      "runtime": "3.7 days"
+    },
+    "M2.3": {
+      "lm": 8.5,
+      "runtime": "9.1 days"
+    },
+    "L1": {
+      "lm": 2.9,
+      "runtime": "19.6 days"
+    },
+    "L2.1": {
+      "lm": 0.92,
+      "runtime": "1.5 months"
+    },
+    "L2.2": {
+      "lm": 0.26,
+      "runtime": "2.8 months"
+    },
+    "L2.3": {
+      "lm": 0.07,
+      "runtime": "4.6 months"
+    }
+  },
+  "H600 Mk IV 18650 XHP35 Cool White Headlamp": {
+    "H1": {
+      "lm": 1616.0,
+      "runtime": "2.8 hrs"
+    },
+    "H2.1": {
+      "lm": 1010.0,
+      "runtime": "2.9 hrs"
+    },
+    "H2.2": {
+      "lm": 579.0,
+      "runtime": "3.2 hrs"
+    },
+    "H2.3": {
+      "lm": 305.0,
+      "runtime": "6.3 hrs"
+    },
+    "M1": {
+      "lm": 147.0,
+      "runtime": "13.8 hrs"
+    },
+    "M2.1": {
+      "lm": 65.0,
+      "runtime": "28 hrs"
+    },
+    "M2.2": {
+      "lm": 26.4,
+      "runtime": "2.8 days"
+    },
+    "M2.3": {
+      "lm": 9.9,
+      "runtime": "7.3 days"
+    },
+    "L1": {
+      "lm": 3.4,
+      "runtime": "18.5 days"
+    },
+    "L2.1": {
+      "lm": 1.06,
+      "runtime": "1.5 months"
+    },
+    "L2.2": {
+      "lm": 0.3,
+      "runtime": "3 months"
+    },
+    "L2.3": {
+      "lm": 0.08,
+      "runtime": "4 months"
+    }
+  },
+  "H600w Mk IV 18650 XHP35 Neutral White Headlamp": {
+    "H1": {
+      "lm": 1400.0,
+      "runtime": "2.8 hrs"
+    },
+    "H2.1": {
+      "lm": 875.0,
+      "runtime": "2.9 hrs"
+    },
+    "H2.2": {
+      "lm": 502.0,
+      "runtime": "3.2 hrs"
+    },
+    "H2.3": {
+      "lm": 264.0,
+      "runtime": "6.3 hrs"
+    },
+    "M1": {
+      "lm": 127.0,
+      "runtime": "13.8 hrs"
+    },
+    "M2.1": {
+      "lm": 56.4,
+      "runtime": "28 hrs"
+    },
+    "M2.2": {
+      "lm": 22.9,
+      "runtime": "2.8 days"
+    },
+    "M2.3": {
+      "lm": 8.5,
+      "runtime": "7.3 days"
+    },
+    "L1": {
+      "lm": 2.9,
+      "runtime": "18.5 days"
+    },
+    "L2.1": {
+      "lm": 0.92,
+      "runtime": "1.5 months"
+    },
+    "L2.2": {
+      "lm": 0.26,
+      "runtime": "3 months"
+    },
+    "L2.3": {
+      "lm": 0.07,
+      "runtime": "4 months"
+    }
+  },
+  "H600F Mk IV 18650 XHP35 Floody Cool White Headlamp": {
+    "H1": {
+      "lm": 1568.0,
+      "runtime": "2.8 hrs"
+    },
+    "H2.1": {
+      "lm": 980.0,
+      "runtime": "2.9 hrs"
+    },
+    "H2.2": {
+      "lm": 562.0,
+      "runtime": "3.2 hrs"
+    },
+    "H2.3": {
+      "lm": 296.0,
+      "runtime": "6.3 hrs"
+    },
+    "M1": {
+      "lm": 143.0,
+      "runtime": "13.8 hrs"
+    },
+    "M2.1": {
+      "lm": 63.0,
+      "runtime": "28 hrs"
+    },
+    "M2.2": {
+      "lm": 25.7,
+      "runtime": "2.8 days"
+    },
+    "M2.3": {
+      "lm": 9.6,
+      "runtime": "7.3 days"
+    },
+    "L1": {
+      "lm": 3.3,
+      "runtime": "18.5 days"
+    },
+    "L2.1": {
+      "lm": 1.0,
+      "runtime": "1.5 months"
+    },
+    "L2.2": {
+      "lm": 0.3,
+      "runtime": "3 months"
+    },
+    "L2.3": {
+      "lm": 0.08,
+      "runtime": "4 months"
+    }
+  },
+  "H600Fw Mk IV 18650 XHP35 Floody Neutral White Headlamp": {
+    "H1": {
+      "lm": 1358.0,
+      "runtime": "2.8 hrs"
+    },
+    "H2.1": {
+      "lm": 849.0,
+      "runtime": "2.9 hrs"
+    },
+    "H2.2": {
+      "lm": 487.0,
+      "runtime": "3.2 hrs"
+    },
+    "H2.3": {
+      "lm": 256.0,
+      "runtime": "6.3 hrs"
+    },
+    "M1": {
+      "lm": 124.0,
+      "runtime": "13.8 hrs"
+    },
+    "M2.1": {
+      "lm": 55.0,
+      "runtime": "28 hrs"
+    },
+    "M2.2": {
+      "lm": 22.2,
+      "runtime": "2.8 days"
+    },
+    "M2.3": {
+      "lm": 8.3,
+      "runtime": "7.3 days"
+    },
+    "L1": {
+      "lm": 2.8,
+      "runtime": "18.5 days"
+    },
+    "L2.1": {
+      "lm": 0.9,
+      "runtime": "1.5 months"
+    },
+    "L2.2": {
+      "lm": 0.26,
+      "runtime": "3 months"
+    },
+    "L2.3": {
+      "lm": 0.07,
+      "runtime": "4 months"
+    }
+  },
+  "H604 18650 XHP35 Flood Cool White Headlamp": {
+    "H1": {
+      "lm": 1616.0,
+      "runtime": "2.8 hr"
+    },
+    "H2.1": {
+      "lm": 1010.0,
+      "runtime": "2.9 hr"
+    },
+    "H2.2": {
+      "lm": 579.0,
+      "runtime": "3.2 hr"
+    },
+    "H2.3": {
+      "lm": 305.0,
+      "runtime": "6.3 hr"
+    },
+    "M1": {
+      "lm": 147.0,
+      "runtime": "13.8 hr"
+    },
+    "M2.1": {
+      "lm": 65.0,
+      "runtime": "28 hr"
+    },
+    "M2.2": {
+      "lm": 26.4,
+      "runtime": "2.8 days"
+    },
+    "M2.3": {
+      "lm": 9.9,
+      "runtime": "7.3 days"
+    },
+    "L1": {
+      "lm": 3.4,
+      "runtime": "18.5 days"
+    },
+    "L2.1": {
+      "lm": 1.06,
+      "runtime": "1.5 months"
+    },
+    "L2.2": {
+      "lm": 0.3,
+      "runtime": "3 months"
+    },
+    "L2.3": {
+      "lm": 0.08,
+      "runtime": "4 months"
+    }
+  },
+  "H604w 18650 XHP35 Flood Neutral White Headlamp": {
+    "H1": {
+      "lm": 1400.0,
+      "runtime": "2.8 hr"
+    },
+    "H2.1": {
+      "lm": 875.0,
+      "runtime": "2.9 hr"
+    },
+    "H2.2": {
+      "lm": 502.0,
+      "runtime": "3.2 hr"
+    },
+    "H2.3": {
+      "lm": 264.0,
+      "runtime": "6.3 hr"
+    },
+    "M1": {
+      "lm": 127.0,
+      "runtime": "13.8 hr"
+    },
+    "M2.1": {
+      "lm": 56.4,
+      "runtime": "28 hr"
+    },
+    "M2.2": {
+      "lm": 22.9,
+      "runtime": "2.8 days"
+    },
+    "M2.3": {
+      "lm": 8.5,
+      "runtime": "7.3 days"
+    },
+    "L1": {
+      "lm": 2.9,
+      "runtime": "18.5 days"
+    },
+    "L2.1": {
+      "lm": 0.92,
+      "runtime": "1.5 months"
+    },
+    "L2.2": {
+      "lm": 0.26,
+      "runtime": "3 months"
+    },
+    "L2.3": {
+      "lm": 0.07,
+      "runtime": "4 months"
+    }
+  },
+  "H604c 18650 XHP50.2 Flood 4000K High CRI Headlamp": {
+    "H1": {
+      "lm": 1616.0,
+      "runtime": "2.5 hrs"
+    },
+    "H2.1": {
+      "lm": 1010.0,
+      "runtime": "2.9 hrs"
+    },
+    "H2.2": {
+      "lm": 579.0,
+      "runtime": "3.1 hrs"
+    },
+    "H2.3": {
+      "lm": 305.0,
+      "runtime": "5.3 hrs"
+    },
+    "M1": {
+      "lm": 147.0,
+      "runtime": "12.5 hrs"
+    },
+    "M2.1": {
+      "lm": 65.0,
+      "runtime": "27.5 hrs"
+    },
+    "M2.2": {
+      "lm": 26.4,
+      "runtime": "2.7 days"
+    },
+    "M2.3": {
+      "lm": 9.9,
+      "runtime": "7.1 days"
+    },
+    "L1": {
+      "lm": 3.4,
+      "runtime": "17.5 days"
+    },
+    "L2.1": {
+      "lm": 1.06,
+      "runtime": "2 months"
+    },
+    "L2.2": {
+      "lm": 0.3,
+      "runtime": "3.8 months"
+    },
+    "L2.3": {
+      "lm": 0.08,
+      "runtime": "5.4 months"
+    }
+  },
+  "SC600F Mk IV Plus 18650 XHP50 Floody Cool White Flashlight": {
+    "H1": {
+      "lm": 2260.0,
+      "runtime": "1.8 hours"
+    },
+    "H2.1": {
+      "lm": 1289.0,
+      "runtime": "2 hours"
+    },
+    "H2.2": {
+      "lm": 693.0,
+      "runtime": "2.5 hours"
+    },
+    "H2.3": {
+      "lm": 352.0,
+      "runtime": "5.1 hours"
+    },
+    "M1": {
+      "lm": 168.0,
+      "runtime": "12.1 hours"
+    },
+    "M2.1": {
+      "lm": 76.0,
+      "runtime": "26 hours"
+    },
+    "M2.2": {
+      "lm": 32.4,
+      "runtime": "2.5 days"
+    },
+    "M2.3": {
+      "lm": 13.0,
+      "runtime": "6 days"
+    },
+    "L1": {
+      "lm": 4.9,
+      "runtime": "13.5 days"
+    },
+    "L2.1": {
+      "lm": 1.8,
+      "runtime": "1 month"
+    },
+    "L2.2": {
+      "lm": 0.6,
+      "runtime": "2 months"
+    },
+    "L2.3": {
+      "lm": 0.2,
+      "runtime": "3.5 months"
+    }
+  },
+  "SC600Fd Mk IV Plus 18650 XHP50 Floody 5000K High CRI Flashlight": {
+    "H1": {
+      "lm": 1816.0
+    },
+    "H2.1": {
+      "lm": 1035.0
+    },
+    "H2.2": {
+      "lm": 557.0
+    },
+    "H2.3": {
+      "lm": 283.0
+    },
+    "M1": {
+      "lm": 135.0
+    },
+    "M2.1": {
+      "lm": 61.0
+    },
+    "M2.2": {
+      "lm": 26.0
+    },
+    "M2.3": {
+      "lm": 10.5
+    },
+    "L1": {
+      "lm": 4.0
+    },
+    "L2.1": {
+      "lm": 1.4
+    },
+    "L2.2": {
+      "lm": 0.5
+    },
+    "L2.3": {
+      "lm": 0.15
+    }
+  },
+  "SC700d 21700 XHP70.2 Neutral White High CRI Flashlight": {
+    "H1": {
+      "lm": 3000.0,
+      "runtime": "2 hrs"
+    },
+    "H2.1": {
+      "lm": 1458.0,
+      "runtime": "2.2 hrs"
+    },
+    "H2.2": {
+      "lm": 945.0,
+      "runtime": "2.4 hrs"
+    },
+    "H2.3": {
+      "lm": 583.0,
+      "runtime": "4.7 hrs"
+    },
+    "M1": {
+      "lm": 192.0,
+      "runtime": "12.5 hrs"
+    },
+    "M2.1": {
+      "lm": 52.0,
+      "runtime": "2 days"
+    },
+    "M2.2": {
+      "lm": 25.2,
+      "runtime": "4 days"
+    },
+    "M2.3": {
+      "lm": 11.6,
+      "runtime": "8 days"
+    },
+    "L1": {
+      "lm": 2.1,
+      "runtime": "34 days"
+    },
+    "L2.1": {
+      "lm": 0.32,
+      "runtime": "2.8 months"
+    },
+    "L2.2": {
+      "lm": 0.12,
+      "runtime": "4 months"
+    },
+    "L2.3": {
+      "lm": 0.04,
+      "runtime": "6 months"
+    }
+  },
+  "H503w AA Neutral White Flood Headlamp": {
+    "H1": {
+      "lm": 330.0,
+      "runtime": "0.9 hr"
+    },
+    "H2.1": {
+      "lm": 275.0,
+      "runtime": "1.6 hr"
+    },
+    "H2.2": {
+      "lm": 198.0,
+      "runtime": "2.3 hrs"
+    },
+    "H2.3": {
+      "lm": 122.0,
+      "runtime": "4.2 hrs"
+    },
+    "M1": {
+      "lm": 65.0,
+      "runtime": "8.5 hrs"
+    },
+    "M2.1": {
+      "lm": 30.0,
+      "runtime": "21 hrs"
+    },
+    "M2.2": {
+      "lm": 12.0,
+      "runtime": "41 hrs"
+    },
+    "M2.3": {
+      "lm": 4.1,
+      "runtime": "4.5 days"
+    },
+    "L1": {
+      "lm": 1.2,
+      "runtime": "13 days"
+    },
+    "L2.1": {
+      "lm": 0.31,
+      "runtime": "1.1 month"
+    },
+    "L2.2": {
+      "lm": 0.07,
+      "runtime": "2.2 months"
+    },
+    "L2.3": {
+      "lm": 0.013,
+      "runtime": "3.3 months"
+    }
+  },
+  "H503c AA LH351D 4000K Neutral White High CRI Flood Headlamp": {
+    "H1": {
+      "lm": 264.0,
+      "runtime": "0.9 hr"
+    },
+    "H2.1": {
+      "lm": 220.0,
+      "runtime": "1.6 hr"
+    },
+    "H2.2": {
+      "lm": 158.0,
+      "runtime": "2.3 hrs"
+    },
+    "H2.3": {
+      "lm": 97.0,
+      "runtime": "4.2 hrs"
+    },
+    "M1": {
+      "lm": 52.0,
+      "runtime": "8.5 hrs"
+    },
+    "M2.1": {
+      "lm": 24.0,
+      "runtime": "21 hrs"
+    },
+    "M2.2": {
+      "lm": 9.6,
+      "runtime": "41 hrs"
+    },
+    "M2.3": {
+      "lm": 3.3,
+      "runtime": "4.5 days"
+    },
+    "L1": {
+      "lm": 1.0,
+      "runtime": "13 days"
+    },
+    "L2.1": {
+      "lm": 0.25,
+      "runtime": "1.1 month"
+    },
+    "L2.2": {
+      "lm": 0.06,
+      "runtime": "2.2 months"
+    },
+    "L2.3": {
+      "lm": 0.01,
+      "runtime": "3.3 months"
+    }
+  },
+  "SC64c LE 18650 4000K High CRI Flashlight Limited Edition": {
+    "H1": {
+      "lm": 828.0,
+      "runtime": "2.6 hrs"
+    },
+    "H2.1": {
+      "lm": 533.0,
+      "runtime": "2.8 hrs"
+    },
+    "H2.2": {
+      "lm": 314.0,
+      "runtime": "4.4 hrs"
+    },
+    "H2.3": {
+      "lm": 168.0,
+      "runtime": "8.6 hrs"
+    },
+    "M1": {
+      "lm": 83.0,
+      "runtime": "20.5 hrs"
+    },
+    "M2.1": {
+      "lm": 37.0,
+      "runtime": "1.9 days"
+    },
+    "M2.2": {
+      "lm": 15.3
+    },
+    "M2.3": {
+      "lm": 5.7
+    },
+    "L1": {
+      "lm": 1.9
+    },
+    "L2.1": {
+      "lm": 0.62
+    },
+    "L2.2": {
+      "lm": 0.17
+    },
+    "L2.3": {
+      "lm": 0.05
+    }
+  },
+  "SC52F L2 AA Flashlight Cool White": {
+    "H1": {
+      "lm": 285.0,
+      "runtime": "0.9 hrs"
+    },
+    "H2.1": {
+      "lm": 175.0,
+      "runtime": "1.7 hrs"
+    },
+    "H2.2": {
+      "lm": 110.0,
+      "runtime": "3 hrs"
+    },
+    "M1": {
+      "lm": 51.0,
+      "runtime": "7.5 hrs"
+    },
+    "M2.1": {
+      "lm": 26.0,
+      "runtime": "12 hrs"
+    },
+    "M2.2": {
+      "lm": 12.0,
+      "runtime": "27 hrs"
+    },
+    "L1": {
+      "lm": 2.8,
+      "runtime": "4 days"
+    },
+    "L2.1": {
+      "lm": 0.34,
+      "runtime": "3 weeks"
+    },
+    "L2.2": {
+      "lm": 0.06,
+      "runtime": "2 months"
+    },
+    "L2.3": {
+      "lm": 0.01,
+      "runtime": "3 months"
+    }
+  },
+  "H53c LE Neutral White High CRI AA Headlamp": {
+    "H1": {
+      "lm": 285.0,
+      "runtime": "0.9 hr"
+    },
+    "H2.1": {
+      "lm": 238.0,
+      "runtime": "1.6 hr"
+    },
+    "H2.2": {
+      "lm": 171.0,
+      "runtime": "2.3 hrs"
+    },
+    "H2.3": {
+      "lm": 106.0,
+      "runtime": "4.2 hrs"
+    },
+    "M1": {
+      "lm": 56.0,
+      "runtime": "8.5 hrs"
+    },
+    "M2.1": {
+      "lm": 26.0,
+      "runtime": "21 hrs"
+    },
+    "M2.2": {
+      "lm": 10.3,
+      "runtime": "41 hrs"
+    },
+    "M2.3": {
+      "lm": 3.5,
+      "runtime": "4.5 days"
+    },
+    "L1": {
+      "lm": 1.0,
+      "runtime": "13 days"
+    },
+    "L2.1": {
+      "lm": 0.26,
+      "runtime": "1.1 month"
+    },
+    "L2.2": {
+      "lm": 0.06,
+      "runtime": "2.2 months"
+    },
+    "L2.3": {
+      "lm": 0.01,
+      "runtime": "3.3 months"
+    }
+  },
+  "H53Fc LE Floody Neutral White High CRI AA Headlamp": {
+    "H1": {
+      "lm": 276.0,
+      "runtime": "0.9 hr"
+    },
+    "H2.1": {
+      "lm": 230.0,
+      "runtime": "1.6 hr"
+    },
+    "H2.2": {
+      "lm": 165.0,
+      "runtime": "2.3 hrs"
+    },
+    "H2.3": {
+      "lm": 102.0,
+      "runtime": "4.2 hrs"
+    },
+    "M1": {
+      "lm": 55.0,
+      "runtime": "8.5 hrs"
+    },
+    "M2.1": {
+      "lm": 25.0,
+      "runtime": "21 hrs"
+    },
+    "M2.2": {
+      "lm": 10.0,
+      "runtime": "41 hrs"
+    },
+    "M2.3": {
+      "lm": 3.4,
+      "runtime": "4.5 days"
+    },
+    "L1": {
+      "lm": 1.0,
+      "runtime": "13 days"
+    },
+    "L2.1": {
+      "lm": 0.26,
+      "runtime": "1.1 month"
+    },
+    "L2.2": {
+      "lm": 0.06,
+      "runtime": "2.2 months"
+    },
+    "L2.3": {
+      "lm": 0.01,
+      "runtime": "3.3 months"
+    }
+  },
+  "SC5c Mk II LE AA Flashlight Neutral White High CRI Limited Edition": {
+    "H1": {
+      "lm": 475.0,
+      "runtime": "3min, then 352lm, total 0.5 hr"
+    },
+    "H2.1": {
+      "lm": 352.0,
+      "runtime": "0.9 hr"
+    },
+    "H2.2": {
+      "lm": 236.0,
+      "runtime": "1.5 hrs"
+    },
+    "H2.3": {
+      "lm": 144.0,
+      "runtime": "2.8 hrs"
+    },
+    "M1": {
+      "lm": 79.0,
+      "runtime": "4.9 hrs"
+    },
+    "M2.1": {
+      "lm": 40.0,
+      "runtime": "9.6 hrs"
+    },
+    "M2.2": {
+      "lm": 18.0,
+      "runtime": "21 hrs"
+    },
+    "M2.3": {
+      "lm": 7.4,
+      "runtime": "48 hrs"
+    },
+    "L1": {
+      "lm": 2.8,
+      "runtime": "4.2 days"
+    },
+    "L2.1": {
+      "lm": 1.0,
+      "runtime": "14 days"
+    },
+    "L2.2": {
+      "lm": 0.28,
+      "runtime": "50 days"
+    },
+    "L2.3": {
+      "lm": 0.08,
+      "runtime": "4.3 months"
+    }
+  },
+  "H503r Deep Red AA Flood Headlamp": {
+    "H1": {
+      "lm": 122.0,
+      "runtime": "1 hour"
+    },
+    "H2.1": {
+      "lm": 84.0,
+      "runtime": "1.7 hours"
+    },
+    "H2.2": {
+      "lm": 56.0,
+      "runtime": "2.7 hours"
+    },
+    "H2.3": {
+      "lm": 30.0,
+      "runtime": "5.2 hours"
+    },
+    "M1": {
+      "lm": 14.0,
+      "runtime": "11.3 hours"
+    },
+    "M2.1": {
+      "lm": 8.4,
+      "runtime": "19 hours"
+    },
+    "M2.2": {
+      "lm": 4.0,
+      "runtime": "1.7 days"
+    },
+    "M2.3": {
+      "lm": 2.0,
+      "runtime": "3.2 days"
+    },
+    "L1": {
+      "lm": 1.0,
+      "runtime": "5.5 days"
+    },
+    "L2.1": {
+      "lm": 0.04,
+      "runtime": "3 months"
+    },
+    "L2.2": {
+      "lm": 0.01,
+      "runtime": "5 months"
+    },
+    "L2.3": {
+      "lm": 0.002,
+      "runtime": "6.5 months"
+    }
+  },
+  "SC53c N Neutral White High CRI AA Flashlight": {
+    "H1": {
+      "lm": 207.0,
+      "runtime": "0.9 hr"
+    },
+    "H2.1": {
+      "lm": 173.0,
+      "runtime": "1.4 hr"
+    },
+    "H2.2": {
+      "lm": 138.0,
+      "runtime": "1.9 hr"
+    },
+    "H2.3": {
+      "lm": 88.0,
+      "runtime": "3.5 hrs"
+    },
+    "M1": {
+      "lm": 40.0,
+      "runtime": "8.5 hrs"
+    },
+    "M2.1": {
+      "lm": 14.3,
+      "runtime": "24 hrs"
+    },
+    "M2.2": {
+      "lm": 7.1,
+      "runtime": "50 hrs"
+    },
+    "M2.3": {
+      "lm": 2.2,
+      "runtime": "5.7 days"
+    },
+    "L1": {
+      "lm": 0.7,
+      "runtime": "15.3 days"
+    },
+    "L2.1": {
+      "lm": 0.15,
+      "runtime": "1.6 month"
+    },
+    "L2.2": {
+      "lm": 0.05,
+      "runtime": "2.8 months"
+    },
+    "L2.3": {
+      "lm": 0.01,
+      "runtime": "4.6 months"
+    }
+  },
+  "SC600w Mk IV Plus XHP50 Neutral White 18650 Flashlight": {
+    "H1": {
+      "lm": 2300.0,
+      "runtime": "1.8 hours"
+    },
+    "H2.1": {
+      "lm": 1311.0,
+      "runtime": "2 hours"
+    },
+    "H2.2": {
+      "lm": 705.0,
+      "runtime": "2.5 hours"
+    },
+    "H2.3": {
+      "lm": 358.0,
+      "runtime": "5.1 hours"
+    },
+    "M1": {
+      "lm": 171.0,
+      "runtime": "12.1 hours"
+    },
+    "M2.1": {
+      "lm": 77.0,
+      "runtime": "26 hours"
+    },
+    "M2.2": {
+      "lm": 33.0,
+      "runtime": "2.5 days"
+    },
+    "M2.3": {
+      "lm": 13.0,
+      "runtime": "6 days"
+    },
+    "L1": {
+      "lm": 5.0,
+      "runtime": "13.5 days"
+    },
+    "L2.1": {
+      "lm": 1.8,
+      "runtime": "1 month"
+    },
+    "L2.2": {
+      "lm": 0.6,
+      "runtime": "2 months"
+    },
+    "L2.3": {
+      "lm": 0.2,
+      "runtime": "3.5 months"
+    }
+  },
+  "H53c N Neutral White High CRI AA Headlamp": {
+    "H1": {
+      "lm": 240.0,
+      "runtime": "1.0 hr"
+    },
+    "H2.1": {
+      "lm": 207.0,
+      "runtime": "1.3 hr"
+    },
+    "H2.2": {
+      "lm": 169.0,
+      "runtime": "1.3 hr"
+    },
+    "H2.3": {
+      "lm": 115.0,
+      "runtime": "2.7 hrs"
+    },
+    "M1": {
+      "lm": 65.0,
+      "runtime": "5.3 hrs"
+    },
+    "M2.1": {
+      "lm": 17.0,
+      "runtime": "26.4 hrs"
+    },
+    "M2.2": {
+      "lm": 8.9,
+      "runtime": "2.2 days hrs"
+    },
+    "M2.3": {
+      "lm": 3.1,
+      "runtime": "5.6 days"
+    },
+    "L1": {
+      "lm": 0.9,
+      "runtime": "15 days"
+    },
+    "L2.1": {
+      "lm": 0.23,
+      "runtime": "1.6 month"
+    },
+    "L2.2": {
+      "lm": 0.07,
+      "runtime": "2.8 months"
+    },
+    "L2.3": {
+      "lm": 0.02,
+      "runtime": "4.4 months"
+    }
+  },
+  "H53Fc N Neutral White High CRI AA Floody Headlamp": {
+    "H1": {
+      "lm": 233.0,
+      "runtime": "1.0 hr"
+    },
+    "H2.1": {
+      "lm": 201.0,
+      "runtime": "1.3 hr"
+    },
+    "H2.2": {
+      "lm": 164.0,
+      "runtime": "1.3 hrs"
+    },
+    "H2.3": {
+      "lm": 112.0,
+      "runtime": "2.7 hrs"
+    },
+    "M1": {
+      "lm": 63.0,
+      "runtime": "5.3 hrs"
+    },
+    "M2.1": {
+      "lm": 16.3,
+      "runtime": "26.4 hrs"
+    },
+    "M2.2": {
+      "lm": 8.6,
+      "runtime": "2.2 days"
+    },
+    "M2.3": {
+      "lm": 3.0,
+      "runtime": "5.6 days"
+    },
+    "L1": {
+      "lm": 0.9,
+      "runtime": "15 days"
+    },
+    "L2.1": {
+      "lm": 0.22,
+      "runtime": "1.6 month"
+    },
+    "L2.2": {
+      "lm": 0.07,
+      "runtime": "2.8 months"
+    },
+    "L2.3": {
+      "lm": 0.02,
+      "runtime": "4.4 months"
+    }
+  },
+  "SC600c Mk IV Plus 18650 XHP50 4000K High CRI Flashlight": {
+    "H1": {
+      "lm": 1872.0
+    },
+    "H2.1": {
+      "lm": 1067.0
+    },
+    "H2.2": {
+      "lm": 574.0
+    },
+    "H2.3": {
+      "lm": 292.0
+    },
+    "M1": {
+      "lm": 139.0
+    },
+    "M2.1": {
+      "lm": 63.0
+    },
+    "M2.2": {
+      "lm": 27.0
+    },
+    "M2.3": {
+      "lm": 10.8
+    },
+    "L1": {
+      "lm": 4.1
+    },
+    "L2.1": {
+      "lm": 1.4
+    },
+    "L2.2": {
+      "lm": 0.5
+    },
+    "L2.3": {
+      "lm": 0.15
+    }
+  },
+  "SC53w AA Neutral White Flashlight": {
+    "H1": {
+      "lm": 330.0,
+      "runtime": "0.9 hr"
+    },
+    "H2.1": {
+      "lm": 275.0,
+      "runtime": "1.6 hr"
+    },
+    "H2.2": {
+      "lm": 198.0,
+      "runtime": "2.3 hrs"
+    },
+    "H2.3": {
+      "lm": 122.0,
+      "runtime": "4.2 hrs"
+    },
+    "M1": {
+      "lm": 65.0,
+      "runtime": "8.5 hrs"
+    },
+    "M2.1": {
+      "lm": 30.0,
+      "runtime": "21 hrs"
+    },
+    "M2.2": {
+      "lm": 12.0,
+      "runtime": "41 hrs"
+    },
+    "M2.3": {
+      "lm": 4.1,
+      "runtime": "4.5 days"
+    },
+    "L1": {
+      "lm": 1.2,
+      "runtime": "13 days"
+    },
+    "L2.1": {
+      "lm": 0.31,
+      "runtime": "1.1 month"
+    },
+    "L2.2": {
+      "lm": 0.07,
+      "runtime": "2.2 months"
+    },
+    "L2.3": {
+      "lm": 0.013,
+      "runtime": "3.3 months"
+    }
+  },
+  "SC64 18650 XHP35 Cool White Flashlight": {
+    "H1": {
+      "lm": 1616.0,
+      "runtime": "2.8 hrs"
+    },
+    "H2.1": {
+      "lm": 1010.0,
+      "runtime": "2.9 hrs"
+    },
+    "H2.2": {
+      "lm": 579.0,
+      "runtime": "3.2 hrs"
+    },
+    "H2.3": {
+      "lm": 305.0,
+      "runtime": "6.3 hrs"
+    },
+    "M1": {
+      "lm": 147.0,
+      "runtime": "13.8 hrs"
+    },
+    "M2.1": {
+      "lm": 65.0,
+      "runtime": "28 hrs"
+    },
+    "M2.2": {
+      "lm": 26.4,
+      "runtime": "2.8 days"
+    },
+    "M2.3": {
+      "lm": 9.9,
+      "runtime": "7.3 days"
+    },
+    "L1": {
+      "lm": 3.4,
+      "runtime": "18.5 days"
+    },
+    "L2.1": {
+      "lm": 1.06,
+      "runtime": "1.5 months"
+    },
+    "L2.2": {
+      "lm": 0.3,
+      "runtime": "3 months"
+    },
+    "L2.3": {
+      "lm": 0.08,
+      "runtime": "4 months"
+    }
+  },
+  "SC64w 18650 XHP35 Neutral White Flashlight": {
+    "H1": {
+      "lm": 1400.0,
+      "runtime": "2.8 hrs"
+    },
+    "H2.1": {
+      "lm": 875.0,
+      "runtime": "2.9 hrs"
+    },
+    "H2.2": {
+      "lm": 502.0,
+      "runtime": "3.2 hrs"
+    },
+    "H2.3": {
+      "lm": 264.0,
+      "runtime": "6.3 hrs"
+    },
+    "M1": {
+      "lm": 127.0,
+      "runtime": "13.8 hrs"
+    },
+    "M2.1": {
+      "lm": 56.4,
+      "runtime": "28 hrs"
+    },
+    "M2.2": {
+      "lm": 22.9,
+      "runtime": "2.8 days"
+    },
+    "M2.3": {
+      "lm": 8.5,
+      "runtime": "7.3 days"
+    },
+    "L1": {
+      "lm": 2.9,
+      "runtime": "18.5 days"
+    },
+    "L2.1": {
+      "lm": 0.92,
+      "runtime": "1.5 months"
+    },
+    "L2.2": {
+      "lm": 0.26,
+      "runtime": "3 months"
+    },
+    "L2.3": {
+      "lm": 0.07,
+      "runtime": "4 months"
+    }
+  },
+  "SC600Fc Mk IV Plus 18650 XHP50 Floody 4000K High CRI Flashlight": {
+    "H1": {
+      "lm": 1816.0
+    },
+    "H2.1": {
+      "lm": 1035.0
+    },
+    "H2.2": {
+      "lm": 557.0
+    },
+    "H2.3": {
+      "lm": 283.0
+    },
+    "M1": {
+      "lm": 135.0
+    },
+    "M2.1": {
+      "lm": 61.0
+    },
+    "M2.2": {
+      "lm": 26.0
+    },
+    "M2.3": {
+      "lm": 10.5
+    },
+    "L1": {
+      "lm": 4.0
+    },
+    "L2.1": {
+      "lm": 1.4
+    },
+    "L2.2": {
+      "lm": 0.5
+    },
+    "L2.3": {
+      "lm": 0.15
+    }
+  }
+}

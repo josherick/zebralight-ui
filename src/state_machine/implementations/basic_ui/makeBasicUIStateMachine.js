@@ -285,6 +285,7 @@ export default function makeBasicUIStateMachine(): [
             m.getUIGroup() !== 'g5'
           ) {
             m.setProgrammingSlot(level, newSublevel);
+            m.setLastUsedSublevel(level, newSublevel);
             const brightnessPrefix = m.getEffectivePrefixForSlot(
               level,
               newSublevel,

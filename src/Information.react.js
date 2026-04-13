@@ -24,7 +24,7 @@ export default function Information(props: Props): React.Element<'div'> | null {
   const { memory } = props;
   const { settings } = useSettings();
   const hideG6G7 = settings.hideG6G7 && memory.getUIGroup() === 'g5';
-  const info = getInformation(lampState, memory);
+  const info = getInformation(lampState, memory, settings.selectedLamp);
   const longestDescription = getLongestDescription();
   const [isExpanded, setIsExpanded] = useState(false);
 

@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import type { MemoryInterface } from './state_machine/implementations/basic_ui/memory.js';
 import { useSettings } from './SettingsContext.js';
+import LampSelector from './LampSelector.react.js';
 
 type Props = {
   memory: MemoryInterface,
@@ -124,6 +125,20 @@ export default function Settings({ memory, onFactoryReset }: Props): React.Eleme
               ? 'Cannot hide G6/G7 while currently in a G6 or G7 group.'
               : 'Hides the G6 and G7 groups from the mode grid for a simpler interface. They will reappear if you switch into one of them.'}
           </div>
+        </div>
+
+        <div className="settings-item">
+          <div className="settings-item-header">
+            <div className="settings-item-title">Select Lamp</div>
+          </div>
+          <div className="settings-item-description">
+            Select a lamp to show its lumen and runtime values. Some lamps in the list may have a slightly different UI, but
+            this setting only changes the displayed lumen and runtime values.
+          </div>
+          <LampSelector
+            value={settings.selectedLamp}
+            onChange={(name) => updateSetting('selectedLamp', name)}
+          />
         </div>
 
         <div className="settings-item">

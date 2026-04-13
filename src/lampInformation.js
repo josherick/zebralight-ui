@@ -20,9 +20,9 @@ import {
   parseSuffix,
 } from './state_machine/implementations/basic_ui/stateUtils.js';
 import {
-  getLumens as get604cLumens,
-  getRuntime as get604cRuntime,
-} from './configurations/604c.js';
+  getLumensForLamp,
+  getRuntimeForLamp,
+} from './lampData.js';
 
 function isGroupSelectState(state: StateType): boolean {
   return state.startsWith('group_select');
@@ -64,12 +64,18 @@ export function getEffectivePrefix(
   return memory.getEffectivePrefixForSlot(level, sublevel);
 }
 
-export function getLumens(statePrefix: StatePrefixType): number {
-  return get604cLumens()[statePrefix];
+export function getLumens(
+  statePrefix: StatePrefixType,
+  lampName: string,
+): number | null {
+  return getLumensForLamp(lampName)[statePrefix] ?? null;
 }
 
-export function getRuntime(statePrefix: StatePrefixType): string {
-  return get604cRuntime()[statePrefix];
+export function getRuntime(
+  statePrefix: StatePrefixType,
+  lampName: string,
+): string | null {
+  return getRuntimeForLamp(lampName)[statePrefix] ?? null;
 }
 
 export function getBrightnessLinearOrder(statePrefix: StatePrefixType): number {
@@ -379,6 +385,7 @@ function getDescription(
 export function getInformation(
   state: StateType,
   memory: MemoryInterface,
+  lampName: string,
 ): {
   level: string,
   lumens: string,
@@ -409,8 +416,10 @@ export function getInformation(
   }
   return {
     level: getLevel(state),
-    lumens: `${getLumens(effectivePrefix)} Lm`,
-    runtime: getRuntime(effectivePrefix),
+    lumens: getLumens(effectivePrefix, lampName) != null
+      ? `${getLumens(effectivePrefix, lampName)} Lm`
+      : '',
+    runtime: getRuntime(effectivePrefix, lampName) || '',
     description: getDescription(state, memory),
   };
 }
