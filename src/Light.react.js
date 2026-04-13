@@ -30,6 +30,13 @@ function isButtonDownEvent(event: string): boolean {
   );
 }
 
+function isButtonUpUserEvent(event: string): boolean {
+  return (
+    event === Transition.SHORT_PRESS_RELEASE ||
+    event === Transition.LONG_PRESS_RELEASE
+  );
+}
+
 export default function Light(_props: Props): React.Element<'div'> {
   const [state, transition, memory, hasTransition] =
     useBasicUIStateMachine();
@@ -81,10 +88,18 @@ export default function Light(_props: Props): React.Element<'div'> {
 
   const onEvent = useCallback(
     (event) => {
-      transition(event);
-      updateTimeoutBar(event);
+      const prevState = state;
+      const newState = transition(event);
+      const stateChanged = prevState !== newState;
+      // Only update the bar if the state changed, or if this is a
+      // user-initiated event (button press/release). Don't restart
+      // the bar on no-op timer events (e.g. MULTI_SINGLE_PRESS_TIMEOUT
+      // firing on a state that doesn't handle it).
+      if (stateChanged || isButtonDownEvent(event) || isButtonUpUserEvent(event)) {
+        updateTimeoutBar(event);
+      }
     },
-    [transition, updateTimeoutBar],
+    [state, transition, updateTimeoutBar],
   );
 
   return (
