@@ -99,25 +99,6 @@ export default function Settings(_props: Props): React.Element<'div'> {
 
         <div className="settings-item">
           <div className="settings-item-header">
-            <div className="settings-item-title">Hide G6/G7 Groups</div>
-            <div className="settings-item-control">
-              <label className="checkbox-label">
-                <input
-                  type="checkbox"
-                  checked={settings.hideG6G7}
-                  onChange={(e) => updateSetting('hideG6G7', e.target.checked)}
-                />
-              </label>
-            </div>
-          </div>
-          <div className="settings-item-description">
-            Hides the G6 and G7 groups from the mode grid for a simpler
-            interface. They will reappear if you switch into one of them.
-          </div>
-        </div>
-
-        <div className="settings-item">
-          <div className="settings-item-header">
             <div className="settings-item-title">Timeout Indicator</div>
             <div className="settings-item-control">
               <select
@@ -135,6 +116,25 @@ export default function Settings(_props: Props): React.Element<'div'> {
             Controls the visibility of the timeout countdown bar at the top of
             the screen. Subtle shows a thin grey bar, prominent makes it more
             visible, and off hides it entirely.
+          </div>
+        </div>
+
+        <div className="settings-item">
+          <div className="settings-item-header">
+            <div className="settings-item-title">Hide G6/G7 Groups</div>
+            <div className="settings-item-control">
+              <label className="checkbox-label">
+                <input
+                  type="checkbox"
+                  checked={settings.hideG6G7}
+                  onChange={(e) => updateSetting('hideG6G7', e.target.checked)}
+                />
+              </label>
+            </div>
+          </div>
+          <div className="settings-item-description">
+            Hides the G6 and G7 groups from the mode grid for a simpler
+            interface. They will reappear if you switch into one of them.
           </div>
         </div>
 
