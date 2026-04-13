@@ -2,12 +2,47 @@
 import * as React from 'react';
 import { useState } from 'react';
 
+const STORAGE_KEY = 'zebralight-ui-settings';
+
+const DEFAULTS = {
+  timeoutMultiplier: '1x',
+  timeoutIndicator: 'subtle',
+  hideG6G7: false,
+};
+
+function loadSettings(): typeof DEFAULTS {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      return { ...DEFAULTS, ...JSON.parse(stored) };
+    }
+  } catch (e) {
+    // Ignore
+  }
+  return { ...DEFAULTS };
+}
+
+function saveSettings(settings: typeof DEFAULTS): void {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
+  } catch (e) {
+    // Ignore
+  }
+}
+
 type Props = {};
 
 export default function Settings(_props: Props): React.Element<'div'> {
   const [isOpen, setIsOpen] = useState(false);
-  const [timeoutMultiplier, setTimeoutMultiplier] = useState('1x');
-  const [timeoutIndicator, setTimeoutIndicator] = useState('subtle');
+  const [settings, setSettings] = useState(loadSettings);
+
+  function updateSetting(key: string, value: any) {
+    setSettings((prev) => {
+      const next = { ...prev, [key]: value };
+      saveSettings(next);
+      return next;
+    });
+  }
 
   if (!isOpen) {
     return (
@@ -38,18 +73,18 @@ export default function Settings(_props: Props): React.Element<'div'> {
                 <button
                   type="button"
                   className={`toggle-option${
-                    timeoutMultiplier === '1x' ? ' selected' : ''
+                    settings.timeoutMultiplier === '1x' ? ' selected' : ''
                   }`}
-                  onClick={() => setTimeoutMultiplier('1x')}
+                  onClick={() => updateSetting('timeoutMultiplier', '1x')}
                 >
                   1x
                 </button>
                 <button
                   type="button"
                   className={`toggle-option${
-                    timeoutMultiplier === '2x' ? ' selected' : ''
+                    settings.timeoutMultiplier === '2x' ? ' selected' : ''
                   }`}
-                  onClick={() => setTimeoutMultiplier('2x')}
+                  onClick={() => updateSetting('timeoutMultiplier', '2x')}
                 >
                   2x
                 </button>
@@ -67,7 +102,11 @@ export default function Settings(_props: Props): React.Element<'div'> {
             <div className="settings-item-title">Hide G6/G7 Groups</div>
             <div className="settings-item-control">
               <label className="checkbox-label">
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  checked={settings.hideG6G7}
+                  onChange={(e) => updateSetting('hideG6G7', e.target.checked)}
+                />
               </label>
             </div>
           </div>
@@ -83,8 +122,8 @@ export default function Settings(_props: Props): React.Element<'div'> {
             <div className="settings-item-control">
               <select
                 className="settings-select"
-                value={timeoutIndicator}
-                onChange={(e) => setTimeoutIndicator(e.target.value)}
+                value={settings.timeoutIndicator}
+                onChange={(e) => updateSetting('timeoutIndicator', e.target.value)}
               >
                 <option value="subtle">Subtle</option>
                 <option value="prominent">Prominent</option>
