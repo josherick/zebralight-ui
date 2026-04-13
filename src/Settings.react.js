@@ -71,8 +71,8 @@ export default function Settings({ memory }: Props): React.Element<'div'> {
             </div>
           </div>
           <div className="settings-item-description">
-            Doubles the time window for double-clicks, triple-clicks, and
-            long-press cycling. Useful if you find the default timing too fast.
+            Allows slower double-clicks, triple-clicks, and long-press cycling.
+            Useful if you find the default timing too fast.
           </div>
         </div>
 
