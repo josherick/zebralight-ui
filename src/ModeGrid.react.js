@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import type { StateType } from './state_machine/implementations/basic_ui/enums.js';
 import type { MemoryInterface } from './state_machine/implementations/basic_ui/memory.js';
@@ -163,15 +163,17 @@ export default function ModeGrid({
   const { settings, updateSetting } = useSettings();
   const activeGroup = memory.getUIGroup();
   const [selectedGroup, setSelectedGroup] = useState(activeGroup);
+  const settingsRef = useRef(settings);
+  settingsRef.current = settings;
 
   // Sync selected group when active group changes, and disable
   // hideG6G7 if the user enters G6/G7.
   useEffect(() => {
     setSelectedGroup(activeGroup);
-    if (settings.hideG6G7 && activeGroup !== 'g5') {
+    if (settingsRef.current.hideG6G7 && activeGroup !== 'g5') {
       updateSetting('hideG6G7', false);
     }
-  }, [activeGroup, settings.hideG6G7, updateSetting]);
+  }, [activeGroup, updateSetting]);
 
   const hideG6G7 = settings.hideG6G7 && activeGroup === 'g5';
 

@@ -427,22 +427,14 @@ export function getInformation(
 export function getLongestDescription(): React.Element<'div'> {
   return (
     <div>
-      <div>When the light is off:</div>
-      <ul>
-        <li>1 short click to High</li>
-        <li>2 short clicks to Medium</li>
-        <li>3 short clicks to Strobe</li>
-        <li>4 short clicks to indicate battery level</li>
-        <li>5/6/7 short clicks to select UI group G5/G6/G7</li>
-        <li>15/18/21 short clicks to factory reset G5/G6/G7</li>
-        <li>
-          Press and hold to cycle L, M, H.
-          <ul>
-            <li>Press/hold also works when the light is on.</li>
-          </ul>
-        </li>
-      </ul>
-      <div>When the light is on, one short click turns off the light.</div>
+      <div>Double click to cycle through brightness levels for M2.</div>
+      <div>
+        Wait 12 seconds to exit programming mode. The most recently used lumen
+        level will be remembered for M2.
+      </div>
+      <div>
+        Press and hold to cycle L, M, H. Press a single time to turn off.
+      </div>
     </div>
   );
 }
