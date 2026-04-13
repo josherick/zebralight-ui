@@ -38,7 +38,7 @@ export default function useResettableTimer(
     }, timerDelayMs);
 
     return () => clearTimeout(timer.current);
-  }, [callback, delayMs, restart, startMs, setHasTriggered, timer]);
+  }, [callback, delayMs, restart, startMs, setHasTriggered]);
 
   return [restart, cancel];
 }
