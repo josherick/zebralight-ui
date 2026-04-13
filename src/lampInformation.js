@@ -171,7 +171,7 @@ function getDescription(
     const groupLabel = getGroupSelectLabel(state);
     if (groupLabel) {
       return (
-        <div>{`Selecting ${groupLabel}. Release and wait to confirm, or keep clicking.`}</div>
+        <div>{`Release and wait to select ${groupLabel}, or continue clicking.`}</div>
       );
     }
     // GROUP_SELECT_EXTRA: show factory reset info based on click count.
@@ -185,17 +185,17 @@ function getDescription(
     }
     const nextReset =
       clickCount < 8
-        ? `${15 - 7 - clickCount} more for G5 reset`
+        ? `${15 - 7 - clickCount} more short presses to factory reset G5.`
         : clickCount < 11
-          ? `${18 - 7 - clickCount} more for G6 reset`
+          ? `${18 - 7 - clickCount} more short presses to factory reset G6.`
           : clickCount < 14
-            ? `${21 - 7 - clickCount} more for G7 reset`
+            ? `${21 - 7 - clickCount} more short presses to factory reset G7.`
             : null;
     return (
       <div>
         {nextReset
-          ? `Keep clicking. ${nextReset}.`
-          : 'No more actions available. Release and wait to turn off.'}
+          ? `Release and wait to turn off. ${nextReset}`
+          : 'Release and wait to turn off.'}
       </div>
     );
   }
