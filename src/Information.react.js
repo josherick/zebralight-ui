@@ -46,7 +46,7 @@ export default function Information(props: Props): React.Element<'div'> | null {
   let descriptionClassName = 'description';
   let longestDescriptionPlaceholderClassName =
     'longest-description-placeholder';
-  if (isExpanded && lampState !== State.OFF) {
+  if (isExpanded) {
     descriptionClassName += ' expanded';
     longestDescriptionPlaceholderClassName += ' expanded';
   }
