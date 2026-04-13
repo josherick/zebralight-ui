@@ -260,6 +260,11 @@
   background-color: rgb(150, 50, 50);
 }
 
+.settings-button.confirm {
+  background-color: rgb(180, 40, 40);
+  border-color: rgb(220, 60, 60);
+}
+
 .checkbox-label input[type="checkbox"] {
   width: 18px;
   height: 18px;
