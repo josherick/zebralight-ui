@@ -154,7 +154,7 @@ function getDescription(
       <div>
         <div>Press and hold to cycle L, M, H.</div>
         <div>1, 2, 3 or 4 short presses for H, M, Strobe, Battery Indicator.</div>
-        <div>5/6/7 short presses to select G5/G6/G7. 15/18/21 to factory reset.</div>
+        <div>5/6/7 short presses to select G5/G6/G7. 15/18/21 to factory reset G5/G6/G7.</div>
       </div>
     );
   } else if (state === State.BATTERY_INDICATOR) {
