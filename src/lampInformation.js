@@ -36,9 +36,13 @@ export function getEffectivePrefix(
     return null;
   }
 
-  // Group select states display at L1 brightness.
+  // Group select states display at the last used L sublevel's brightness.
   if (isGroupSelectState(state)) {
-    return StatePrefix.L1;
+    const lastUsedLSublevel = memory.getLastUsedSublevelInGroup(
+      memory.getUIGroup(),
+      Level.L,
+    );
+    return memory.getEffectivePrefixForSlot(Level.L, lastUsedLSublevel);
   }
 
   const prefix = parsePrefix(state);
