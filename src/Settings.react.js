@@ -58,6 +58,15 @@ export default function Settings({ memory }: Props): React.Element<'div'> {
                 >
                   2x
                 </button>
+                <button
+                  type="button"
+                  className={`toggle-option${
+                    settings.timeoutMultiplier === '4x' ? ' selected' : ''
+                  }`}
+                  onClick={() => updateSetting('timeoutMultiplier', '4x')}
+                >
+                  4x
+                </button>
               </div>
             </div>
           </div>

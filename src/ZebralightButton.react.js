@@ -21,7 +21,7 @@ export default function ZebralightButton({
   onEvent,
 }: Props): React.Element<typeof Button> {
   const { settings } = useSettings();
-  const multiplier = settings.timeoutMultiplier === '2x' ? 2 : 1;
+  const multiplier = settings.timeoutMultiplier === '4x' ? 4 : settings.timeoutMultiplier === '2x' ? 2 : 1;
   const [longPressActive, setLongPressActive] = useState<boolean>(false);
 
   const onLongPressBeat = useCallback(() => {

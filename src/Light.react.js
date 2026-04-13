@@ -41,7 +41,7 @@ function isButtonUpUserEvent(event: string): boolean {
 
 export default function Light(_props: Props): React.Element<'div'> {
   const { settings } = useSettings();
-  const multiplier = settings.timeoutMultiplier === '2x' ? 2 : 1;
+  const multiplier = settings.timeoutMultiplier === '4x' ? 4 : settings.timeoutMultiplier === '2x' ? 2 : 1;
   const [state, transition, memory, hasTransition] =
     useBasicUIStateMachine();
   const timeoutBarRef = useRef<TimeoutBarHandle | null>(null);
