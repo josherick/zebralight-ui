@@ -184,6 +184,10 @@
   margin-bottom: 0;
 }
 
+.settings-item.disabled {
+  opacity: 0.5;
+}
+
 .settings-item-header {
   display: flex;
   justify-content: space-between;

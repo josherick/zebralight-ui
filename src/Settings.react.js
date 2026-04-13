@@ -2,6 +2,8 @@
 import * as React from 'react';
 import { useState } from 'react';
 
+import type { MemoryInterface } from './state_machine/implementations/basic_ui/memory.js';
+
 const STORAGE_KEY = 'zebralight-ui-settings';
 
 const DEFAULTS = {
@@ -30,11 +32,14 @@ function saveSettings(settings: typeof DEFAULTS): void {
   }
 }
 
-type Props = {};
+type Props = {
+  memory: MemoryInterface,
+};
 
-export default function Settings(_props: Props): React.Element<'div'> {
+export default function Settings({ memory }: Props): React.Element<'div'> {
   const [isOpen, setIsOpen] = useState(false);
   const [settings, setSettings] = useState(loadSettings);
+  const inG6G7 = memory.getUIGroup() !== 'g5';
 
   function updateSetting(key: string, value: any) {
     setSettings((prev) => {
@@ -119,7 +124,7 @@ export default function Settings(_props: Props): React.Element<'div'> {
           </div>
         </div>
 
-        <div className="settings-item">
+        <div className={`settings-item${inG6G7 ? ' disabled' : ''}`}>
           <div className="settings-item-header">
             <div className="settings-item-title">Hide G6/G7 Groups</div>
             <div className="settings-item-control">
@@ -127,14 +132,16 @@ export default function Settings(_props: Props): React.Element<'div'> {
                 <input
                   type="checkbox"
                   checked={settings.hideG6G7}
+                  disabled={inG6G7}
                   onChange={(e) => updateSetting('hideG6G7', e.target.checked)}
                 />
               </label>
             </div>
           </div>
           <div className="settings-item-description">
-            Hides the G6 and G7 groups from the mode grid for a simpler
-            interface. They will reappear if you switch into one of them.
+            {inG6G7
+              ? 'Cannot hide G6/G7 while currently in a G6 or G7 group.'
+              : 'Hides the G6 and G7 groups from the mode grid for a simpler interface. They will reappear if you switch into one of them.'}
           </div>
         </div>
 

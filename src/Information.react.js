@@ -62,7 +62,7 @@ export default function Information(props: Props): React.Element<'div'> | null {
           <div className="top-section-unit">{info.runtime}</div>
         )}
       </div>
-      <Settings />
+      <Settings memory={memory} />
       <div className="bottom-section">
         <div className={descriptionClassName}>{info.description}</div>
         <div className={longestDescriptionPlaceholderClassName}>
