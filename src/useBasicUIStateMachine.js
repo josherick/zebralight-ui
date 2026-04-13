@@ -13,6 +13,7 @@ export default function useBasicUIStateMachine(): [
   StateType,
   (TransitionType) => StateType,
   MemoryInterface,
+  (TransitionType) => boolean,
 ] {
   const ref = useRef<[StateMachine, MemoryInterface] | null>(null);
   if (ref.current === null) {
@@ -29,5 +30,9 @@ export default function useBasicUIStateMachine(): [
     },
     [machine, setState],
   );
-  return [state, transition, memory];
+  const hasTransition = useCallback(
+    (event) => machine.hasTransition(event),
+    [machine],
+  );
+  return [state, transition, memory, hasTransition];
 }
