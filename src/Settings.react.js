@@ -33,7 +33,15 @@ export default function Settings({ memory, onFactoryReset }: Props): React.Eleme
   }
 
   return (
-    <div className="settings-overlay" onClick={() => closeDialog()}>
+    <div
+      className="settings-overlay"
+      onClick={() => closeDialog()}
+      onTouchEnd={(e) => {
+        if (e.target === e.currentTarget) {
+          closeDialog();
+        }
+      }}
+    >
       <div className="settings-dialog" onClick={(e) => e.stopPropagation()}>
         <div className="settings-header">
           <div className="settings-title">Settings</div>
