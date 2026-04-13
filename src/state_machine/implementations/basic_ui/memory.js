@@ -96,6 +96,9 @@ export type MemoryInterface = {
 
   // Factory reset: restores a group's memory to defaults.
   factoryResetGroup: (group: string) => void,
+
+  // Full factory reset: restores all memory to defaults.
+  fullFactoryReset: () => void,
 };
 
 /**
@@ -162,8 +165,8 @@ function brightnessVariableName(
   return ((key: any): MemoryVariableType);
 }
 
-export default function makeBasicUIMemory(): MemoryInterface {
-  const memory = {
+function getDefaults() {
+  return {
     // Per-group last used sublevel defaults.
     [MemoryVariable.G5_H_LAST_USED]: 1,
     [MemoryVariable.G5_M_LAST_USED]: 1,
@@ -205,6 +208,10 @@ export default function makeBasicUIMemory(): MemoryInterface {
     // Transient factory reset click counter.
     'extra_click_count': 0,
   };
+}
+
+export default function makeBasicUIMemory(): MemoryInterface {
+  const memory = getDefaults();
 
   // Load persisted memory, overwriting defaults.
   const stored = loadFromStorage();
@@ -327,6 +334,16 @@ export default function makeBasicUIMemory(): MemoryInterface {
         memory[MemoryVariable.G7_M2_BRIGHTNESS] = StatePrefix.M2_1;
         memory[MemoryVariable.G7_L1_BRIGHTNESS] = StatePrefix.L1;
         memory[MemoryVariable.G7_L2_BRIGHTNESS] = StatePrefix.L2_1;
+      }
+      persist();
+    },
+
+    fullFactoryReset: () => {
+      const defaults = getDefaults();
+      for (const key in defaults) {
+        if (Object.prototype.hasOwnProperty.call(defaults, key)) {
+          memory[key] = defaults[key];
+        }
       }
       persist();
     },

@@ -1,6 +1,7 @@
 // @flow
 
 import { useCallback, useRef, useState } from 'react';
+import { State } from './state_machine/implementations/basic_ui/enums.js';
 import type {
   StateType,
   TransitionType,
@@ -34,5 +35,9 @@ export default function useBasicUIStateMachine(): [
     (event) => machine.hasTransition(event),
     [machine],
   );
-  return [state, transition, memory, hasTransition];
+  const fullFactoryReset = useCallback(() => {
+    memory.fullFactoryReset();
+    setState(State.OFF);
+  }, [memory]);
+  return [state, transition, memory, hasTransition, fullFactoryReset];
 }

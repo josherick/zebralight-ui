@@ -7,8 +7,12 @@ export type TimeoutBarHandle = {
   stop: () => void,
 };
 
-const TimeoutBar = forwardRef<{}, TimeoutBarHandle>(function TimeoutBar(
-  _props,
+type Props = {
+  mode: string,
+};
+
+const TimeoutBar = forwardRef<Props, TimeoutBarHandle>(function TimeoutBar(
+  { mode },
   ref,
 ) {
   const innerRef = useRef<HTMLDivElement | null>(null);
@@ -17,9 +21,7 @@ const TimeoutBar = forwardRef<{}, TimeoutBarHandle>(function TimeoutBar(
     start: (durationMs: number) => {
       const el = innerRef.current;
       if (!el) return;
-      // Restart animation: remove, force reflow, re-apply.
       el.style.animation = 'none';
-      // Force reflow to reset the animation.
       void el.offsetWidth;
       el.style.animation = `timeout-shrink ${durationMs}ms linear forwards`;
     },
@@ -31,8 +33,12 @@ const TimeoutBar = forwardRef<{}, TimeoutBarHandle>(function TimeoutBar(
     },
   }));
 
+  const className = mode === 'prominent'
+    ? 'timeout-bar prominent'
+    : 'timeout-bar';
+
   return (
-    <div className="timeout-bar">
+    <div className={className}>
       <div className="timeout-bar-inner" ref={innerRef} />
     </div>
   );

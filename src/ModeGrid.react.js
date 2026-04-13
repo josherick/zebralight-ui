@@ -18,6 +18,7 @@ import {
 } from './state_machine/implementations/basic_ui/stateUtils.js';
 
 import ModeGridCell from './ModeGridCell.react.js';
+import { useSettings } from './SettingsContext.js';
 
 type Props = {
   lampState: StateType,
@@ -77,11 +78,13 @@ function SingleGrid({
   lampState,
   memory,
   isActiveGroup,
+  hideLabel,
 }: {
   group: string,
   lampState: StateType,
   memory: MemoryInterface,
   isActiveGroup: boolean,
+  hideLabel?: boolean,
 }): React.Element<'div'> {
   const activeEffectivePrefix = isActiveGroup
     ? getEffectivePrefix(lampState, memory)
@@ -129,7 +132,7 @@ function SingleGrid({
   ];
   return (
     <div className="mode-grid-single">
-      <div className="mode-grid-label">{group.toUpperCase()}</div>
+      {!hideLabel && <div className="mode-grid-label">{group.toUpperCase()}</div>}
       <div className="mode-grid">{cells}</div>
     </div>
   );
@@ -139,13 +142,34 @@ export default function ModeGrid({
   lampState,
   memory,
 }: Props): React.Element<'div'> {
+  const { settings, updateSetting } = useSettings();
   const activeGroup = memory.getUIGroup();
   const [selectedGroup, setSelectedGroup] = useState(activeGroup);
 
-  // Sync selected group when active group changes.
+  // Sync selected group when active group changes, and disable
+  // hideG6G7 if the user enters G6/G7.
   useEffect(() => {
     setSelectedGroup(activeGroup);
-  }, [activeGroup]);
+    if (settings.hideG6G7 && activeGroup !== 'g5') {
+      updateSetting('hideG6G7', false);
+    }
+  }, [activeGroup, settings.hideG6G7, updateSetting]);
+
+  const hideG6G7 = settings.hideG6G7 && activeGroup === 'g5';
+
+  if (hideG6G7) {
+    return (
+      <div className="mode-grid-container">
+        <SingleGrid
+          group="g5"
+          lampState={lampState}
+          memory={memory}
+          isActiveGroup={true}
+          hideLabel={true}
+        />
+      </div>
+    );
+  }
 
   const groups = ['g5', 'g6', 'g7'];
 

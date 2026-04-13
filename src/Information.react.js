@@ -10,15 +10,20 @@ import { State } from './state_machine/implementations/basic_ui/enums.js';
 import { getInformation, getLongestDescription } from './lampInformation.js';
 
 import ModeGrid from './ModeGrid.react.js';
+import Settings from './Settings.react.js';
+import { useSettings } from './SettingsContext.js';
 
 type Props = {
   lampState: StateType,
   memory: MemoryInterface,
+  onFactoryReset: () => void,
 };
 
 export default function Information(props: Props): React.Element<'div'> | null {
   const { lampState } = props;
   const { memory } = props;
+  const { settings } = useSettings();
+  const hideG6G7 = settings.hideG6G7 && memory.getUIGroup() === 'g5';
   const info = getInformation(lampState, memory);
   const longestDescription = getLongestDescription();
   const [isExpanded, setIsExpanded] = useState(false);
@@ -53,14 +58,17 @@ export default function Information(props: Props): React.Element<'div'> | null {
         )}
         <div className="top-section-unit emphasized">
           <div>{info.level}</div>
-          <div className="active-group-label">
-            {memory.getUIGroup().toUpperCase()}
-          </div>
+          {!hideG6G7 && (
+            <div className="active-group-label">
+              {memory.getUIGroup().toUpperCase()}
+            </div>
+          )}
         </div>
         {lampState !== State.BATTERY_INDICATOR && (
           <div className="top-section-unit">{info.runtime}</div>
         )}
       </div>
+      <Settings memory={memory} onFactoryReset={props.onFactoryReset} />
       <div className="bottom-section">
         <div className={descriptionClassName}>{info.description}</div>
         <div className={longestDescriptionPlaceholderClassName}>

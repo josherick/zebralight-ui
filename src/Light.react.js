@@ -15,13 +15,15 @@ import {
   Transition,
 } from './state_machine/implementations/basic_ui/enums.js';
 
+import { useSettings } from './SettingsContext.js';
+
 import type { TimeoutBarHandle } from './TimeoutBar.react.js';
 
 type Props = {};
 
 const BATTERY_INDICATOR_TIMEOUT_MS = 1920;
-const LONG_PRESS_BEAT_TIMEOUT_MS = 600;
-const MULTI_SINGLE_PRESS_TIMEOUT_MS = 600;
+const BASE_LONG_PRESS_BEAT_TIMEOUT_MS = 600;
+const BASE_MULTI_SINGLE_PRESS_TIMEOUT_MS = 600;
 const MULTI_DOUBLE_PRESS_TIMEOUT_MS = 12000;
 
 function isButtonDownEvent(event: string): boolean {
@@ -38,7 +40,9 @@ function isButtonUpUserEvent(event: string): boolean {
 }
 
 export default function Light(_props: Props): React.Element<'div'> {
-  const [state, transition, memory, hasTransition] =
+  const { settings } = useSettings();
+  const multiplier = settings.timeoutMultiplier === '4x' ? 4 : settings.timeoutMultiplier === '2x' ? 2 : 1;
+  const [state, transition, memory, hasTransition, fullFactoryReset] =
     useBasicUIStateMachine();
   const timeoutBarRef = useRef<TimeoutBarHandle | null>(null);
   const onBatteryIndicatorFinished = useCallback(() => {
@@ -69,13 +73,13 @@ export default function Light(_props: Props): React.Element<'div'> {
 
       if (isButtonDownEvent(event)) {
         if (hasTransition(Transition.LONG_PRESS_BEAT)) {
-          bar.start(LONG_PRESS_BEAT_TIMEOUT_MS);
+          bar.start(BASE_LONG_PRESS_BEAT_TIMEOUT_MS * multiplier);
         } else {
           bar.stop();
         }
       } else {
         if (hasTransition(Transition.MULTI_SINGLE_PRESS_TIMEOUT)) {
-          bar.start(MULTI_SINGLE_PRESS_TIMEOUT_MS);
+          bar.start(BASE_MULTI_SINGLE_PRESS_TIMEOUT_MS * multiplier);
         } else if (hasTransition(Transition.MULTI_DOUBLE_PRESS_TIMEOUT)) {
           bar.start(MULTI_DOUBLE_PRESS_TIMEOUT_MS);
         } else {
@@ -83,7 +87,7 @@ export default function Light(_props: Props): React.Element<'div'> {
         }
       }
     },
-    [hasTransition],
+    [hasTransition, multiplier],
   );
 
   const onEvent = useCallback(
@@ -105,8 +109,13 @@ export default function Light(_props: Props): React.Element<'div'> {
   return (
     <div className="light-background">
       <div className="information-container">
-        <TimeoutBar ref={timeoutBarRef} />
-        <Information lampState={state} memory={memory} />
+        {settings.timeoutIndicator !== 'off' && (
+          <TimeoutBar
+            ref={timeoutBarRef}
+            mode={settings.timeoutIndicator}
+          />
+        )}
+        <Information lampState={state} memory={memory} onFactoryReset={fullFactoryReset} />
       </div>
       <div className="bulb-container">
         <div className="centered-in-container">
