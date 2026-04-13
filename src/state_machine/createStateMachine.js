@@ -18,6 +18,7 @@ export type StateMachineDefinition = {
 export type StateMachine = {
   getCurrentState: () => StateType,
   transition: (TransitionType) => void,
+  hasTransition: (TransitionType) => boolean,
 };
 
 export default function createStateMachine(
@@ -48,6 +49,9 @@ export default function createStateMachine(
       states[newState].actions &&
         states[newState].actions.onEnter &&
         states[newState].actions.onEnter(newState);
+    },
+    hasTransition: (event) => {
+      return states[currentState].transitions[event] != null;
     },
   };
 }
