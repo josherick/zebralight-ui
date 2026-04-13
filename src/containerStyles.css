@@ -413,6 +413,10 @@
   font-weight: bold;
 }
 
+.mode-grid .cell.last-used {
+  background-color: rgba(80, 80, 80);
+}
+
 .mode-grid .cell.active {
   background-color: white;
   color: black;
@@ -443,6 +447,10 @@
 
 .mode-grid .cell:hover .cell-tooltip {
   display: block;
+}
+
+.cell-tooltip .tooltip-last-used {
+  color: rgb(180, 220, 255);
 }
 
 .centered-in-container {
