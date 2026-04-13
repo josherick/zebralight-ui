@@ -450,7 +450,7 @@
   display: none;
 }
 
-@media (min-width: 620px) {
+@media (min-width: 640px) {
   .mode-grids-narrow {
     display: none;
   }
