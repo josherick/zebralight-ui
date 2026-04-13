@@ -22,6 +22,7 @@ export default function useBasicUIStateMachine(): [
   }
   const [machine, memory] = ref.current;
   const [state, setState] = useState(machine.getCurrentState());
+  const [, setMemoryVersion] = useState(0);
   const transition = useCallback(
     (event) => {
       machine.transition(event);
@@ -38,6 +39,7 @@ export default function useBasicUIStateMachine(): [
   const fullFactoryReset = useCallback(() => {
     memory.fullFactoryReset();
     setState(State.OFF);
+    setMemoryVersion((v) => v + 1);
   }, [memory]);
   return [state, transition, memory, hasTransition, fullFactoryReset];
 }
