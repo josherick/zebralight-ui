@@ -278,7 +278,12 @@ function getDescription(
     case StateSuffix.TOGGLE_3:
     case StateSuffix.TOGGLE_4: {
       const remaining = 6 - parseInt(stateSuffix.slice(-1), 10);
-      const programmingTarget = isG5 ? humanLevel2 : humanLevel;
+      const toggleNum = parseInt(stateSuffix.slice(-1), 10);
+      // In G6/G7, 6 double-clicks programs the starting sublevel.
+      // Odd toggle numbers have swapped sublevel, even are same as start.
+      const programmingTarget = isG5
+        ? humanLevel2
+        : toggleNum % 2 === 0 ? humanLevel : humanOppositeLevel;
       return (
         <div>
           <div>{`Double click to toggle to ${humanOppositeLevel}.`}</div>
@@ -293,7 +298,8 @@ function getDescription(
     }
 
     case StateSuffix.TOGGLE_5: {
-      const programmingTarget = isG5 ? humanLevel2 : humanLevel;
+      // Toggle 5 is odd → sublevel is swapped from start → target is opposite
+      const programmingTarget = isG5 ? humanLevel2 : humanOppositeLevel;
       return (
         <div>
           <div>{`Double click once more to go into ${programmingTarget} programming mode.`}</div>
