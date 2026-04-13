@@ -88,7 +88,7 @@ export default function Settings({ memory, onFactoryReset }: Props): React.Eleme
 
         <div className="settings-item">
           <div className="settings-item-header">
-            <div className="settings-item-title">Timeout Indicator</div>
+            <div className="settings-item-title">Click Timeout Indicator</div>
             <div className="settings-item-control">
               <select
                 className="settings-select"
@@ -103,8 +103,7 @@ export default function Settings({ memory, onFactoryReset }: Props): React.Eleme
           </div>
           <div className="settings-item-description">
             Controls the visibility of the timeout countdown bar at the top of
-            the screen. Subtle shows a thin grey bar, prominent makes it more
-            visible, and off hides it entirely.
+            the screen.
           </div>
         </div>
 
