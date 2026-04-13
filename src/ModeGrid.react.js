@@ -54,12 +54,17 @@ const SLOTS = [
   { level: Level.L, sublevel: 2, label: 'L2' },
 ];
 
-function getSlotLabelsForPrefix(
+type SlotInfo = {
+  label: string,
+  isLastUsed: boolean,
+};
+
+function getSlotInfoForPrefix(
   prefix: string,
   group: string,
   memory: MemoryInterface,
-): string[] {
-  const labels = [];
+): SlotInfo[] {
+  const slots = [];
   for (const slot of SLOTS) {
     const effectivePrefix = memory.getEffectivePrefixForSlotInGroup(
       group,
@@ -67,10 +72,17 @@ function getSlotLabelsForPrefix(
       slot.sublevel,
     );
     if (effectivePrefix === prefix) {
-      labels.push(slot.label);
+      const lastUsedSublevel = memory.getLastUsedSublevelInGroup(
+        group,
+        slot.level,
+      );
+      slots.push({
+        label: slot.label,
+        isLastUsed: slot.sublevel === lastUsedSublevel,
+      });
     }
   }
-  return labels;
+  return slots;
 }
 
 function SingleGrid({
@@ -104,28 +116,32 @@ function SingleGrid({
       humanLevel="Battery Indicator"
     />,
     ...ALL_PREFIXES.map((prefix) => {
-      const slotLabels = getSlotLabelsForPrefix(prefix, group, memory);
+      const slotInfos = getSlotInfoForPrefix(prefix, group, memory);
       let humanLevel;
       let tooltip;
+      let hasLastUsed = false;
       if (parseLevel(prefix) === Level.STROBE) {
         humanLevel = `S${prefix.split('.').slice(-1)[0]}`;
-      } else if (slotLabels.length === 0) {
+      } else if (slotInfos.length === 0) {
         humanLevel = '';
-      } else if (slotLabels.length === 1) {
-        humanLevel = slotLabels[0];
+      } else if (slotInfos.length === 1) {
+        humanLevel = slotInfos[0].label;
+        hasLastUsed = slotInfos[0].isLastUsed;
       } else {
-        humanLevel = `${slotLabels.length} levels`;
-        tooltip = slotLabels.join(', ');
+        humanLevel = `${slotInfos.length} levels`;
+        hasLastUsed = slotInfos.some((s) => s.isLastUsed);
+        tooltip = slotInfos;
       }
 
       return (
         <ModeGridCell
           key={`${group}-${prefix}`}
           isActive={isActiveGroup && prefix === activeEffectivePrefix}
+          isLastUsed={hasLastUsed}
           isHumanLevelVisible={humanLevel !== ''}
           humanLevel={humanLevel || '\u00A0'}
           lumens={getLumens(prefix)}
-          tooltip={tooltip}
+          tooltipItems={tooltip}
         />
       );
     }),

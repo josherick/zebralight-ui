@@ -53,6 +53,9 @@ export type MemoryInterface = {
 
   getLastUsedOption: (LevelType) => number,
 
+  // Returns the last used sublevel number (1 or 2) for a level in a given group.
+  getLastUsedSublevelInGroup: (group: string, LevelType) => number,
+
   // Returns the last used sublevel for a given state with the provided suffix.
   // E.g. if the user last used L2.2:
   //  (Level.L, StateSuffix.STABLE) => State.L2_2_STABLE
@@ -240,6 +243,11 @@ export default function makeBasicUIMemory(): MemoryInterface {
     },
 
     getLastUsedOption: (level) => memory[optionVariableName(level)],
+
+    getLastUsedSublevelInGroup: (group, level) => {
+      if (level === Level.STROBE) return 1;
+      return memory[lastUsedVariableName(group, level)];
+    },
 
     getLastUsedSublevelState: (level, suffix) => {
       const group = memory[MemoryVariable.UI_GROUP];
