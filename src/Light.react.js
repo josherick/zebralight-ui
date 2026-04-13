@@ -50,7 +50,7 @@ export default function Light(_props: Props): React.Element<'div'> {
     return false;
   }, [transition]);
 
-  const [resetBatteryIndicatorTimer, _] = useTimer(
+  const [resetBatteryIndicatorTimer] = useTimer(
     BATTERY_INDICATOR_TIMEOUT_MS,
     onBatteryIndicatorFinished,
   );
