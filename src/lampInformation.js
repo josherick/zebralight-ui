@@ -152,22 +152,9 @@ function getDescription(
   if (state === State.OFF) {
     return (
       <div>
-        <div>When the light is off:</div>
-        <ul>
-          <li>1 short click to High</li>
-          <li>2 short clicks to Medium</li>
-          <li>3 short clicks to Strobe</li>
-          <li>4 short clicks to indicate battery level</li>
-          <li>5/6/7 short clicks to select UI group G5/G6/G7</li>
-          <li>15/18/21 short clicks to factory reset G5/G6/G7</li>
-          <li>
-            Press and hold to cycle L, M, H.
-            <ul>
-              <li>Press/hold also works when the light is on.</li>
-            </ul>
-          </li>
-        </ul>
-        <div>When the light is on, one short click turns off the light.</div>
+        <div>Press and hold to cycle L, M, H.</div>
+        <div>1, 2, 3 or 4 short presses for H, M, Strobe, Battery Indicator.</div>
+        <div>5/6/7 short presses to select G5/G6/G7. 15/18/21 to factory reset.</div>
       </div>
     );
   } else if (state === State.BATTERY_INDICATOR) {
