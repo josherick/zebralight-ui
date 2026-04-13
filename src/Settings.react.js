@@ -132,8 +132,7 @@ export default function Settings({ memory, onFactoryReset }: Props): React.Eleme
             <div className="settings-item-title">Select Lamp</div>
           </div>
           <div className="settings-item-description">
-            Select a lamp to show its lumen and runtime values at a particular
-            level. Some lamps in the list may have a slightly different UI, but
+            Select a lamp to show its lumen and runtime values. Some lamps in the list may have a slightly different UI, but
             this setting only changes the displayed lumen and runtime values.
           </div>
           <LampSelector
