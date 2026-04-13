@@ -47,7 +47,7 @@ export default function Settings({ memory, onFactoryReset }: Props): React.Eleme
 
         <div className="settings-item">
           <div className="settings-item-header">
-            <div className="settings-item-title">Timeout Speed</div>
+            <div className="settings-item-title">Slower Click Timeouts</div>
             <div className="settings-item-control">
               <div className="toggle-switch">
                 <button
