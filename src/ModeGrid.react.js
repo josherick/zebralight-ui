@@ -91,12 +91,14 @@ function SingleGrid({
   memory,
   isActiveGroup,
   hideLabel,
+  lampName,
 }: {
   group: string,
   lampState: StateType,
   memory: MemoryInterface,
   isActiveGroup: boolean,
   hideLabel?: boolean,
+  lampName: string,
 }): React.Element<'div'> {
   const activeEffectivePrefix = isActiveGroup
     ? getEffectivePrefix(lampState, memory)
@@ -140,7 +142,7 @@ function SingleGrid({
           isLastUsed={hasLastUsed}
           isHumanLevelVisible={humanLevel !== ''}
           humanLevel={humanLevel || '\u00A0'}
-          lumens={getLumens(prefix)}
+          lumens={getLumens(prefix, lampName)}
           tooltipItems={tooltip}
         />
       );
@@ -182,6 +184,7 @@ export default function ModeGrid({
           memory={memory}
           isActiveGroup={true}
           hideLabel={true}
+          lampName={settings.selectedLamp}
         />
       </div>
     );
@@ -212,6 +215,7 @@ export default function ModeGrid({
             lampState={lampState}
             memory={memory}
             isActiveGroup={selectedGroup === activeGroup}
+            lampName={settings.selectedLamp}
           />
         </div>
         <div className="mode-grids-wide">
@@ -222,6 +226,7 @@ export default function ModeGrid({
               lampState={lampState}
               memory={memory}
               isActiveGroup={g === activeGroup}
+              lampName={settings.selectedLamp}
             />
           ))}
         </div>

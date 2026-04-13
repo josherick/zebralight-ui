@@ -271,6 +271,77 @@
   cursor: pointer;
 }
 
+/* Lamp selector */
+.lamp-selector {
+  position: relative;
+  margin-top: 6px;
+}
+
+.lamp-selector-input-row {
+  display: flex;
+}
+
+.lamp-selector-input {
+  flex: 1;
+  background-color: rgba(50, 50, 50);
+  color: white;
+  border: 1px solid rgba(80, 80, 80);
+  border-radius: 4px 0 0 4px;
+  padding: 6px 8px;
+  font-size: 10pt;
+  min-width: 0;
+}
+
+.lamp-selector-input::placeholder {
+  color: rgba(200, 200, 200);
+  font-size: 9pt;
+}
+
+.lamp-selector-caret {
+  background-color: rgba(50, 50, 50);
+  color: white;
+  border: 1px solid rgba(80, 80, 80);
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  padding: 6px 10px;
+  font-size: 8pt;
+  cursor: pointer;
+}
+
+.lamp-selector-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: rgb(40, 40, 40);
+  border: 1px solid rgba(80, 80, 80);
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  z-index: 10;
+}
+
+.lamp-selector-option {
+  padding: 6px 8px;
+  font-size: 9pt;
+  cursor: pointer;
+  color: white;
+}
+
+.lamp-selector-option:hover {
+  background-color: rgba(80, 80, 80);
+}
+
+.lamp-selector-option.selected {
+  background-color: rgba(60, 60, 80);
+}
+
+.lamp-selector-option.empty {
+  color: rgba(150, 150, 150);
+  cursor: default;
+}
+
 .settings-select {
   background-color: rgba(50, 50, 50);
   color: white;

@@ -8,6 +8,7 @@ const DEFAULTS = {
   timeoutMultiplier: '1x',
   timeoutIndicator: 'subtle',
   hideG6G7: false,
+  selectedLamp: 'H604c 18650 XHP50.2 Flood 4000K High CRI Headlamp',
 };
 
 export type SettingsType = typeof DEFAULTS;
