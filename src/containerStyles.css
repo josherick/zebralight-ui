@@ -327,6 +327,7 @@
   font-size: 9pt;
   cursor: pointer;
   color: white;
+  text-align: left;
 }
 
 .lamp-selector-option:hover {
