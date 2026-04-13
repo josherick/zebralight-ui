@@ -16,6 +16,7 @@ import { useSettings } from './SettingsContext.js';
 type Props = {
   lampState: StateType,
   memory: MemoryInterface,
+  onFactoryReset: () => void,
 };
 
 export default function Information(props: Props): React.Element<'div'> | null {
@@ -67,7 +68,7 @@ export default function Information(props: Props): React.Element<'div'> | null {
           <div className="top-section-unit">{info.runtime}</div>
         )}
       </div>
-      <Settings memory={memory} />
+      <Settings memory={memory} onFactoryReset={props.onFactoryReset} />
       <div className="bottom-section">
         <div className={descriptionClassName}>{info.description}</div>
         <div className={longestDescriptionPlaceholderClassName}>

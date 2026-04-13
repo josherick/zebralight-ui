@@ -7,9 +7,10 @@ import { useSettings } from './SettingsContext.js';
 
 type Props = {
   memory: MemoryInterface,
+  onFactoryReset: () => void,
 };
 
-export default function Settings({ memory }: Props): React.Element<'div'> {
+export default function Settings({ memory, onFactoryReset }: Props): React.Element<'div'> {
   const [isOpen, setIsOpen] = useState(false);
   const { settings, updateSetting } = useSettings();
   const inG6G7 = memory.getUIGroup() !== 'g5';
@@ -127,7 +128,7 @@ export default function Settings({ memory }: Props): React.Element<'div'> {
                 type="button"
                 className="settings-button"
                 onClick={() => {
-                  memory.fullFactoryReset();
+                  onFactoryReset();
                   setIsOpen(false);
                 }}
               >
