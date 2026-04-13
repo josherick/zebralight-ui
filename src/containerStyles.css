@@ -254,6 +254,16 @@
   cursor: pointer;
 }
 
+.settings-select {
+  background-color: rgba(50, 50, 50);
+  color: white;
+  border: 1px solid rgba(80, 80, 80);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 10pt;
+  cursor: pointer;
+}
+
 .top-section-unit .active-group-label {
   font-size: 10pt;
   font-weight: normal;

@@ -7,6 +7,7 @@ type Props = {};
 export default function Settings(_props: Props): React.Element<'div'> {
   const [isOpen, setIsOpen] = useState(false);
   const [timeoutMultiplier, setTimeoutMultiplier] = useState('1x');
+  const [timeoutIndicator, setTimeoutIndicator] = useState('subtle');
 
   if (!isOpen) {
     return (
@@ -73,6 +74,28 @@ export default function Settings(_props: Props): React.Element<'div'> {
           <div className="settings-item-description">
             Hides the G6 and G7 groups from the mode grid for a simpler
             interface. They will reappear if you switch into one of them.
+          </div>
+        </div>
+
+        <div className="settings-item">
+          <div className="settings-item-header">
+            <div className="settings-item-title">Timeout Indicator</div>
+            <div className="settings-item-control">
+              <select
+                className="settings-select"
+                value={timeoutIndicator}
+                onChange={(e) => setTimeoutIndicator(e.target.value)}
+              >
+                <option value="subtle">Subtle</option>
+                <option value="prominent">Prominent</option>
+                <option value="off">Off</option>
+              </select>
+            </div>
+          </div>
+          <div className="settings-item-description">
+            Controls the visibility of the timeout countdown bar at the top of
+            the screen. Subtle shows a thin grey bar, prominent makes it more
+            visible, and off hides it entirely.
           </div>
         </div>
 
