@@ -222,32 +222,36 @@ function getDescription(
   const stateSuffix = parseSuffix(state);
   switch (stateSuffix) {
     case StateSuffix.CYCLE:
-      return <div>Continue pressing to cycle. Release to stop cycling.</div>;
+      return (
+        <div>
+          <div>Continue holding to cycle. Release to select this level.</div>
+          <div>Short press to continue through M, Strobe, Battery Indicator.</div>
+        </div>
+      );
     case StateSuffix.CYCLE_PRE_H:
       return (
-        <div>Release to go to H, or continue holding to cycle L, M, H.</div>
+        <div>Release for H, or continue holding to cycle L, M, H.</div>
       );
     case StateSuffix.CYCLE_PRE_M:
       return (
-        <div>Release to go to M, or continue holding to cycle L, M, H.</div>
+        <div>Release for M, or continue holding to cycle L, M, H.</div>
       );
     case StateSuffix.CYCLE_PRE_STROBE:
       return (
         <div>
-          Release to go to Strobe, or continue holding to cycle L, M, H.
+          Release for Strobe, or continue holding to cycle L, M, H.
         </div>
       );
     case StateSuffix.CYCLE_STROBE_BEAT:
-      return <div>Strobe is about to start.</div>;
+      return <div>Strobe is about to start. Short press for Battery Indicator.</div>;
     case StateSuffix.CYCLE_PRE_BATTERY_INDICATOR:
       return (
         <div>
-          Release to go to Battery Indicator, or continue holding to cycle L, M,
-          H.
+          Release for Battery Indicator, or continue holding to cycle L, M, H.
         </div>
       );
     case StateSuffix.CYCLE_BATTERY_INDICATOR_BEAT:
-      return <div>Battery indicator is about to start.</div>;
+      return <div>Battery indicator is about to start. Short press to select UI group.</div>;
     case StateSuffix.STABLE:
       return (
         <div>
