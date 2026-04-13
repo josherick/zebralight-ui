@@ -123,7 +123,14 @@ export default function Settings({ memory }: Props): React.Element<'div'> {
           <div className="settings-item-header">
             <div className="settings-item-title">Factory Reset</div>
             <div className="settings-item-control">
-              <button type="button" className="settings-button">
+              <button
+                type="button"
+                className="settings-button"
+                onClick={() => {
+                  memory.fullFactoryReset();
+                  setIsOpen(false);
+                }}
+              >
                 Reset
               </button>
             </div>
