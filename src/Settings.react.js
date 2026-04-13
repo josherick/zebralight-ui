@@ -3,34 +3,7 @@ import * as React from 'react';
 import { useState } from 'react';
 
 import type { MemoryInterface } from './state_machine/implementations/basic_ui/memory.js';
-
-const STORAGE_KEY = 'zebralight-ui-settings';
-
-const DEFAULTS = {
-  timeoutMultiplier: '1x',
-  timeoutIndicator: 'subtle',
-  hideG6G7: false,
-};
-
-function loadSettings(): typeof DEFAULTS {
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      return { ...DEFAULTS, ...JSON.parse(stored) };
-    }
-  } catch (e) {
-    // Ignore
-  }
-  return { ...DEFAULTS };
-}
-
-function saveSettings(settings: typeof DEFAULTS): void {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
-  } catch (e) {
-    // Ignore
-  }
-}
+import { useSettings } from './SettingsContext.js';
 
 type Props = {
   memory: MemoryInterface,
@@ -38,16 +11,8 @@ type Props = {
 
 export default function Settings({ memory }: Props): React.Element<'div'> {
   const [isOpen, setIsOpen] = useState(false);
-  const [settings, setSettings] = useState(loadSettings);
+  const { settings, updateSetting } = useSettings();
   const inG6G7 = memory.getUIGroup() !== 'g5';
-
-  function updateSetting(key: string, value: any) {
-    setSettings((prev) => {
-      const next = { ...prev, [key]: value };
-      saveSettings(next);
-      return next;
-    });
-  }
 
   if (!isOpen) {
     return (
@@ -98,7 +63,7 @@ export default function Settings({ memory }: Props): React.Element<'div'> {
           </div>
           <div className="settings-item-description">
             Doubles the time window for double-clicks, triple-clicks, and
-            timeouts. Useful if you find the default timing too fast.
+            long-press cycling. Useful if you find the default timing too fast.
           </div>
         </div>
 
