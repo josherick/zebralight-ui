@@ -14,6 +14,11 @@ export default function Settings({ memory, onFactoryReset }: Props): React.Eleme
   const [isOpen, setIsOpen] = useState(false);
   const { settings, updateSetting } = useSettings();
   const [confirmReset, setConfirmReset] = useState(false);
+
+  function closeDialog() {
+    setIsOpen(false);
+    setConfirmReset(false);
+  }
   const inG6G7 = memory.getUIGroup() !== 'g5';
 
   if (!isOpen) {
@@ -25,13 +30,13 @@ export default function Settings({ memory, onFactoryReset }: Props): React.Eleme
   }
 
   return (
-    <div className="settings-overlay" onClick={() => setIsOpen(false)}>
+    <div className="settings-overlay" onClick={() => closeDialog()}>
       <div className="settings-dialog" onClick={(e) => e.stopPropagation()}>
         <div className="settings-header">
           <div className="settings-title">Settings</div>
           <div
             className="settings-close unselectable"
-            onClick={() => setIsOpen(false)}
+            onClick={() => closeDialog()}
           >
             &#10005;
           </div>
@@ -132,7 +137,7 @@ export default function Settings({ memory, onFactoryReset }: Props): React.Eleme
                   if (confirmReset) {
                     onFactoryReset();
                     setConfirmReset(false);
-                    setIsOpen(false);
+                    closeDialog();
                   } else {
                     setConfirmReset(true);
                   }
