@@ -78,6 +78,14 @@
   width: 0;
 }
 
+.timeout-bar.prominent {
+  height: 10px;
+}
+
+.timeout-bar.prominent .timeout-bar-inner {
+  background-color: white;
+}
+
 @keyframes timeout-shrink {
   from { width: 100%; }
   to { width: 0%; }

@@ -109,7 +109,12 @@ export default function Light(_props: Props): React.Element<'div'> {
   return (
     <div className="light-background">
       <div className="information-container">
-        <TimeoutBar ref={timeoutBarRef} />
+        {settings.timeoutIndicator !== 'off' && (
+          <TimeoutBar
+            ref={timeoutBarRef}
+            mode={settings.timeoutIndicator}
+          />
+        )}
         <Information lampState={state} memory={memory} />
       </div>
       <div className="bulb-container">
