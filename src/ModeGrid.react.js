@@ -146,13 +146,10 @@ export default function ModeGrid({
   const activeGroup = memory.getUIGroup();
   const [selectedGroup, setSelectedGroup] = useState(activeGroup);
 
-  // Sync selected group when active group changes.
+  // Sync selected group when active group changes, and disable
+  // hideG6G7 if the user enters G6/G7.
   useEffect(() => {
     setSelectedGroup(activeGroup);
-  }, [activeGroup]);
-
-  // If user enters G6/G7 while hideG6G7 is on, disable it.
-  useEffect(() => {
     if (settings.hideG6G7 && activeGroup !== 'g5') {
       updateSetting('hideG6G7', false);
     }
