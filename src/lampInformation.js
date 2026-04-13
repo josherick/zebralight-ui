@@ -112,7 +112,7 @@ export function getLevel(state: StateType): string {
 
   if (isGroupSelectState(state)) {
     const label = getGroupSelectLabel(state);
-    return label || 'Click Sequence';
+    return label || '';
   }
 
   const level = parseLevel(state);
